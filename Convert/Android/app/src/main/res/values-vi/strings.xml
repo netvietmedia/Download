@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Branding & Core -->
+    <string name="app_name">Share Now</string>
+    <string name="app_subtitle">Truyền Tệp P2P Cực Nhanh</string>
+    <string name="hero_send_sub">Tốc độ cao 45MB/s</string>
+    <string name="hero_receive_sub">Radar tự động kết nối</string>
+    <string name="btn_upgrade">NÂNG CẤP</string>
+    <string name="btn_clean_now">DỌN NGAY</string>
+    <string name="btn_open_view">MỞ XEM</string>
+    <string name="coin_balance_format">%s Xu</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_files">Tệp tin</string>
+    <string name="nav_clean">Dọn dẹp</string>
+    <string name="nav_me">Tôi</string>
+
+    <!-- Hero Actions -->
+    <string name="action_send">GỬI</string>
+    <string name="action_receive">NHẬN</string>
+    <string name="action_webshare">WebShare</string>
+    <string name="action_clone">Chuyển Điện Thoại</string>
+    <string name="btn_cancel">Hủy</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_close">ĐÓNG</string>
+    <string name="btn_understand">ĐÃ HIỂU</string>
+    <string name="btn_agree">ĐỒNG Ý</string>
+    <string name="btn_next">TIẾP TỤC</string>
+    <string name="btn_retry">THỬ LẠI</string>
+
+    <!-- Home Feature Cards -->
+    <string name="vip_title">Nâng Cấp VIP</string>
+    <string name="vip_subtitle">Truyền không giới hạn, 100% Không quảng cáo</string>
+    <string name="cleanit_title">Dọn Rác Tăng Tốc</string>
+    <string name="cleanit_desc">Giải phóng dung lượng &amp; làm mát CPU</string>
+    <string name="received_files_title">Tệp Tin Đã Nhận</string>
+    <string name="received_files_desc">Xem &amp; quản lý tất cả tệp đã nhận</string>
+    <string name="safebox_title">Két An Toàn</string>
+    <string name="safebox_desc">Bảo mật AES-256 tệp riêng tư</string>
+    <string name="muslim_title">Thời Gian Cầu Nguyện &amp; Qibla</string>
+    <string name="muslim_desc">Lịch cầu nguyện hôm nay • La bàn Qibla</string>
+    <string name="coin_title">Khu Thưởng Xu</string>
+    <string name="coin_subtitle">Điểm danh nhận quà mỗi ngày</string>
+
+    <!-- File Categories -->
+    <string name="section_categories">DANH MỤC TRUYỀN TỆP</string>
+    <string name="category_apps">Ứng dụng</string>
+    <string name="category_photos">Hình ảnh</string>
+    <string name="category_music">Nhạc</string>
+    <string name="category_videos">Video</string>
+    <string name="category_docs">Tài liệu</string>
+    <string name="category_zips">Nén</string>
+
+    <!-- Me Tab Items -->
+    <string name="me_username_default">Người Dùng Share Now</string>
+    <string name="me_device_status">Thiết bị: Sẵn sàng kết nối P2P</string>
+    <string name="me_vip_plan_title">Gói Thành Viên Share Now Premium</string>
+    <string name="me_vip_upgrade_btn">NÂNG CẤP NGAY</string>
+    <string name="me_vip_features">• Tốc độ truyền tối đa lên đến 100 MB/s\n• Truyền không giới hạn dung lượng &amp; số lượng tệp\n• Loại bỏ 100% quảng cáo trải nghiệm mượt mà\n• Hỗ trợ kỹ thuật ưu tiên 24/7</string>
+    <string name="me_section_legal">ĐIỀU KHOẢN &amp; PHÁP LÝ</string>
+    <string name="me_tos">Điều khoản dịch vụ (Terms of Service)</string>
+    <string name="me_privacy_policy">Chính sách quyền riêng tư (Privacy Policy)</string>
+    <string name="me_section_appearance">GIAO DIỆN &amp; HỆ THỐNG</string>
+    <string name="me_theme">Giao diện (Sáng / Tối)</string>
+    <string name="me_theme_system">Theo hệ thống ⚙️</string>
+    <string name="me_theme_light">Giao diện Sáng ☀️</string>
+    <string name="me_theme_dark">Giao diện Tối 🌙</string>
+    <string name="me_theme_dialog_title">Chọn chủ đề giao diện</string>
+    <string name="me_language">Ngôn ngữ (Language)</string>
+    <string name="me_language_dialog_title">Chọn ngôn ngữ</string>
+    <string name="me_section_about">GIỚI THIỆU</string>
+    <string name="me_about">Về Share Now</string>
+    <string name="me_version">v16</string>
+    <string name="me_footer_copyright">Share Now • Truyền Tệp Ngoại Tuyến Tốc Độ Cao\n© 2026 NextAI Inc. All rights reserved.</string>
+
+    <!-- Send Activity -->
+    <string name="send_title">Chọn Tệp Tin</string>
+    <string name="tab_recent">GẦN ĐÂY</string>
+    <string name="tab_contacts">DANH BẠ</string>
+    <string name="tab_files">TỆP TIN</string>
+    <string name="tab_videos">VIDEO</string>
+    <string name="tab_apps">ỨNG DỤNG</string>
+    <string name="tab_photos">HÌNH ẢNH</string>
+    <string name="tab_music">NHẠC</string>
+    <string name="sub_installed">Đã cài đặt</string>
+    <string name="sub_not_installed">Gói APK</string>
+    <string name="sub_safebox">Két an toàn</string>
+    <string name="sub_recent">Gần đây</string>
+    <string name="sub_folders">Thư mục</string>
+    <string name="sub_received">Đã nhận</string>
+    <string name="sub_sent">Đã gửi</string>
+    <string name="group_today">Hôm nay</string>
+    <string name="group_yesterday">Hôm qua</string>
+    <string name="group_older">Cũ hơn</string>
+    <string name="group_apps">Ứng dụng</string>
+    <string name="group_contacts">Danh bạ</string>
+    <string name="group_files">Tệp tin</string>
+    <string name="selected_count_format">Đã chọn %d tệp</string>
+    <string name="selected_total_size">Tổng dung lượng: %s</string>
+    <string name="no_files_found">Không tìm thấy tệp nào</string>
+    <string name="permission_media_granted">Đã cấp quyền truy cập phương tiện</string>
+    <string name="toast_search_hint">Tìm kiếm tệp...</string>
+    <string name="toast_select_at_least_one">Vui lòng chọn ít nhất 1 tệp để gửi!</string>
+    <string name="toast_preparing_share">Đang chuẩn bị chia sẻ %s...</string>
+    <string name="toast_cannot_share_file">Không thể mở tệp \'%s\' để chia sẻ</string>
+    <string name="toast_share_error">Lỗi chia sẻ: %s</string>
+    <string name="share_chooser_title">Chia sẻ tệp qua</string>
+    <string name="view_mode_grid">Dạng lưới (2 cột)</string>
+    <string name="view_mode_list">Dạng danh sách (kèm nút chia sẻ)</string>
+
+    <!-- Receive Activity -->
+    <string name="receive_screen_title">Chờ Nhận Tệp</string>
+    <string name="receive_peer_detected_title">✓ Đã bắt sóng thiết bị gửi!</string>
+    <string name="receive_peer_detected_desc">Đang bắt tay kết nối P2P và nhận tệp...</string>
+    <string name="receive_scanning_status">Đang quét sóng Wi-Fi Direct &amp; P2P Hotspot...</string>
+    <string name="receive_qr_prompt">Quét mã QR để kết nối tức thì</string>
+    <string name="receive_btn_start">TIẾP NHẬN TỆP (BẮT ĐẦU TRUYỀN)</string>
+    <string name="receive_rejected_toast">Đã từ chối nhận tệp từ %s</string>
+    <string name="receive_cancelled_toast">Đã hủy bỏ nhận tệp</string>
+
+    <!-- Device Discovery Activity -->
+    <string name="discovery_title">Tìm Thiết Bị Nhận</string>
+    <string name="discovery_scanning">Đang quét tìm thiết bị nhận xung quanh...</string>
+    <string name="discovery_hint">Hãy chắc chắn thiết bị kia đã bấm \'NHẬN\' và đang ở cùng mạng Wi-Fi hoặc Hotspot</string>
+    <string name="discovery_discovered_header">THIẾT BỊ PHÁT HIỆN:</string>
+    <string name="discovery_rescan_btn">🔍 Tìm kiếm lại thiết bị</string>
+    <string name="discovery_waiting_acceptance">Đang gửi yêu cầu tới %s... Chờ đồng ý</string>
+    <string name="discovery_connecting">Đang gửi yêu cầu kết nối... Chờ đồng ý</string>
+    <string name="discovery_rescanning_toast">Đang quét lại thiết bị trong mạng...</string>
+
+    <!-- Transfer Progress Activity -->
+    <string name="progress_title">Tiến Trình Truyền Tệp</string>
+    <string name="progress_crc_verified">✓ Đã xác thực toàn vẹn dữ liệu (CRC32 Checksum)</string>
+    <string name="progress_file_list_header">DANH SÁCH TỆP TIN</string>
+    <string name="progress_transferring_btn">ĐANG TRUYỀN TỆP...</string>
+    <string name="progress_completed_btn">HOÀN TẤT &amp; ĐÓNG</string>
+    <string name="progress_toast_transferring">Đang truyền dữ liệu tốc độ cao...</string>
+    <string name="progress_toast_success_recv">✓ Đã nhận thành công! Đã lưu vào Tải về (Download/ShareNow)</string>
+    <string name="progress_toast_success_send">✓ Truyền toàn bộ tệp tới %s thành công!</string>
+    <string name="progress_open_file_prompt">Đang mở: %s</string>
+    <string name="progress_no_app_to_open">Không tìm thấy ứng dụng phù hợp để mở tệp này</string>
+    <string name="progress_file_saved_at">Tệp đã được lưu an toàn tại Download/ShareNow/%s</string>
+    <string name="progress_waiting">Chờ truyền...</string>
+    <string name="progress_status_completed">Hoàn tất</string>
+    <string name="progress_status_failed">Thất bại</string>
+
+    <!-- Received Files Activity -->
+    <string name="received_files_header">Tệp Đã Nhận</string>
+    <string name="received_files_storage_dir">📁 Thư mục lưu:</string>
+    <string name="received_files_storage_path">Bộ nhớ máy &gt; Download &gt; ShareNow</string>
+    <string name="received_empty_title">Chưa có tệp nào được nhận</string>
+    <string name="received_empty_desc">Các tệp bạn nhận từ thiết bị khác sẽ xuất hiện tại đây và có thể mở xem trực tiếp.</string>
+    <string name="received_files_count_format">%d tệp</string>
+    <string name="received_summary_has_files">%d tệp đã nhận • Mở và quản lý</string>
+    <string name="received_summary_empty">Chưa có tệp nào • Sẵn sàng nhận tệp mới</string>
+
+    <!-- Cleanit Activity -->
+    <string name="clean_title">Dọn Rác Tăng Tốc</string>
+    <string name="clean_gauge_sub">Rác cần dọn dẹp</string>
+    <string name="clean_app_cache">Bộ nhớ đệm ứng dụng (App Cache)</string>
+    <string name="clean_app_cache_desc">Cache ảnh, dữ liệu tạm</string>
+    <string name="clean_temp_files">Tệp tin tạm thời (Temp Files)</string>
+    <string name="clean_temp_files_desc">Log lỗi, tệp rác không cần thiết</string>
+    <string name="clean_apk_files">Gói cài đặt APK thừa (Apk Files)</string>
+    <string name="clean_apk_files_desc">Các tệp .apk đã cài đặt xong</string>
+    <string name="clean_empty_folders">Thư mục rỗng (Empty Folders)</string>
+    <string name="clean_empty_folders_desc">Thư mục rác không chứa dữ liệu</string>
+    <string name="clean_action_btn">DỌN RÁC NGAY</string>
+    <string name="clean_success_toast">Đã giải phóng %d MB bộ nhớ thành công!</string>
+
+    <!-- Safebox Activity -->
+    <string name="safebox_header">Két An Toàn (Safebox)</string>
+    <string name="safebox_pin_prompt">Nhập Mã PIN Két An Toàn</string>
+    <string name="safebox_aes_desc">Bảo vệ bằng thuật toán mã hóa AES-GCM 256-bit</string>
+    <string name="safebox_key_del">XÓA</string>
+    <string name="safebox_btn_unlock">MỞ KHÓA KÉT AN TOÀN</string>
+    <string name="safebox_locked_header">TỆP TIN ĐÃ KHÓA BẢO MẬT</string>
+    <string name="safebox_add_files">THÊM TỆP BẢO MẬT</string>
+    <string name="safebox_unlock_success">Mở khóa két an toàn thành công!</string>
+    <string name="safebox_locked_toast">Đã khóa két bảo mật</string>
+    <string name="safebox_select_file_prompt">Vui lòng chọn tệp tin cần bảo vệ và mã hóa</string>
+
+    <!-- Paywall / VIP Activity -->
+    <string name="paywall_header">Share Now Premium VIP</string>
+    <string name="paywall_hero_title">Trải Nghiệm Đẳng Cấp VIP</string>
+    <string name="paywall_hero_subtitle">Mở khóa toàn bộ tính năng cao cấp nhất</string>
+    <string name="paywall_section_benefits">QUYỀN LỢI ĐẶC QUYỀN</string>
+    <string name="paywall_benefit_1">Tốc độ truyền Turbo không giới hạn 60MB/s</string>
+    <string name="paywall_benefit_2">Chặn hoàn toàn 100% quảng cáo</string>
+    <string name="paywall_benefit_3">Két an toàn mã hóa không giới hạn dung lượng</string>
+    <string name="paywall_benefit_4">Hỗ trợ kỹ thuật ưu tiên 24/7</string>
+    <string name="paywall_section_plans">CÁC GÓI ĐĂNG KÝ</string>
+    <string name="paywall_plan_lifetime">Trọn Đời (Lifetime)</string>
+    <string name="paywall_plan_lifetime_sub">Thanh toán một lần duy nhất</string>
+    <string name="paywall_plan_monthly">Hàng Tháng (Monthly)</string>
+    <string name="paywall_plan_monthly_sub">Gia hạn tự động mỗi tháng</string>
+    <string name="paywall_btn_upgrade">NÂNG CẤP VIP NGAY</string>
+    <string name="paywall_success_toast">Chúc mừng! Đã kích hoạt tài khoản Share Now VIP thành công.</string>
+    <string name="paywall_badge_best_value">TIẾT KIỆM NHẤT</string>
+    <string name="paywall_disclaimer">Thanh toán bảo mật qua Google Play • Hủy bất kỳ lúc nào</string>
+    <string name="paywall_tag_vip">SHARE NOW VIP</string>
+
+    <!-- 3-Dots More Menu items & Dialogs -->
+    <string name="menu_invite">Mời Bạn Bè</string>
+    <string name="menu_scan_qr">Quét Mã QR</string>
+    <string name="menu_connect_pc">Kết Nối Với Máy Tính</string>
+    <string name="menu_connect_ios">Kết Nối Với iOS</string>
+    <string name="menu_share_kaios">Chia Sẻ Với KaiOS</string>
+    <string name="menu_phone_clone">Sao Chép Điện Thoại</string>
+    <string name="menu_group_share">Chia Sẻ Nhóm</string>
+    <string name="menu_near_play">Chơi Gần Đây</string>
+    <string name="menu_invite_text">Trải nghiệm truyền tệp cực nhanh cùng Share Now! Tốc độ 45MB/s, không cần Internet hay 4G. Tải ngay tại: https://play.google.com/store/apps/details?id=com.nextai.sharenow</string>
+    <string name="menu_invite_chooser">Mời bạn bè sử dụng Share Now</string>
+    <string name="dialog_qr_title">Quét Mã QR Kết Nối</string>
+    <string name="dialog_qr_desc">Hướng camera về phía mã QR trên thiết bị người nhận để tự động ghép nối và truyền tệp tốc độ cao.</string>
+    <string name="dialog_qr_open_radar">MỞ RADAR NHẬN</string>
+    <string name="dialog_connect_pc_title">Kết Nối Với Máy Tính (Connect to PC)</string>
+    <string name="dialog_connect_pc_desc">1. Kết nối PC và điện thoại vào cùng mạng Wi-Fi (hoặc Hotspot máy này).\n\n2. Mở trình duyệt Chrome, Edge hoặc Cốc Cốc trên PC và truy cập:\n👉 %s\n\n3. Tải xuống hoặc tải lên tệp tin hai chiều trực tiếp!</string>
+    <string name="dialog_connect_pc_copy">SAO CHÉP LIÊN KẾT</string>
+    <string name="dialog_connect_pc_copied">Đã sao chép: %s</string>
+    <string name="dialog_connect_ios_title">Kết Nối Với iOS (iPhone / iPad)</string>
+    <string name="dialog_connect_ios_desc">1. Bật Điểm phát sóng cá nhân (Hotspot) trên điện thoại này hoặc cùng kết nối một mạng Wi-Fi.\n\n2. Mở ứng dụng Camera trên iPhone/iPad và quét mã QR tại màn hình NHẬN tệp.\n\n3. Hoặc mở trình duyệt Safari trên iPhone và truy cập địa chỉ IP của thiết bị này để nhận tệp ngay lập tức.</string>
+    <string name="dialog_connect_ios_btn">MỞ MÃ QR KẾT NỐI</string>
+    <string name="dialog_share_kaios_title">Chia Sẻ Với KaiOS (Điện Thoại Phổ Thông)</string>
+    <string name="dialog_share_kaios_desc">1. Bật Wi-Fi Hotspot trên thiết bị Share Now này.\n\n2. Trên điện thoại KaiOS, kết nối vào Wi-Fi của máy này.\n\n3. Mở trình duyệt nhẹ của KaiOS và nhập địa chỉ mạng để nhận tệp tin và nhạc/video hoàn toàn miễn phí.</string>
+    <string name="dialog_phone_clone_title">Sao Chép Điện Thoại (Phone Clone)</string>
+    <string name="dialog_phone_clone_desc">Chuyển toàn bộ dữ liệu (Ứng dụng, hình ảnh, video, danh bạ) từ điện thoại cũ sang điện thoại mới một cách an toàn và nhanh chóng.</string>
+    <string name="dialog_phone_clone_new">ĐIỆN THOẠI MỚI (NHẬN)</string>
+    <string name="dialog_phone_clone_old">ĐIỆN THOẠI CŨ (GỬI)</string>
+    <string name="dialog_group_share_title">Chia Sẻ Nhóm (Groups Share)</string>
+    <string name="dialog_group_share_desc">Truyền gửi tệp đồng thời cho nhiều thiết bị trong cùng một phòng kết nối nội bộ mà không cần Internet.</string>
+    <string name="dialog_group_share_create">TẠO PHÒNG TRUYỀN</string>
+    <string name="dialog_group_share_join">THAM GIA PHÒNG</string>
+    <string name="dialog_near_play_title">Chơi Gần Đây (Near Play)</string>
+    <string name="dialog_near_play_desc">Tính năng kết nối trò chơi đa người chơi ngoại tuyến cùng bạn bè trong bán kính gần qua mạng nội bộ Direct Wi-Fi.</string>
+    <string name="dialog_near_play_scan">QUÉT BẠN BÈ LÂN CẬN</string>
+    <string name="dialog_near_play_toast">Đang quét các thiết bị bạn bè cùng mạng...</string>
+
+    <!-- Me Tab Dialogs -->
+    <string name="dialog_tos_title">Điều Khoản Dịch Vụ (Terms of Service)</string>
+    <string name="dialog_tos_content">Chào mừng bạn đến với Share Now!\n\n1. Chấp thuận điều khoản:\nKhi sử dụng ứng dụng Share Now, bạn đồng ý tuân thủ các quy định về truyền tải dữ liệu hợp pháp.\n\n2. Quyền sở hữu trí tuệ:\nShare Now là nền tảng công nghệ truyền tệp ngang hàng (P2P). Người dùng hoàn toàn chịu trách nhiệm về nội dung các tệp tin được truyền gửi.\n\n3. Sử dụng ngoại tuyến:\nDịch vụ truyền tệp hoạt động qua mạng nội bộ Direct Wi-Fi và Hotspot không tiêu tốn dữ liệu di động của bạn.\n\n4. Bảo mật dữ liệu:\nMọi luồng dữ liệu đều được mã hóa và xác thực checksum CRC32 nhằm đảm bảo tệp tin nguyên vẹn và không bị can thiệp.</string>
+    <string name="dialog_policy_title">Chính Sách Quyền Riêng Tư (Privacy Policy)</string>
+    <string name="dialog_policy_content">Cam kết bảo vệ quyền riêng tư của Share Now:\n\n1. Không lưu trữ tệp tin trên máy chủ:\nDữ liệu được truyền trực tiếp từ máy gửi sang máy nhận qua kết nối ngang hàng (P2P). Chúng tôi không lưu trữ bất kỳ hình ảnh, video hay tệp tin nào của bạn.\n\n2. Quyền truy cập:\n• Bộ nhớ / Phương tiện: Chỉ dùng để đọc tệp bạn chọn gửi và lưu tệp nhận về máy.\n• Vị trí / Thiết bị lân cận: Yêu cầu bắt buộc của hệ điều hành Android để quét tìm thiết bị Wi-Fi Direct lân cận.\n\n3. Không chia sẻ cho bên thứ ba:\nThông tin cá nhân và dữ liệu tệp tin của bạn không bao giờ được chia sẻ hay bán cho bất kỳ bên thứ ba nào.\n\n4. Chính sách trực tuyến chính thức:\nhttps://sites.google.com/view/nextai-share-now/</string>
+    <string name="dialog_about_title">Về Share Now</string>
+    <string name="dialog_about_content">Share Now - Ứng Dụng Truyền Tệp Tốc Độ Cao\n\n• Phiên bản: 0.1.2 (Build 3)\n• Công nghệ: P2P Turbo High-Speed Core\n• Chính sách bảo mật: https://sites.google.com/view/nextai-share-now/\n• Hỗ trợ nền tảng: Android, iOS, Windows PC\n\n© 2026 NextAI Inc. All rights reserved.</string>
+    <string name="btn_view_online">Xem trực tuyến</string>
+    <string name="privacy_policy_url">https://sites.google.com/view/nextai-share-now/</string>
+
+    <!-- Incoming & Retry Dialogs -->
+    <string name="dialog_incoming_title">Yêu Cầu Truyền Tệp Đến</string>
+    <string name="dialog_incoming_subtitle">Thiết bị lân cận muốn gửi tệp tin cho bạn qua P2P Direct:</string>
+    <string name="dialog_incoming_decline">TỪ CHỐI</string>
+    <string name="dialog_incoming_accept">CHẤP NHẬN</string>
+    <string name="dialog_retry_title">Kết Nối Gián Đoạn</string>
+    <string name="dialog_retry_subtitle">Quá trình truyền bị dừng đột ngột. Vui lòng kết nối lại Wi-Fi Direct và thử lại.</string>
+    <string name="retry_guide_title">💡 Hướng dẫn kiểm tra:</string>
+    <string name="retry_guide_step1">• Đảm bảo máy nhận đang mở ứng dụng Share Now.</string>
+    <string name="retry_guide_step2">• Kiểm tra cả 2 máy kết nối chung một mạng Wi-Fi.</string>
+    <string name="retry_guide_step3">• Bấm \'THỬ LẠI KẾT NỐI\' hoặc chọn \'GỬI MÔ PHỎNG\'.</string>
+
+    <!-- Files Tab / WhatsApp / Doc filters -->
+    <string name="files_whatsapp_title">Truyền Tệp WhatsApp</string>
+    <string name="files_whatsapp_status">Trạng thái</string>
+    <string name="files_whatsapp_media">Phương tiện</string>
+    <string name="files_doc_title">Tài liệu</string>
+    <string name="files_filter_all">TẤT CẢ</string>
+    <string name="files_filter_pdf">PDF</string>
+    <string name="files_filter_excel">EXCEL</string>
+    <string name="files_filter_ppt">PPT</string>
+    <string name="files_filter_txt">TXT</string>
+    <string name="files_filter_doc">DOC</string>
+    <string name="files_filter_wps">WPS</string>
+    <string name="files_zip_title">Tệp nén Zip</string>
+    <string name="files_large_title">Tệp dung lượng lớn</string>
+    <string name="files_internal_storage">Bộ nhớ trong dùng chung</string>
+    <string name="files_count_zero">0 tệp</string>
+
+    <!-- Coin Store Extra -->
+    <string name="coin_default_balance">1,250 Xu</string>
+    <string name="coin_store_title">Khu Thưởng Xu &amp; Quà Tặng</string>
+    <string name="coin_streak_days">Chuỗi điểm danh liên tục: 5 ngày</string>
+    <string name="coin_claim_daily_btn">ĐIỂM DANH HÔM NAY (+50 XU)</string>
+    <string name="coin_daily_tasks_title">NHIỆM VỤ HÀNG NGÀY</string>
+    <string name="coin_task_transfer">Truyền 1 tệp bất kỳ qua P2P</string>
+    <string name="coin_task_transfer_progress">Tiến độ: 1/1 • Đã xong</string>
+    <string name="coin_task_30">+30 Xu</string>
+    <string name="coin_task_clean">Dọn rác bộ nhớ đệm 1 lần</string>
+    <string name="coin_task_clean_progress">Tiến độ: 0/1</string>
+    <string name="coin_task_20">+20 Xu</string>
+
+    <!-- General & Devices -->
+    <string name="file_item_default_name">Tệp tin</string>
+    <string name="device_ready_receive">192.168.1.2 • Sẵn sàng nhận</string>
+    <string name="device_send_to_btn">GỬI ĐẾN</string>
+    <string name="share_social_desc">Chia sẻ qua mạng xã hội</string>
+    <string name="qr_code_desc">Mã QR kết nối Share Now</string>
+
+    <!-- Muslim Daily Extra -->
+    <string name="muslim_location_hanoi">Vị Trí Hiện Tại: Hà Nội, VN</string>
+    <string name="muslim_next_prayer_sample">Lần cầu nguyện kế tiếp: Asr lúc 15:20</string>
+    <string name="muslim_prayer_schedule_title">LỊCH 5 LẦN CẦU NGUYỆN TRONG NGÀY</string>
+    <string name="muslim_fajr_title">Fajr (Bình minh)</string>
+    <string name="muslim_dhuhr_title">Dhuhr (Trưa)</string>
+    <string name="muslim_asr_title">Asr (Chiều) • Sắp diễn ra</string>
+    <string name="muslim_maghrib_title">Maghrib (Hoàng hôn)</string>
+    <string name="muslim_isha_title">Isha (Tối)</string>
+    <string name="muslim_qibla_compass">La Bàn Hướng Qibla</string>
+    <string name="muslim_qibla_dir_sample">288.4° Tây Bắc (Đến Mecca)</string>
+
+    <!-- Safebox Extra -->
+    <string name="safebox_security_title">THÔNG TIN BẢO MẬT</string>
+    <string name="safebox_ready_title">Két An Toàn Đã Sẵn Sàng</string>
+    <string name="safebox_empty_desc">Chưa có tệp tin riêng tư nào trong két. Bạn có thể mã hóa và lưu trữ hình ảnh, video và tài liệu nhạy cảm tại đây.</string>
+    <string name="safebox_features_desc">• Mã hóa phần cứng AES-GCM 256-bit an toàn tuyệt đối\n• Vùng chứa riêng biệt (Sandbox), ẩn hoàn toàn khỏi bộ sưu tập\n• Yêu cầu mã PIN 4 chữ số mỗi lần mở khóa</string>
+
+    <!-- Splash & Intro Onboarding Flow -->
+    <string name="splash_tagline">Truyền Tệp Tin Siêu Tốc &amp; Bảo Mật Tuyệt Đối</string>
+    <string name="splash_version_tag">Lõi Turbo P2P • Kiểm tra mã hóa CRC32</string>
+    <string name="intro_btn_skip">BỎ QUA</string>
+    <string name="intro_btn_get_started">BẮT ĐẦU NGAY</string>
+    <string name="intro_send_title">Gửi Tệp Tin Siêu Tốc</string>
+    <string name="intro_send_desc">Gửi video 4K, ứng dụng APK, ảnh và tài liệu với tốc độ lên đến 100 MB/s mà không tốn dữ liệu di động hay bộ định tuyến Wi-Fi.</string>
+    <string name="intro_send_feat1">🚀 Kết nối P2P 100 MB/s — Nhanh gấp 200 lần Bluetooth thông thường</string>
+    <string name="intro_send_feat2">📂 Chế độ Lưới &amp; Danh sách — Dễ dàng chọn nhiều tệp và toàn bộ thư mục</string>
+    <string name="intro_send_feat3">🌐 Chia sẻ mạng xã hội — Gửi tệp đến mọi nền tảng mạng xã hội chỉ với 1 chạm</string>
+    <string name="intro_receive_title">Nhận Tệp &amp; Quét Radar Tự Động</string>
+    <string name="intro_receive_desc">Nhận tệp tin dễ dàng với radar phát hiện tự động hoặc quét mã QR 1-chạm. Hoàn toàn ngoại tuyến (Offline).</string>
+    <string name="intro_receive_feat1">📡 Radar thông minh — Tự động nhận diện thiết bị nhận lân cận trong chớp mắt</string>
+    <string name="intro_receive_feat2">📱 Quét mã QR tiện lợi — Kết nối tức thì không cần ghép nối thủ công phức tạp</string>
+    <string name="intro_receive_feat3">🔒 Kiểm tra toàn vẹn CRC32 — Xác thực từng bit dữ liệu, an toàn tuyệt đối</string>
+    <string name="intro_lang_title">Chọn Ngôn Ngữ Sử Dụng</string>
+    <string name="intro_lang_desc">Chọn ngôn ngữ bạn muốn sử dụng với ứng dụng. Bạn có thể đổi lại bất cứ lúc nào trong mục Tôi.</string>
+
+    <!-- WebShare (Kết Nối Máy Tính) -->
+    <string name="webshare_title">Kết Nối Máy Tính (WebShare)</string>
+    <string name="webshare_subtitle">Truyền tệp hai chiều siêu tốc qua trình duyệt Web</string>
+    <string name="webshare_wifi_status">Wi-Fi: %s</string>
+    <string name="webshare_status_online">ĐANG HOẠT ĐỘNG</string>
+    <string name="webshare_status_offline">ĐÃ DỪNG</string>
+    <string name="webshare_step1_desc">1. Đảm bảo máy tính và điện thoại kết nối cùng mạng Wi-Fi (hoặc bắt Wi-Fi Hotspot của điện thoại này).</string>
+    <string name="webshare_step2_desc">2. Mở Chrome, Edge, Safari hoặc Cốc Cốc trên máy tính và truy cập:</string>
+    <string name="btn_copy">SAO CHÉP</string>
+    <string name="webshare_qr_title">Quét Mã QR Kết Nối Nhanh</string>
+    <string name="webshare_qr_desc">Dùng camera điện thoại khác, iPad hoặc máy tính bảng quét mã QR này để truy cập ngay</string>
+    <string name="webshare_chrome_tip">Mẹo: Nếu Chrome trên PC hiện \"Tệp không an toàn đã bị chặn\" (do kết nối HTTP nội bộ), bấm biểu tượng Tải xuống ở góc trên phải Chrome ➔ chọn \"Giữ tệp\" để lưu về máy.</string>
+    <string name="webshare_activity_title">Hoạt Động Truyền Nhận Thời Gian Thực</string>
+    <string name="webshare_stat_received">Đã nhận từ PC</string>
+    <string name="webshare_stat_downloaded">PC đã tải về</string>
+    <string name="webshare_btn_view_received">TỆP ĐÃ NHẬN</string>
+    <string name="webshare_btn_stop">DỪNG MÁY CHỦ</string>
+    <string name="webshare_btn_start">BẬT MÁY CHỦ</string>
+    <string name="toast_copied_url">Đã sao chép liên kết vào bộ nhớ tạm: %s</string>
+    <string name="toast_webshare_received_file">Đã nhận tệp từ máy tính: %s</string>
+
+    <!-- File Search Strings -->
+    <string name="search_files_hint">Tìm kiếm tệp, ứng dụng, nhạc, video...</string>
+    <string name="search_results">Kết quả tìm kiếm</string>
+    <string name="search_all_results">Tất cả tệp phù hợp</string>
+    <string name="search_no_results_for">Không tìm thấy tệp nào khớp với \"%s\"</string>
+
+    <!-- Exit Confirmation Dialog -->
+    <string name="dialog_exit_title">Do You Want Exit</string>
+    <string name="dialog_exit_desc">Bạn có chắc chắn muốn thoát ứng dụng Share Now không?</string>
+    <string name="dialog_exit_yes">Yes</string>
+    <string name="dialog_exit_cancel">Cancel</string>
+
+    <!-- Safebox Extra -->
+    <string name="safebox_btn_lock_exit">KHÓA KÉT &amp; THOÁT</string>
+
+    <!-- Dialogs & Buttons -->
+    <string name="dialog_retry_direct_failed">Không Thể Kết Nối Trực Tiếp</string>
+    <string name="dialog_retry_btn_simulate">TIẾP TỤC GỬI (MÔ PHỎNG TIẾN TRÌNH)</string>
+    <string name="btn_open_file">MỞ XEM</string>
+    <string name="empty_no_files">Không tìm thấy tệp</string>
+
+    <!-- Transfer & Progress Localized Format Strings -->
+    <string name="status_found_receivers">Đã tìm thấy %1$d thiết bị nhận!</string>
+    <string name="status_sending_progress">Đang gửi %1$s (%2$d%%)</string>
+    <string name="sender_device_default">Thiết bị gửi</string>
+    <string name="receiver_device_default">Thiết bị nhận</string>
+    <string name="progress_receiving_from">Nhận tệp từ: %1$s</string>
+    <string name="progress_sending_to">Gửi tệp đến: %1$s</string>
+    <string name="progress_received_files_header">DANH SÁCH TỆP ĐÃ NHẬN (%1$d TỆP • LƯU TẠI DOWNLOAD/SHARENOW):</string>
+    <string name="progress_sending_files_header">DANH SÁCH TỆP TIN ĐANG GỬI (%1$d TỆP):</string>
+    <string name="progress_completed_badge">Hoàn Tất</string>
+    <string name="selected_summary_format">%1$d tệp • %2$s</string>
+    <string name="device_ready_receive_format">%1$s • Sẵn sàng nhận tệp</string>
+
+    <!-- WebShare Realtime Activity & Network Status -->
+    <string name="webshare_hotspot_lan">Điểm phát sóng (Hotspot) / LAN</string>
+    <string name="webshare_lan">Mạng nội bộ (LAN)</string>
+    <string name="webshare_stat_files">%1$d tệp</string>
+    <string name="webshare_stat_zero">0 tệp</string>
+    <string name="webshare_initial_log">[Sẵn sàng] Máy chủ WebShare đã kích hoạt...</string>
+    <string name="webshare_log_started">Khởi động máy chủ WebShare tại %1$s</string>
+    <string name="webshare_log_stopped">Đã dừng máy chủ WebShare</string>
+    <string name="webshare_log_ready">Máy chủ sẵn sàng! Đang lắng nghe trên cổng %1$d</string>
+    <string name="webshare_log_closed">Máy chủ đã đóng kết nối</string>
+    <string name="webshare_log_connected">Thiết bị đã kết nối: %1$s</string>
+    <string name="webshare_log_pc_downloaded">PC đã tải về: %1$s (%2$s)</string>
+    <string name="webshare_log_pc_received">Nhận tệp từ PC: %1$s (%2$s)</string>
+    <string name="webshare_log_error">Lỗi: %1$s</string>
+
+    <!-- Me / Settings Language Card -->
+    <string name="me_language_card_title">Cài đặt ngôn ngữ</string>
+    <string name="me_language_card_desc">Thay đổi ngôn ngữ ứng dụng (Mặc định: Tiếng Anh)</string>
+    <string name="me_language_default_badge">Mặc định</string>
+
+    <!-- P2P Notifications -->
+    <string name="p2p_notif_channel_name">Yêu Cầu Truyền Tệp</string>
+    <string name="p2p_notif_channel_desc">Thông báo khi có thiết bị khác muốn gửi tệp tới</string>
+    <string name="p2p_notif_incoming_title">Yêu cầu nhận tệp từ %1$s</string>
+    <string name="p2p_notif_incoming_content">Gửi %1$d tệp (%2$s) • Chạm để nhận ngay</string>
+    <string name="p2p_open_file_with">Mở tệp bằng</string>
+
+    <!-- WebShare Background Service & Notifications -->
+    <string name="webshare_notification_channel_name">Kết nối WebShare PC</string>
+    <string name="webshare_notification_channel_desc">Hiển thị trạng thái hoạt động của WebShare và phím tắt</string>
+    <string name="webshare_notification_title">WebShare đang hoạt động</string>
+    <string name="webshare_notification_desc">Máy tính có thể truy cập tại: %1$s</string>
+    <string name="webshare_notification_action_stop">DỪNG</string>
+    <string name="webshare_notification_action_open">MỞ LẠI</string>
+    <string name="webshare_background_running_hint">WebShare vẫn đang chạy trong nền. PC vẫn kết nối bình thường.</string>
+    <string name="p2p_notif_transfer_success_title">Nhận tệp tin thành công! 🎉</string>
+    <string name="p2p_notif_transfer_success_content">Đã nhận thành công %1$d tệp từ %2$s</string>
+    <string name="p2p_handshake_accepted_msg">%1$s đồng ý kết nối sẵn sàng nhận file</string>
+    <string name="p2p_handshake_rejected_msg">%1$s từ chối, tìm máy khác</string>
+    <string name="p2p_dialog_incoming_confirm">Thiết bị %1$s muốn kết nối và gửi %2$d tệp (%3$s). Bạn có đồng ý kết nối và nhận file không?</string>
+    <string name="delete_selected_files">Xóa (%d)</string>
+    <string name="delete_confirm_title">Xóa tệp tin</string>
+    <string name="delete_confirm_msg">Bạn có chắc chắn muốn xóa vĩnh viễn %d tệp đã chọn không?</string>
+    <string name="delete_success_toast">Đã xóa %d tệp thành công</string>
+    <string name="select_all">Chọn tất cả</string>
+    <string name="deselect_all">Bỏ chọn</string>
+    <string name="btn_delete">Xóa</string>
+    <string name="btn_system_photo_picker">Chọn từ thư viện hệ thống</string>
+    <string name="btn_system_photo_picker_desc">Mở trình chọn ảnh/video hệ thống để chọn tệp</string>
+    <!-- Browser & Universal Video Downloader Tab -->
+    <string name="nav_browser">Trình duyệt</string>
+    <string name="browser_url_hint">Tìm kiếm hoặc nhập link video từ mọi trang web...</string>
+    <string name="browser_go">Đi</string>
+    <string name="browser_paste_card_title">Trình Bắt Link Video Mọi Web</string>
+    <string name="browser_paste_card_desc">Dán link hoặc lướt bất kỳ web nào — tự động bắt luồng MP4/HLS</string>
+    <string name="browser_paste_btn">📋 Dán Link &amp; Bắt Video Ngay</string>
+    <string name="browser_downloads_card_title">Tiến trình &amp; Video đã tải</string>
+    <string name="browser_downloads_card_subtitle">Xem tiến trình tải và danh sách video đã lưu</string>
+    <string name="browser_open">Mở →</string>
+    <string name="browser_quick_sites_title">NỀN TẢNG VIDEO PHỔ BIẾN &amp; TÌM KIẾM</string>
+    <string name="browser_how_to_title">💡 Cách Tải Video Từ Mọi Trang Web</string>
+    <string name="browser_how_to_steps">1. Nhập địa chỉ web hoặc tìm kiếm trên Google ở thanh trên cùng, hoặc chạm vào biểu tượng mạng xã hội.\n2. Bấm phát video trên trang web — AI Sniffer sẽ tự động bắt luồng video MP4 &amp; HLS (.m3u8).\n3. Chạm vào nút Tải Xuống nhấp nháy ở góc dưới bên phải để chọn chất lượng (1080p, 720p, 480p, MP3) và lưu về máy!</string>
+    <string name="browser_sniffer_detected_title">Đã Bắt Được Video Sẵn Sàng Tải</string>
+    <string name="browser_select_quality">CHỌN CHẤT LƯỢNG / ĐỊNH DẠNG</string>
+    <string name="browser_quality_1080p_desc">1080p Full HD • Chất lượng nét nhất</string>
+    <string name="browser_quality_720p_desc">720p HD • Tải nhanh &amp; sắc nét</string>
+    <string name="browser_quality_480p_desc">480p SD • Tiết kiệm dung lượng</string>
+    <string name="browser_quality_mp3_desc">Chỉ âm thanh (.MP3) • Nhạc / Podcast</string>
+    <string name="browser_btn_play_preview">▶ Xem thử</string>
+    <string name="browser_btn_download_now">⬇ Tải Về Máy</string>
+    <string name="browser_tabs_title">Các Tab Trình Duyệt Đang Mở</string>
+    <string name="browser_new_tab">+ Tab Mới</string>
+    <string name="browser_close_all_tabs">Đóng Tất Cả Tab</string>
+    <string name="browser_active_tab">● Đang mở</string>
+    <string name="browser_dm_title">📥 Quản Lý Tải Video</string>
+    <string name="browser_dm_open_folder">Thư mục</string>
+    <string name="browser_dm_active_section">ĐANG TẢI XUỐNG</string>
+    <string name="browser_dm_no_active">Không có tác vụ đang tải nào</string>
+    <string name="browser_dm_completed_section">VIDEO ĐÃ TẢI XONG (LƯU TRONG MÁY)</string>
+    <string name="browser_dm_no_completed">Chưa có video nào được tải. Hãy lướt web và bấm nút tải video nhé!</string>
+    <string name="browser_btn_play">▶ Phát</string>
+    <string name="browser_btn_save_gallery">📲 Lưu vào Bộ sưu tập</string>
+    <string name="browser_toast_clipboard_empty">Bộ nhớ tạm đang trống!</string>
+    <string name="browser_toast_analyzing_url">🔍 Đang phân tích link video...</string>
+    <string name="browser_toast_video_detected">🎬 Đã phát hiện video! Hãy bấm nút Tải xuống ở góc phải.</string>
+    <string name="browser_toast_no_video_yet">Hãy bấm phát video trên trang web để trình bắt link nhận diện luồng video!</string>
+    <string name="browser_toast_download_started">🚀 Bắt đầu tải: %1$s (%2$s)</string>
+    <string name="browser_toast_saved_gallery">✅ Đã lưu vào Bộ sưu tập ảnh/video (Movies/ShareNow)!</string>
+    <string name="browser_toast_save_gallery_failed">❌ Không thể xuất ra Bộ sưu tập. File vẫn nằm trong Tệp đã nhận.</string>
+    <string name="browser_status_downloading">Đang tải %1$d%% • %2$s</string>
+    <string name="browser_status_stitching">Đang ghép phân đoạn HLS (%1$d%%)...</string>
+    <string name="browser_status_paused">Đã tạm dừng (%1$d%%)</string>
+    <string name="browser_status_failed">Lỗi: %1$s (Chạm ▶ để thử lại)</string>
+    <string name="browser_status_pending">Đang chờ...</string>
+    <string name="browser_header_title">Trình Duyệt &amp; Tải Video</string>
+    <string name="browser_search_btn">Đi</string>
+    <string name="browser_search_hint">Tìm kiếm hoặc nhập URL...</string>
+    <string name="browser_btn_paste_download">DÁN LINK &amp; BẮT VIDEO NGAY</string>
+    <string name="browser_downloads_card_desc">Xem tiến trình tải và danh sách video đã lưu</string>
+    <string name="browser_guide_title">Cách Tải Video Từ Mọi Trang Web</string>
+    <string name="browser_guide_body">1. Nhập địa chỉ web hoặc tìm kiếm trên Google ở thanh trên cùng, hoặc chạm vào biểu tượng mạng xã hội.\n2. Bấm phát video trên trang web — Trình bắt link tự động nhận diện luồng video MP4 &amp; HLS (.m3u8).\n3. Chạm vào nút Tải Xuống nhấp nháy ở góc dưới bên phải để chọn chất lượng (1080p, 720p, 480p, MP3) và lưu về máy!</string>
+    <string name="browser_video_detected">Đã Phát Hiện Video</string>
+    <string name="browser_btn_play_now">▶ Xem Thử</string>
+    <string name="browser_btn_download_to_device">⬇ TẢI VỀ MÁY</string>
+    <string name="browser_tab_manager_open_tabs">Các Tab Đang Mở</string>
+    <string name="browser_btn_close_all_tabs">Đóng Hết</string>
+    <string name="browser_btn_new_tab">+ Tab Mới</string>
+    <string name="browser_tab_active_badge">ĐANG MỞ</string>
+    <string name="browser_downloads_manager_title">Quản Lý Tải Video</string>
+    <string name="browser_empty_downloading">Không có tác vụ đang tải nào</string>
+    <string name="browser_empty_downloaded">Chưa có video nào được tải. Hãy lướt web và bấm nút tải video nhé!</string>
+    <string name="browser_status_connecting">Đang kết nối luồng video...</string>
+    <string name="browser_status_completed_100">Hoàn tất 100% • Đã lưu vào máy</string>
+    <string name="browser_btn_play_short">▶ Phát</string>
+    <string name="browser_paywall_monetized_limit_toast">🔒 Bạn đã dùng hết 3 lượt tải/mở video miễn phí. Vui lòng đăng ký gói VIP để tải và xem không giới hạn!</string>
+</resources>

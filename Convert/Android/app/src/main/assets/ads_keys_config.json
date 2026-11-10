@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "updated_at": "2026-10-21",
+  "description": "Cấu hình Khóa Quảng Cáo Share Now - Đã cấu hình AdMob ID thật từ info.txt",
+  "credentials": {
+    "admob_app_id": "ca-app-pub-4108090245719282~9321607115",
+    "applovin_sdk_key": "YOUR_APPLOVIN_SDK_KEY_HERE",
+    "mintegral_app_id": "YOUR_MINTEGRAL_APP_ID_HERE",
+    "unity_game_id": "YOUR_UNITY_GAME_ID_HERE"
+  },
+  "placements": {
+    "main_bottom_banner": {
+      "format": "BANNER",
+      "network": "admob",
+      "unit_id": "ca-app-pub-4108090245719282/2341265794",
+      "auto_refresh_sec": 30
+    },
+    "trans_complete_interstitial": {
+      "format": "INTERSTITIAL",
+      "network": "admob",
+      "unit_id": "ca-app-pub-4108090245719282/2268938590",
+      "waterfall_fallbacks": [
+        { "network": "applovin", "unit_id": "applovin_inter_fallback_id", "ecpm_floor": 2.50 },
+        { "network": "mintegral", "unit_id": "mintegral_inter_fallback_id", "ecpm_floor": 1.80 }
+      ]
+    },
+    "clean_finish_interstitial": {
+      "format": "INTERSTITIAL",
+      "network": "admob",
+      "unit_id": "ca-app-pub-4108090245719282/2268938590"
+    },
+    "coin_rewarded_video": {
+      "format": "REWARDED",
+      "network": "admob",
+      "unit_id": "ca-app-pub-4108090245719282/2268938590",
+      "reward_coins": 200
+    },
+    "app_open_splash": {
+      "format": "APP_OPEN",
+      "network": "admob",
+      "unit_id": "ca-app-pub-4108090245719282/3505998647"
+    },
+    "files_native_advanced": {
+      "format": "NATIVE",
+      "network": "admob",
+      "unit_id": "ca-app-pub-4108090245719282/1091588291"
+    }
+  }
+}

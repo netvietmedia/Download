@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 1. Quyền Mạng & Kết nối Cốt lõi -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- 2. Quyền Wi-Fi Direct & Local Hotspot P2P (Android 13+) -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" android:usesPermissionFlags="neverForLocation" tools:targetApi="tiramisu" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- 3. Quyền Đọc/Ghi Phương tiện Lưu trữ (Tương thích Android 13/14/15/16) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- 4. Quyền Tiện ích & Thông Báo -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+
+    <!-- 5. Quyền Thanh Toán & Google Play Billing -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <!-- 6. Quyền Nhận Dạng Quảng Cáo Hợp Chuẩn Google Play -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+    <!-- Khai báo truy vấn ứng dụng đã cài đặt trên Android 11+ -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
+
+    <application
+        android:name="com.ushareit.app.ShareItApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ShareNow"
+        android:usesCleartextTraffic="false"
+        android:hardwareAccelerated="true"
+        android:requestLegacyExternalStorage="true"
+        android:localeConfig="@xml/locales_config"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <!-- Per-App Language AppCompat Service -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="true"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <!-- WebShare Foreground Service (hỗ trợ chuyển tab / chạy ngầm kết nối PC) -->
+        <service
+            android:name="com.ushareit.core.webshare.WebShareService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="connectedDevice" />
+
+        <!-- Khóa Ứng Dụng Google AdMob -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4108090245719282~9321607115" />
+
+        <!-- Ad Services Config Conflict Override -->
+        <property
+            android:name="android.adservices.AD_SERVICES_CONFIG"
+            android:resource="@xml/gma_ad_services_config"
+            tools:replace="android:resource" />
+
+        <!-- 0. Màn hình Flash / Splash Screen -->
+        <activity
+            android:name="com.ushareit.ui.splash.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ShareNow.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Intro Onboarding Activity -->
+        <activity
+            android:name="com.ushareit.ui.intro.IntroActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ShareNow.Intro" />
+
+        <!-- 1. Màn hình Khởi động & Điều hướng Chính -->
+        <activity
+            android:name="com.ushareit.ui.main.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2. Màn hình Gửi / Nhận File P2P -->
+        <activity
+            android:name="com.ushareit.ui.transfer.SendActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.transfer.ReceiveActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.transfer.DeviceDiscoveryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.transfer.TransferProgressActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.transfer.ReceivedFilesActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- Màn hình WebShare / Kết nối Máy tính (AirDroid Style) -->
+        <activity
+            android:name="com.ushareit.ui.webshare.WebShareActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- 3. Màn hình Tiện Ích: Dọn rác, Két Safebox, Muslim, Paywall -->
+        <activity
+            android:name="com.ushareit.ui.clean.CleanitActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.safebox.SafeboxUnlockActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.muslim.MuslimDailyActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.coin.CoinStoreActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.ushareit.ui.paywall.PaywallActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- 4. FileProvider Chia Sẻ Tệp An Toàn -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.nextai.sharenow.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

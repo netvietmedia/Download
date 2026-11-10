@@ -1,0 +1,105 @@
+{
+  "generated_at": "1793424043.2583156",
+  "financial_summary": {
+    "total_revenue": 9797.45,
+    "admob_revenue": 562.45,
+    "iap_revenue": 9235.0,
+    "google_ads_spend": 2362.0,
+    "net_profit": 7435.450000000001,
+    "overall_roas": 4.1479466553768
+  },
+  "admob": {
+    "total_revenue": 562.45,
+    "total_impressions": 42510,
+    "total_clicks": 4120,
+    "avg_ecpm": 13.23100446953658,
+    "avg_ctr": 9.691837214772994,
+    "formats": {
+      "Interstitial": {
+        "revenue": 285.4,
+        "impressions": 14200,
+        "clicks": 1420,
+        "ecpm": 20.098591549295776,
+        "ctr": 10.0
+      },
+      "App Open": {
+        "revenue": 145.8,
+        "impressions": 11650,
+        "clicks": 890,
+        "ecpm": 12.515021459227468,
+        "ctr": 7.639484978540772
+      },
+      "Native Advanced": {
+        "revenue": 82.5,
+        "impressions": 9840,
+        "clicks": 1120,
+        "ecpm": 8.384146341463415,
+        "ctr": 11.38211382113821
+      },
+      "Collapsible Banner": {
+        "revenue": 48.75,
+        "impressions": 6820,
+        "clicks": 690,
+        "ecpm": 7.148093841642228,
+        "ctr": 10.117302052785924
+      }
+    }
+  },
+  "google_ads": {
+    "total_spend": 2362.0,
+    "total_clicks": 56300,
+    "total_conversions": 8310,
+    "avg_cpc": 0.041953818827708704,
+    "avg_cpa": 0.2842358604091456,
+    "campaigns": [
+      {
+        "name": "ShareNow_Install_Global_Tier1",
+        "spend": 868.0,
+        "clicks": 12400,
+        "conversions": 1840,
+        "cpc": 0.07,
+        "cpa": 0.4717391304347826,
+        "roas": 2.45
+      },
+      {
+        "name": "ShareNow_Install_Asia_Growth",
+        "spend": 570.0,
+        "clicks": 28500,
+        "conversions": 4120,
+        "cpc": 0.02,
+        "cpa": 0.1383495145631068,
+        "roas": 3.12
+      },
+      {
+        "name": "ShareNow_Universal_App_Campaign",
+        "spend": 924.0,
+        "clicks": 15400,
+        "conversions": 2350,
+        "cpc": 0.06,
+        "cpa": 0.3931914893617021,
+        "roas": 2.88
+      }
+    ]
+  },
+  "iap": {
+    "total_revenue": 9235.0,
+    "total_transactions": 215,
+    "plans": {
+      "lifetimeplan": {
+        "revenue": 4158.0,
+        "transactions": 42,
+        "avg_price": 99.0
+      },
+      "monthlyplan": {
+        "revenue": 4312.0,
+        "transactions": 88,
+        "avg_price": 49.0
+      },
+      "weekly": {
+        "revenue": 765.0,
+        "transactions": 85,
+        "avg_price": 9.0
+      }
+    }
+  }
+}

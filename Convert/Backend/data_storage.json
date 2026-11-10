@@ -1,0 +1,815 @@
+{
+  "devices": [
+    {
+      "id": "dev_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "os_type": "android",
+      "os_version": 34,
+      "app_version": "6.53.38_UD",
+      "app_version_code": 4565338,
+      "device_model": "Pixel 7 Pro",
+      "manufacturer": "Google",
+      "language": "vi",
+      "country_code": "VN",
+      "gaid_idfv": "38400000-8cf0-11bd-b23e-10b96e40000d",
+      "is_banned": false,
+      "first_seen_at": "2026-08-31T03:46:22.024Z",
+      "last_active_at": "2026-09-05T03:46:22.025Z"
+    },
+    {
+      "id": "dev_1788580023827",
+      "device_uuid": "dev_nhwyy1g8gm_1788580023827",
+      "os_type": "android",
+      "os_version": 34,
+      "app_version": "6.53.38_UD",
+      "app_version_code": 4565338,
+      "device_model": "Pixel 7 Pro",
+      "manufacturer": "Google",
+      "language": "vi",
+      "country_code": "VN",
+      "gaid_idfv": "",
+      "fcm_token": "",
+      "is_banned": false,
+      "first_seen_at": "2026-09-05T03:47:03.827Z",
+      "last_active_at": "2026-09-05T03:47:03.827Z"
+    },
+    {
+      "id": "dev_1788580072198",
+      "device_uuid": "dev_ol3w5hpnrk_1788580072198",
+      "os_type": "android",
+      "os_version": 34,
+      "app_version": "6.53.38_UD",
+      "app_version_code": 4565338,
+      "device_model": "Pixel 7 Pro",
+      "manufacturer": "Google",
+      "language": "vi",
+      "country_code": "VN",
+      "gaid_idfv": "",
+      "fcm_token": "",
+      "is_banned": false,
+      "first_seen_at": "2026-09-05T03:47:52.198Z",
+      "last_active_at": "2026-09-05T03:47:52.198Z"
+    },
+    {
+      "id": "dev_1788580292522",
+      "device_uuid": "dev_7ufn54ll2j_1788580292522",
+      "os_type": "android",
+      "os_version": 34,
+      "app_version": "6.53.38_UD",
+      "app_version_code": 4565338,
+      "device_model": "Pixel 7 Pro",
+      "manufacturer": "Google",
+      "language": "vi",
+      "country_code": "VN",
+      "gaid_idfv": "",
+      "fcm_token": "",
+      "is_banned": false,
+      "first_seen_at": "2026-09-05T03:51:32.522Z",
+      "last_active_at": "2026-09-05T03:51:32.522Z"
+    },
+    {
+      "id": "dev_1788583350096",
+      "device_uuid": "dev_fziksno74v_1788583350096",
+      "os_type": "android",
+      "os_version": 34,
+      "app_version": "6.53.38_UD",
+      "app_version_code": 4565338,
+      "device_model": "Pixel 7 Pro",
+      "manufacturer": "Google",
+      "language": "vi",
+      "country_code": "VN",
+      "gaid_idfv": "",
+      "fcm_token": "",
+      "is_banned": false,
+      "first_seen_at": "2026-09-05T04:42:30.096Z",
+      "last_active_at": "2026-09-05T04:42:30.096Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_01",
+      "display_name": "Nguyễn Văn A",
+      "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=user01",
+      "email": "user@example.com",
+      "is_vip": true,
+      "vip_expire_at": "2027-09-05T03:46:22.025Z",
+      "coin_balance": 2250,
+      "status": "active",
+      "created_at": "2026-08-06T03:46:22.025Z",
+      "updated_at": "2026-09-05T03:46:22.025Z"
+    }
+  ],
+  "mcds_spaces": [
+    {
+      "id": "space_01",
+      "space_id": "home_top_banner",
+      "name": "Home Top Carousel Banner",
+      "description": "Banner trượt trên đầu trang chủ ứng dụng",
+      "is_active": true,
+      "priority": 10
+    },
+    {
+      "id": "space_02",
+      "space_id": "trans_complete_interstitial",
+      "name": "Transfer Complete Space",
+      "description": "Vị trí hiển thị sau khi hoàn tất phiên gửi file",
+      "is_active": true,
+      "priority": 8
+    }
+  ],
+  "mcds_promotes": [
+    {
+      "id": "prom_01",
+      "space_id": "home_top_banner",
+      "title": "Nâng cấp VIP - Trải nghiệm tốc độ 200MB/s không quảng cáo",
+      "content_type": "image",
+      "media_url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+      "action_type": "deeplink",
+      "action_value": "shareit://subscription/paywall",
+      "priority": 10,
+      "frequency_capping": {
+        "max_impressions_per_day": 5,
+        "interval_sec": 1800
+      },
+      "is_active": true
+    },
+    {
+      "id": "prom_02",
+      "space_id": "home_top_banner",
+      "title": "Điểm danh 7 ngày liên tục nhận ngay 500 Coin!",
+      "content_type": "image",
+      "media_url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&auto=format&fit=crop",
+      "action_type": "deeplink",
+      "action_value": "shareit://coin/store",
+      "priority": 8,
+      "frequency_capping": {
+        "max_impressions_per_day": 3,
+        "interval_sec": 3600
+      },
+      "is_active": true
+    }
+  ],
+  "ad_placements": [
+    {
+      "id": "ad_01",
+      "placement_id": "trans_complete_interstitial",
+      "placement_type": "interstitial",
+      "mediation_waterfall": [
+        {
+          "network": "admob",
+          "unit_id": "ca-app-pub-3940256099942544/1033173712",
+          "ecpm_floor": 3.5,
+          "timeout_ms": 3000
+        },
+        {
+          "network": "applovin",
+          "unit_id": "applovin_inter_01",
+          "ecpm_floor": 2.8,
+          "timeout_ms": 2500
+        },
+        {
+          "network": "mintegral",
+          "unit_id": "mintegral_inter_01",
+          "ecpm_floor": 2,
+          "timeout_ms": 2000
+        }
+      ],
+      "is_active": true
+    },
+    {
+      "id": "ad_02",
+      "placement_id": "main_bottom_banner",
+      "placement_type": "banner",
+      "mediation_waterfall": [
+        {
+          "network": "admob",
+          "unit_id": "ca-app-pub-3940256099942544/6300978111",
+          "ecpm_floor": 0.8,
+          "timeout_ms": 2000
+        }
+      ],
+      "is_active": true
+    }
+  ],
+  "subscription_plans": [
+    {
+      "id": "vip_weekly",
+      "title": "Gói VIP Tuần",
+      "price": 1.99,
+      "currency": "USD",
+      "duration_days": 7,
+      "google_product_id": "shareit.vip.weekly",
+      "apple_product_id": "com.shareit.sub.weekly",
+      "features": [
+        "Không quảng cáo 100%",
+        "Tốc độ truyền tối đa 200MB/s",
+        "Két Safebox 50GB"
+      ],
+      "is_active": true
+    },
+    {
+      "id": "vip_monthly",
+      "title": "Gói VIP Tháng",
+      "price": 4.99,
+      "currency": "USD",
+      "duration_days": 30,
+      "google_product_id": "shareit.vip.monthly",
+      "apple_product_id": "com.shareit.sub.monthly",
+      "features": [
+        "Mọi quyền gói Tuần",
+        "Tải video HD không giới hạn",
+        "Dọn rác tự động"
+      ],
+      "is_active": true
+    },
+    {
+      "id": "vip_yearly",
+      "title": "Gói VIP Năm (Tiết kiệm 50%)",
+      "price": 24.99,
+      "currency": "USD",
+      "duration_days": 365,
+      "google_product_id": "shareit.vip.yearly",
+      "apple_product_id": "com.shareit.sub.yearly",
+      "features": [
+        "Mọi quyền gói Tháng",
+        "Két an toàn đám mây 200GB",
+        "Huy hiệu VIP vàng",
+        "Hỗ trợ ưu tiên 24/7"
+      ],
+      "is_active": true
+    },
+    {
+      "id": "vip_lifetime",
+      "title": "Gói VIP Trọn Đời (Mua 1 lần)",
+      "price": 49.99,
+      "currency": "USD",
+      "duration_days": 36500,
+      "google_product_id": "shareit.vip.lifetime",
+      "apple_product_id": "com.shareit.sub.lifetime",
+      "features": [
+        "Sở hữu vĩnh viễn mọi tính năng cao cấp",
+        "Áp dụng cho mọi thiết bị đăng nhập"
+      ],
+      "is_active": true
+    }
+  ],
+  "payment_orders": [
+    {
+      "id": "ord_01",
+      "order_code": "ORD_20260905_81923",
+      "user_id": "usr_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "plan_id": "vip_yearly",
+      "gateway": "google_play",
+      "transaction_id": "GPA.3312-8819-1123-99123",
+      "purchase_token": "token_sample_abc123...",
+      "amount": 24.99,
+      "currency": "USD",
+      "status": "paid",
+      "created_at": "2026-09-05T03:46:22.025Z"
+    }
+  ],
+  "coin_ledger": [
+    {
+      "id": "tx_1788583907951",
+      "transaction_id": "tx_adj_1788583907951",
+      "user_id": "usr_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "event_type": "admin_grant",
+      "amount": 250,
+      "balance_after": 2250,
+      "metadata": {
+        "reason": "Thưởng nạp thử nghiệm hệ thống Coin"
+      },
+      "created_at": "2026-09-05T04:51:47.951Z"
+    },
+    {
+      "id": "tx_1788583845274",
+      "transaction_id": "tx_adj_1788583845274",
+      "user_id": "usr_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "event_type": "admin_grant",
+      "amount": 250,
+      "balance_after": 2000,
+      "metadata": {
+        "reason": "Thưởng nạp thử nghiệm hệ thống Coin"
+      },
+      "created_at": "2026-09-05T04:50:45.274Z"
+    },
+    {
+      "id": "tx_01",
+      "transaction_id": "tx_coin_20260905_001",
+      "user_id": "usr_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "event_type": "daily_checkin",
+      "amount": 150,
+      "balance_after": 1450,
+      "metadata": {
+        "day_streak": 3
+      },
+      "created_at": "2026-09-05T03:46:22.025Z"
+    },
+    {
+      "id": "tx_1788580072215",
+      "transaction_id": "tx_checkin_1788580072215",
+      "user_id": "usr_01",
+      "device_uuid": "dev_ol3w5hpnrk_1788580072198",
+      "event_type": "daily_checkin",
+      "amount": 100,
+      "balance_after": 1550,
+      "metadata": {
+        "day_streak": 4
+      },
+      "created_at": "2026-09-05T03:47:52.215Z"
+    },
+    {
+      "id": "tx_1788580292607",
+      "transaction_id": "tx_checkin_1788580292607",
+      "user_id": "usr_01",
+      "device_uuid": "dev_7ufn54ll2j_1788580292522",
+      "event_type": "daily_checkin",
+      "amount": 100,
+      "balance_after": 1650,
+      "metadata": {
+        "day_streak": 4
+      },
+      "created_at": "2026-09-05T03:51:32.607Z"
+    },
+    {
+      "id": "tx_1788583350112",
+      "transaction_id": "tx_checkin_1788583350112",
+      "user_id": "usr_01",
+      "device_uuid": "dev_fziksno74v_1788583350096",
+      "event_type": "daily_checkin",
+      "amount": 100,
+      "balance_after": 1750,
+      "metadata": {
+        "day_streak": 4
+      },
+      "created_at": "2026-09-05T04:42:30.112Z"
+    }
+  ],
+  "coin_tasks": [
+    {
+      "id": "task_01",
+      "title": "Truyền file thành công 1 lần",
+      "description": "Gửi hoặc nhận bất kỳ 1 tệp tin nào qua Wi-Fi Direct",
+      "reward_coins": 50,
+      "category": "transfer",
+      "daily_limit": 5,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/724/724933.png",
+      "action_deeplink": "shareit://transfer/send",
+      "is_active": true
+    },
+    {
+      "id": "task_02",
+      "title": "Mời 1 người bạn cài đặt",
+      "description": "Nhận ngay 500 Coin khi bạn bè nhập mã giới thiệu của bạn",
+      "reward_coins": 500,
+      "category": "social",
+      "daily_limit": 10,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/1256/1256650.png",
+      "action_deeplink": "shareit://me/invite",
+      "is_active": true
+    },
+    {
+      "id": "task_03",
+      "title": "Dọn rác giải phóng bộ nhớ",
+      "description": "Dọn sạch ít nhất 500MB rác bằng tính năng Cleanit",
+      "reward_coins": 80,
+      "category": "system",
+      "daily_limit": 1,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/2879/2879209.png",
+      "action_deeplink": "shareit://clean/scan",
+      "is_active": true
+    }
+  ],
+  "telemetry_events": [
+    {
+      "id": "tel_01",
+      "event_name": "transfer_file_finish",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "timestamp": 1788576382025,
+      "properties": {
+        "file_type": "video/mp4",
+        "file_size_bytes": 104857600,
+        "transfer_mode": "wifi_direct",
+        "duration_ms": 3200,
+        "speed_mbps": 262.1,
+        "status": "success"
+      },
+      "created_at": "2026-09-05T02:46:22.025Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "log_1788585996188",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào CMS (Super Administrator - super_admin)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:36.188Z"
+    },
+    {
+      "id": "log_1788585967320",
+      "admin_user": "admin",
+      "action": "DELETE_ADMIN_USER",
+      "resource": "ADMIN_ACCOUNTS",
+      "details": "Đã xóa tài khoản quản trị viên: dev_moderator (Trưởng Ban Kiểm Duyệt)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:07.320Z"
+    },
+    {
+      "id": "log_1788585967317",
+      "admin_user": "admin",
+      "action": "UPDATE_ADMIN_USER",
+      "resource": "ADMIN_ACCOUNTS",
+      "details": "Cập nhật thông tin quản trị viên: dev_moderator (Display: Trưởng Ban Kiểm Duyệt, Role: admin, Active: true)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:07.317Z"
+    },
+    {
+      "id": "log_1788585967315",
+      "admin_user": "dev_moderator",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào CMS (Kiểm Duyệt Viên Dev - moderator)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:07.315Z"
+    },
+    {
+      "id": "log_1788585967311",
+      "admin_user": "admin",
+      "action": "CHANGE_ADMIN_PASSWORD",
+      "resource": "ADMIN_ACCOUNTS",
+      "details": "Đổi mật khẩu thành công cho tài khoản quản trị: dev_moderator",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:07.311Z"
+    },
+    {
+      "id": "log_1788585967307",
+      "admin_user": "admin",
+      "action": "CREATE_ADMIN_USER",
+      "resource": "ADMIN_ACCOUNTS",
+      "details": "Tạo quản trị viên mới: dev_moderator (Kiểm Duyệt Viên Dev, Quyền: moderator)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:07.307Z"
+    },
+    {
+      "id": "log_1788585967254",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào CMS (Super Administrator - super_admin)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:26:07.254Z"
+    },
+    {
+      "id": "log_1788584948436",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:09:08.436Z"
+    },
+    {
+      "id": "log_1788584898461",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:08:18.461Z"
+    },
+    {
+      "id": "log_1788584688971",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T05:04:48.971Z"
+    },
+    {
+      "id": "log_1788584263480",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:57:43.480Z"
+    },
+    {
+      "id": "log_1788584056925",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:54:16.925Z"
+    },
+    {
+      "id": "log_1788583907951",
+      "admin_user": "admin",
+      "action": "ADJUST_COIN_BALANCE",
+      "resource": "COIN_LEDGER",
+      "details": "Cộng 250 xu cho Nguyễn Văn A - Lý do: Thưởng nạp thử nghiệm hệ thống Coin",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:51:47.951Z"
+    },
+    {
+      "id": "log_1788583907948",
+      "admin_user": "admin",
+      "action": "UPDATE_GLOBAL_AD_KEYS",
+      "resource": "ADS_MEDIATION",
+      "details": "Cập nhật khóa SDK AdMob/AppLovin/Mintegral (Test mode: true)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:51:47.948Z"
+    },
+    {
+      "id": "log_1788583907868",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:51:47.868Z"
+    },
+    {
+      "id": "log_1788583845274",
+      "admin_user": "admin",
+      "action": "ADJUST_COIN_BALANCE",
+      "resource": "COIN_LEDGER",
+      "details": "Cộng 250 xu cho Nguyễn Văn A - Lý do: Thưởng nạp thử nghiệm hệ thống Coin",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:50:45.274Z"
+    },
+    {
+      "id": "log_1788583845270",
+      "admin_user": "admin",
+      "action": "UPDATE_GLOBAL_AD_KEYS",
+      "resource": "ADS_MEDIATION",
+      "details": "Cập nhật khóa SDK AdMob/AppLovin/Mintegral (Test mode: true)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:50:45.270Z"
+    },
+    {
+      "id": "log_1788583845234",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:50:45.234Z"
+    },
+    {
+      "id": "log_1788583834136",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:50:34.137Z"
+    },
+    {
+      "id": "log_1788583063970",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:37:43.970Z"
+    },
+    {
+      "id": "log_1788581468395",
+      "admin_user": "admin",
+      "action": "ADMIN_LOGIN",
+      "resource": "CMS_PORTAL",
+      "details": "Đăng nhập thành công vào trang quản trị CMS",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T04:11:08.395Z"
+    },
+    {
+      "id": "log_01",
+      "admin_user": "admin",
+      "action": "INIT_SYSTEM",
+      "resource": "CORE_SERVER",
+      "details": "Khởi tạo thành công hệ thống Backend SHAREit cổng 6030",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-09-05T03:46:22.025Z"
+    }
+  ],
+  "family_products": [
+    {
+      "id": "fam_01",
+      "app_name": "CLEANit - Dọn Rác Tăng Tốc",
+      "package_name": "com.ushareit.cleanit",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/2879/2879209.png",
+      "download_url": "https://play.google.com/store/apps/details?id=com.ushareit.cleanit",
+      "category": "Tiện ích hệ thống",
+      "badge": "HOT",
+      "rating": 4.8,
+      "download_count_str": "50M+",
+      "description": "Giải phóng đến 10GB dung lượng bộ nhớ đệm và tăng tốc RAM thiết bị.",
+      "cpi_payout": 0.35,
+      "priority": 10,
+      "is_active": true
+    },
+    {
+      "id": "fam_02",
+      "app_name": "CLONEit - Sao Chép Đổi Máy",
+      "package_name": "com.ushareit.cloneit",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/3281/3281307.png",
+      "download_url": "https://play.google.com/store/apps/details?id=com.ushareit.cloneit",
+      "category": "Công cụ chuyển đổi",
+      "badge": "RECOMMENDED",
+      "rating": 4.7,
+      "download_count_str": "20M+",
+      "description": "Sao chép 12 loại dữ liệu (Danh bạ, Tin nhắn, Ảnh, App) từ máy cũ sang máy mới.",
+      "cpi_payout": 0.4,
+      "priority": 9,
+      "is_active": true
+    },
+    {
+      "id": "fam_03",
+      "app_name": "LOCKit - Khóa Ứng Dụng Vân Tay",
+      "package_name": "com.ushareit.lockit",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/807/807241.png",
+      "download_url": "https://play.google.com/store/apps/details?id=com.ushareit.lockit",
+      "category": "Bảo mật quyền riêng tư",
+      "badge": "POPULAR",
+      "rating": 4.6,
+      "download_count_str": "15M+",
+      "description": "Bảo vệ Messenger, Zalo, Thư viện ảnh bằng mật khẩu và cảm biến vân tay.",
+      "cpi_payout": 0.25,
+      "priority": 8,
+      "is_active": true
+    },
+    {
+      "id": "fam_04",
+      "app_name": "LISTENit - Nghe Nhạc Offline",
+      "package_name": "com.ushareit.listenit",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/3844/3844724.png",
+      "download_url": "https://play.google.com/store/apps/details?id=com.ushareit.listenit",
+      "category": "Âm nhạc & Âm thanh",
+      "badge": "NEW",
+      "rating": 4.9,
+      "download_count_str": "30M+",
+      "description": "Bộ cân bằng âm thanh Equalizer chuyên nghiệp, phát nhạc nền không tốn pin.",
+      "cpi_payout": 0.3,
+      "priority": 7,
+      "is_active": true
+    },
+    {
+      "id": "fam_05",
+      "app_name": "S-Player - Trình Chiếu Video 4K",
+      "package_name": "com.ushareit.siplayer",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/709/709592.png",
+      "download_url": "https://play.google.com/store/apps/details?id=com.ushareit.siplayer",
+      "category": "Xem phim & Video",
+      "badge": "POPULAR",
+      "rating": 4.7,
+      "download_count_str": "25M+",
+      "description": "Hỗ trợ giải mã MKV, MP4, FLV, AVI và tải phụ đề tự động trực tuyến.",
+      "cpi_payout": 0.2,
+      "priority": 6,
+      "is_active": true
+    }
+  ],
+  "ad_global_keys": {
+    "admob_app_id": "ca-app-pub-3940256099942544~3347511713",
+    "applovin_sdk_key": "SDK_KEY_TEST_APPLOVIN_2026",
+    "mintegral_app_id": "YOUR_MINTEGRAL_APP_ID_HERE",
+    "mintegral_app_key": "YOUR_MINTEGRAL_APP_KEY_HERE",
+    "unity_game_id": "YOUR_UNITY_GAME_ID_HERE",
+    "pangle_app_id": "YOUR_PANGLE_APP_ID_HERE",
+    "ironsource_app_key": "YOUR_IRONSOURCE_APP_KEY_HERE",
+    "test_mode": true
+  },
+  "coin_rewards": [
+    {
+      "id": "rew_vip_1d",
+      "title": "VIP 1 Ngày Không Quảng Cáo",
+      "category": "vip_pass",
+      "cost_coins": 500,
+      "stock": 9999,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/6941/6941697.png",
+      "description": "Tận hưởng 24h truyền file tốc độ tối đa 200MB/s không bị làm phiền.",
+      "payout_value_str": "1 Ngày VIP",
+      "is_active": true
+    },
+    {
+      "id": "rew_vip_7d",
+      "title": "VIP 7 Ngày Cao Cấp",
+      "category": "vip_pass",
+      "cost_coins": 2500,
+      "stock": 9999,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/2589/2589175.png",
+      "description": "Gói 1 tuần miễn phí quảng cáo, mở khóa Két Safebox 50GB.",
+      "payout_value_str": "7 Ngày VIP",
+      "is_active": true
+    },
+    {
+      "id": "rew_card_viettel_50k",
+      "title": "Thẻ Cào Viettel 50.000đ",
+      "category": "telco_card",
+      "cost_coins": 50000,
+      "stock": 50,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/9639/9639736.png",
+      "description": "Mã thẻ cào Viettel 50K gửi trực tiếp qua thông báo và SMS.",
+      "payout_value_str": "50.000 VNĐ",
+      "is_active": true
+    },
+    {
+      "id": "rew_voucher_shopee_20k",
+      "title": "Voucher Mua Sắm Shopee 20K",
+      "category": "voucher",
+      "cost_coins": 20000,
+      "stock": 100,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/833/833314.png",
+      "description": "Mã giảm giá áp dụng cho đơn hàng bất kỳ trên sàn thương mại điện tử.",
+      "payout_value_str": "20.000 VNĐ",
+      "is_active": true
+    },
+    {
+      "id": "rew_game_garena_50k",
+      "title": "Thẻ Nạp Game Garena 50K",
+      "category": "game_card",
+      "cost_coins": 50000,
+      "stock": 30,
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/1068/1068778.png",
+      "description": "Mã sò nạp Liên Quân Mobile, Free Fire, FC Online.",
+      "payout_value_str": "100 Quân Huy / 50K",
+      "is_active": true
+    }
+  ],
+  "coin_redemptions": [
+    {
+      "id": "red_01",
+      "request_code": "RED_20260905_9182",
+      "user_id": "usr_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "reward_id": "rew_vip_1d",
+      "reward_title": "VIP 1 Ngày Không Quảng Cáo",
+      "coins_spent": 500,
+      "payout_target": "Auto-applied to Device dev_8f29...",
+      "status": "completed",
+      "admin_note": "Tự động kích hoạt VIP thành công",
+      "created_at": "2026-09-05T02:50:12.694Z",
+      "processed_at": "2026-09-05T02:50:12.695Z"
+    },
+    {
+      "id": "red_02",
+      "request_code": "RED_20260905_9401",
+      "user_id": "usr_01",
+      "device_uuid": "dev_8f2910c2_4a9b_412e_a91c_89201f92e811",
+      "reward_id": "rew_card_viettel_50k",
+      "reward_title": "Thẻ Cào Viettel 50.000đ",
+      "coins_spent": 50000,
+      "payout_target": "0988.123.456 (Viettel)",
+      "status": "pending",
+      "admin_note": "Chờ admin kiểm tra và gửi mã thẻ cào",
+      "created_at": "2026-09-05T04:20:12.695Z"
+    }
+  ],
+  "admin_users": [
+    {
+      "id": "admin_01",
+      "username": "admin",
+      "password": "admin@123456",
+      "display_name": "Super Administrator",
+      "email": "superadmin@shareit.io",
+      "role": "super_admin",
+      "avatar_url": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+      "is_active": true,
+      "created_at": "2026-09-01T00:00:00.000Z",
+      "last_login_at": "2026-09-05T05:26:36.188Z"
+    },
+    {
+      "id": "admin_02",
+      "username": "marketing_lead",
+      "password": "mkt@123456",
+      "display_name": "Trưởng Nhóm Marketing",
+      "email": "marketing@shareit.io",
+      "role": "admin",
+      "avatar_url": "https://cdn-icons-png.flaticon.com/512/3135/3135768.png",
+      "is_active": true,
+      "created_at": "2026-09-02T00:00:00.000Z",
+      "last_login_at": "2026-09-04T10:30:00.000Z"
+    },
+    {
+      "id": "admin_03",
+      "username": "support_ops",
+      "password": "ops@123456",
+      "display_name": "Hỗ Trợ & Vận Hành",
+      "email": "ops@shareit.io",
+      "role": "operator",
+      "avatar_url": "https://cdn-icons-png.flaticon.com/512/3135/3135823.png",
+      "is_active": true,
+      "created_at": "2026-09-03T00:00:00.000Z",
+      "last_login_at": "2026-09-05T08:15:00.000Z"
+    }
+  ]
+}

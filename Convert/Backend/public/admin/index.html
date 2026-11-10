@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHAREit Enterprise CMS & Backend Control Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal-overlay">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="logo-icon"><i class="fa-solid fa-share-nodes"></i></div>
+        <h2>SHAREit CMS Admin</h2>
+        <p>Cổng Quản Trị Hệ Thống Backend (Cổng 6030)</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label><i class="fa-solid fa-user"></i> Tên đăng nhập</label>
+          <input type="text" id="login-user" value="admin" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label><i class="fa-solid fa-lock"></i> Mật khẩu</label>
+          <input type="password" id="login-pass" value="admin@123456" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập Vào Hệ Thống</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main CMS Container -->
+  <div class="cms-container" id="cms-main" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo"><i class="fa-solid fa-share-nodes"></i></div>
+        <div class="brand-info">
+          <h3>SHAREit Core</h3>
+          <span class="badge-status">Cổng 6030 • ONLINE</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-group-label">Tổng Quan & Giám Sát</div>
+        <button class="nav-item active" data-tab="dashboard">
+          <div class="nav-item-content"><i class="fa-solid fa-chart-line"></i> <span>Bảng Tổng Quan</span></div>
+        </button>
+        <button class="nav-item" data-tab="devices">
+          <div class="nav-item-content"><i class="fa-solid fa-mobile-screen"></i> <span>Quản Lý Thiết Bị</span></div>
+        </button>
+        <button class="nav-item" data-tab="logs">
+          <div class="nav-item-content"><i class="fa-solid fa-scroll"></i> <span>Nhật Ký & Logs</span></div>
+        </button>
+
+        <div class="nav-group-label">Marketing & Quảng Cáo</div>
+        <button class="nav-item" data-tab="mcds">
+          <div class="nav-item-content"><i class="fa-solid fa-layer-group"></i> <span>MCDS & Banner Động</span></div>
+        </button>
+        <button class="nav-item" data-tab="family">
+          <div class="nav-item-content"><i class="fa-solid fa-shapes"></i> <span>SHAREit Family</span></div>
+        </button>
+        <button class="nav-item" data-tab="ads">
+          <div class="nav-item-content"><i class="fa-solid fa-rectangle-ad"></i> <span>Ma Trận Ads Waterfall</span></div>
+        </button>
+
+        <div class="nav-group-label">Doanh Thu & Kinh Tế</div>
+        <button class="nav-item" data-tab="plans">
+          <div class="nav-item-content"><i class="fa-solid fa-crown"></i> <span>Gói VIP & Đơn IAP</span></div>
+        </button>
+        <button class="nav-item" data-tab="coin">
+          <div class="nav-item-content"><i class="fa-solid fa-coins"></i> <span>Sổ Cái Coin & Task</span></div>
+          <span class="nav-counter" id="sidebar-coin-badge" style="display:none;">1</span>
+        </button>
+
+        <div class="nav-group-label">Hệ Thống & Quản Trị</div>
+        <button class="nav-item" data-tab="admins">
+          <div class="nav-item-content"><i class="fa-solid fa-users-gear"></i> <span>Quản Trị Viên (Admins)</span></div>
+        </button>
+
+        <div class="nav-group-label">Công Cụ Phát Triển</div>
+        <button class="nav-item" data-tab="tester">
+          <div class="nav-item-content"><i class="fa-solid fa-terminal"></i> <span>API Tester Console</span></div>
+        </button>
+      </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar" id="sidebar-avatar-box"><i class="fa-solid fa-user-shield"></i></div>
+        <div class="user-details" style="cursor:pointer;" id="sidebar-user-info" title="Nhấn để xem Quản trị viên">
+          <span class="username" id="display-user">admin</span>
+          <span class="role" id="display-role">Super Administrator</span>
+        </div>
+        <button class="btn-icon-action" id="btn-quick-change-pass" title="Đổi mật khẩu" style="background:transparent;border:none;color:#38bdf8;cursor:pointer;padding:6px;font-size:13px;"><i class="fa-solid fa-key"></i></button>
+        <button class="btn-logout" id="btn-logout" title="Đăng xuất"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="page-title">
+          <h1 id="current-tab-title">Bảng Tổng Quan</h1>
+          <p id="current-tab-desc">Giám sát hoạt động thời gian thực của máy chủ SHAREit</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-secondary" id="btn-refresh"><i class="fa-solid fa-rotate"></i> Làm Mới</button>
+          <span class="server-time" id="server-clock">UTC Clock</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        
+        <!-- Tab 1: Dashboard -->
+        <section class="tab-pane active" id="tab-dashboard">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue"><i class="fa-solid fa-mobile-screen-button"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Tổng Thiết Bị Kích Hoạt</span>
+                <h3 class="kpi-value" id="kpi-devices">0</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +12% hôm nay</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon green"><i class="fa-solid fa-satellite-dish"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Phiên P2P & Relay Đang Mở</span>
+                <h3 class="kpi-value" id="kpi-sessions">0</h3>
+                <span class="kpi-trend neutral"><i class="fa-solid fa-circle"></i> Trực tiếp</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon gold"><i class="fa-solid fa-crown"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Thuê Bao VIP Đang Hoạt Động</span>
+                <h3 class="kpi-value" id="kpi-vips">0</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +5 gói mới</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon purple"><i class="fa-solid fa-dollar-sign"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Doanh Thu IAP (Tháng)</span>
+                <h3 class="kpi-value" id="kpi-revenue">$0.00</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> Đạt mục tiêu</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Bar -->
+          <div class="quick-actions-bar">
+            <span class="qa-title"><i class="fa-solid fa-bolt"></i> Thao Tác Nhanh:</span>
+            <button class="btn-secondary" onclick="document.querySelector('[data-tab=ads]').click()"><i class="fa-solid fa-key"></i> Đổi Khóa Ads</button>
+            <button class="btn-secondary" onclick="document.querySelector('[data-tab=admins]').click()"><i class="fa-solid fa-users-gear"></i> Quản Trị Viên</button>
+            <button class="btn-secondary" onclick="document.querySelector('[data-tab=coin]').click();setTimeout(()=>document.querySelector('[data-sub=redemptions]').click(),100)"><i class="fa-solid fa-gift"></i> Duyệt Đổi Thưởng</button>
+            <button class="btn-secondary" onclick="document.querySelector('[data-tab=family]').click()"><i class="fa-solid fa-shapes"></i> Thêm App Family</button>
+            <button class="btn-secondary" onclick="document.querySelector('[data-tab=mcds]').click()"><i class="fa-solid fa-image"></i> Đăng Banner</button>
+            <button class="btn-secondary" onclick="document.querySelector('[data-tab=tester]').click()"><i class="fa-solid fa-terminal"></i> Test API</button>
+          </div>
+
+          <!-- System Status Grid -->
+          <div class="system-status-grid">
+            <div class="status-box">
+              <div class="status-left">
+                <i class="fa-solid fa-tower-broadcast" style="color:var(--accent-green);"></i>
+                <div>
+                  <h5>WebRTC Signaling Server</h5>
+                  <span>ws://localhost:6030/api/v1/signaling/webrtc</span>
+                </div>
+              </div>
+              <span class="badge-active">ACTIVE</span>
+            </div>
+            <div class="status-box">
+              <div class="status-left">
+                <i class="fa-solid fa-bolt" style="color:var(--primary-color);"></i>
+                <div>
+                  <h5>P2P Chunk Relay Engine</h5>
+                  <span>Chunk-Transfer Streaming v2.4</span>
+                </div>
+              </div>
+              <span class="badge-active">READY</span>
+            </div>
+            <div class="status-box">
+              <div class="status-left">
+                <i class="fa-solid fa-sliders" style="color:var(--accent-gold);"></i>
+                <div>
+                  <h5>MCDS Remote Config</h5>
+                  <span>Auto Dynamic Strategy Engine</span>
+                </div>
+              </div>
+              <span class="badge-active">ONLINE</span>
+            </div>
+          </div>
+
+          <div class="chart-section">
+            <div class="chart-card">
+              <div class="card-header-flex">
+                <h3><i class="fa-solid fa-chart-area"></i> Lưu Lượng Truyền Dữ Liệu P2P & Relay (MB/s)</h3>
+                <span style="font-size:12px;color:var(--text-dim);"><i class="fa-solid fa-circle" style="color:#38bdf8;font-size:8px;"></i> Wi-Fi Direct &nbsp; <i class="fa-solid fa-circle" style="color:#f59e0b;font-size:8px;"></i> Cloud Relay</span>
+              </div>
+              <canvas id="trafficChart" height="90"></canvas>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="card-header-flex">
+              <h3><i class="fa-solid fa-clock-rotate-left"></i> Thiết Bị Đăng Ký Gần Đây</h3>
+              <button class="btn-secondary" onclick="document.querySelector('[data-tab=devices]').click()">Xem Tất Cả <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="table-recent-devices">
+                <thead>
+                  <tr>
+                    <th>Device UUID</th>
+                    <th>Hệ Điều Hành</th>
+                    <th>Model Máy</th>
+                    <th>Quốc Gia</th>
+                    <th>Lần Hoạt Động Cuối</th>
+                    <th>Trạng Thái</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 2: Devices -->
+        <section class="tab-pane" id="tab-devices">
+          <div class="table-card">
+            <div class="table-header-flex">
+              <h3><i class="fa-solid fa-mobile-screen"></i> Danh Sách Toàn Bộ Thiết Bị</h3>
+              <input type="text" id="device-search" placeholder="🔍 Tìm theo UUID, Model hoặc Quốc gia..." class="search-input">
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="table-all-devices">
+                <thead>
+                  <tr>
+                    <th>UUID</th>
+                    <th>Hệ Điều Hành</th>
+                    <th>Phiên Bản App</th>
+                    <th>Thiết Bị</th>
+                    <th>GAID / IDFV</th>
+                    <th>Quốc Gia</th>
+                    <th>Thao Tác</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 3: MCDS Remote Config -->
+        <section class="tab-pane" id="tab-mcds">
+          <div class="split-view">
+            <div class="card-box">
+              <h3><i class="fa-solid fa-plus-circle"></i> Thêm Banner Động Mới</h3>
+              <form id="form-create-banner" class="mt-10">
+                <div class="form-group">
+                  <label>Không gian hiển thị (Space ID)</label>
+                  <select id="mcds-space-select" required>
+                    <option value="home_top_banner">home_top_banner (Trang chủ Header)</option>
+                    <option value="trans_complete_interstitial">trans_complete_interstitial (Sau khi gửi file)</option>
+                    <option value="safebox_entry_card">safebox_entry_card (Lối vào Két An Toàn)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Tiêu đề Banner</label>
+                  <input type="text" id="mcds-title" placeholder="VD: Nâng cấp VIP 200MB/s không quảng cáo" required>
+                </div>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Loại nội dung</label>
+                    <select id="mcds-type">
+                      <option value="image">Hình ảnh (Image URL)</option>
+                      <option value="lottie">Hoạt họa Lottie JSON</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Độ ưu tiên (1-10)</label>
+                    <input type="number" id="mcds-priority" value="8" min="1" max="10">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Đường dẫn Media URL</label>
+                  <input type="url" id="mcds-url" placeholder="https://..." value="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" required>
+                </div>
+                <div class="form-group">
+                  <label>Hành động khi bấm (DeepLink / URL)</label>
+                  <input type="text" id="mcds-action" value="shareit://subscription/paywall" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-floppy-disk"></i> Xuất Bản Banner MCDS</button>
+              </form>
+            </div>
+
+            <div class="card-box">
+              <div class="card-header-flex">
+                <h3><i class="fa-solid fa-images"></i> Danh Sách Banner Đang Chạy</h3>
+              </div>
+              <div id="mcds-banner-list" class="banner-grid"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab: SHAREit Family & CPI Cross-Promo -->
+        <section class="tab-pane" id="tab-family">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon purple"><i class="fa-solid fa-cubes"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Tổng Số App Gia Đình</span>
+                <h3 class="kpi-value" id="kpi-family-total">5</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> Hệ sinh thái SHAREit</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green"><i class="fa-solid fa-tower-broadcast"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Chiến Dịch CPI Hoạt Động</span>
+                <h3 class="kpi-value" id="kpi-family-active">5</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> Tự động phân phối</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon gold"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">CPI Payout Trung Bình</span>
+                <h3 class="kpi-value" id="kpi-family-cpi">$0.30</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-tag"></i> / lượt cài đặt mới</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon blue"><i class="fa-solid fa-download"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Lượt Cài Đặt Ước Tính</span>
+                <h3 class="kpi-value">145M+</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-users"></i> Toàn bộ sản phẩm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-view">
+            <!-- Left Form: Compact 2-column grid -->
+            <div class="card-box">
+              <h3><i class="fa-solid fa-plus-circle"></i> Thêm App Vào SHAREit Family</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">Phát hành ứng dụng vào ma trận quảng cáo chéo (Cross-Promotion App Matrix).</p>
+              
+              <form id="form-create-family">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Tên Ứng Dụng</label>
+                    <input type="text" id="fam-name" placeholder="VD: CLEANit - Dọn Rác" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Package / Bundle ID</label>
+                    <input type="text" id="fam-package" placeholder="VD: com.ushareit.cleanit" required>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Icon URL</label>
+                    <input type="url" id="fam-icon" value="https://cdn-icons-png.flaticon.com/512/2879/2879209.png" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Download Link / Play Store</label>
+                    <input type="url" id="fam-download" value="https://play.google.com/store/apps/details?id=com.ushareit.cleanit" required>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Danh Mục Phân Loại</label>
+                    <input type="text" id="fam-category" value="Tiện ích hệ thống" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Nhãn Badge</label>
+                    <select id="fam-badge">
+                      <option value="RECOMMENDED" selected>RECOMMENDED</option>
+                      <option value="POPULAR">POPULAR</option>
+                      <option value="HOT">HOT</option>
+                      <option value="NEW">NEW</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-3">
+                  <div class="form-group">
+                    <label>Đánh Giá Sao</label>
+                    <input type="number" id="fam-rating" value="4.8" step="0.1" min="1" max="5">
+                  </div>
+                  <div class="form-group">
+                    <label>Lượt Tải</label>
+                    <input type="text" id="fam-downloads" value="50M+">
+                  </div>
+                  <div class="form-group">
+                    <label>CPI Payout ($)</label>
+                    <input type="number" id="fam-cpi" value="0.35" step="0.01" min="0">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Mô Tả Tính Năng Ngắn</label>
+                  <textarea id="fam-desc" rows="2" placeholder="VD: Giải phóng 10GB dung lượng bộ nhớ đệm và tăng tốc RAM thiết bị."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>Độ Ưu Tiên (1-10)</label>
+                  <input type="number" id="fam-priority" value="8" min="1" max="10">
+                </div>
+
+                <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Thêm Vào SHAREit Family</button>
+              </form>
+            </div>
+
+            <!-- Right: App Wall Preview -->
+            <div class="card-box">
+              <div class="card-header-flex">
+                <div>
+                  <h3><i class="fa-solid fa-shapes"></i> Ma Trận Ứng Dụng (App Wall Preview)</h3>
+                  <p style="font-size:12px;color:var(--text-muted);margin-top:2px;">Tự động hiển thị trong mục "SHAREit Family" trên Android/iOS.</p>
+                </div>
+                <span class="badge-active" id="family-count-badge">5 Apps Active</span>
+              </div>
+              <div id="family-products-list" class="family-grid mt-10"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 4: Ad Mediation & Global Keys -->
+        <section class="tab-pane" id="tab-ads">
+          <div class="card-box mb-20">
+            <div class="table-header-flex">
+              <div>
+                <h3><i class="fa-solid fa-key"></i> Cấu Hình Khóa SDK Mạng Quảng Cáo Toàn Cục (Global Credentials)</h3>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:2px;">Tất cả khóa được đồng bộ trực tiếp vào Backend MCDS và ứng dụng Android/iOS theo thời gian thực.</p>
+              </div>
+              <span class="badge-active"><i class="fa-solid fa-rotate"></i> Realtime Sync</span>
+            </div>
+            
+            <form id="form-global-ad-keys" class="mt-10">
+              <div class="keys-grid">
+                <div class="form-group">
+                  <label><i class="fa-brands fa-google" style="color:#38bdf8;"></i> Google AdMob App ID</label>
+                  <input type="text" id="ad-key-admob" value="ca-app-pub-3940256099942544~3347511713" required>
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-shield-halved" style="color:#6366f1;"></i> AppLovin MAX SDK Key</label>
+                  <input type="text" id="ad-key-applovin" placeholder="AppLovin MAX SDK Key...">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-chart-pie" style="color:#10b981;"></i> Mintegral App ID</label>
+                  <input type="text" id="ad-key-mintegral-id" placeholder="Mintegral App ID...">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-lock" style="color:#10b981;"></i> Mintegral App Key / Secret</label>
+                  <input type="text" id="ad-key-mintegral-key" placeholder="Mintegral App Key...">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-brands fa-unity" style="color:#fff;"></i> Unity Ads Game ID</label>
+                  <input type="text" id="ad-key-unity" placeholder="Unity Game ID (Android / iOS)...">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-cubes" style="color:#f59e0b;"></i> Pangle App ID</label>
+                  <input type="text" id="ad-key-pangle" placeholder="Pangle App ID...">
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:14px;border-top:1px solid var(--border-color);">
+                <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                  <input type="checkbox" id="ad-test-mode" checked style="width:auto;">
+                  <span><b>Chế độ Thử Nghiệm (Test Mode)</b> - Sử dụng Test Ad Unit IDs của Google & Midas</span>
+                </label>
+                <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu Khóa SDK Toàn Cục</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-box">
+            <div class="table-header-flex">
+              <div>
+                <h3><i class="fa-solid fa-network-wired"></i> Quản Lý Vị Trí & Ma Trận Waterfall Ad Mediation</h3>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">Thiết lập giá sàn eCPM, thứ tự ưu tiên các mạng (AdMob, AppLovin, Mintegral, Unity, Pangle) theo từng vị trí trên ứng dụng.</p>
+              </div>
+              <button class="btn-primary" id="btn-show-add-placement"><i class="fa-solid fa-plus"></i> Thêm Vị Trí Mới</button>
+            </div>
+
+            <!-- Form Add Placement (Hidden by default) -->
+            <div id="add-placement-box" style="display:none;background:#0b1120;border:1px solid var(--border-color);padding:18px;border-radius:10px;margin-bottom:20px;">
+              <h4 style="font-size:14px;margin-bottom:12px;color:#38bdf8;"><i class="fa-solid fa-plus-circle"></i> Thêm Vị Trí Quảng Cáo (Ad Placement)</h4>
+              <form id="form-create-placement">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Placement ID (Mã định danh duy nhất)</label>
+                    <input type="text" id="new-plc-id" placeholder="VD: safebox_finish_interstitial" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Định dạng Quảng cáo</label>
+                    <select id="new-plc-type">
+                      <option value="banner">Banner (Banner chân trang)</option>
+                      <option value="interstitial">Interstitial (Toàn màn hình)</option>
+                      <option value="rewarded">Rewarded (Xem video nhận xu)</option>
+                      <option value="native">Native (Quảng cáo tự nhiên)</option>
+                      <option value="app_open">App Open (Mở app Splash)</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="display:flex;gap:10px;justify-content:flex-end;">
+                  <button type="button" class="btn-secondary" id="btn-cancel-add-placement">Hủy</button>
+                  <button type="submit" class="btn-primary">Tạo Placement</button>
+                </div>
+              </form>
+            </div>
+
+            <div id="ad-placements-container"></div>
+          </div>
+        </section>
+
+        <!-- Tab 5: Subscription Plans -->
+        <section class="tab-pane" id="tab-plans">
+          <div class="card-header-flex mb-10">
+            <div>
+              <h3><i class="fa-solid fa-crown"></i> Danh Mục Gói Cước VIP Subscription</h3>
+              <p style="font-size:12px;color:var(--text-muted);">Mở khóa tính năng VIP, loại bỏ toàn bộ quảng cáo và tăng tốc truyền tải P2P.</p>
+            </div>
+          </div>
+          <div class="plans-grid" id="plans-container"></div>
+
+          <div class="table-card mt-20">
+            <div class="card-header-flex">
+              <h3><i class="fa-solid fa-receipt"></i> Lịch Sử Giao Dịch IAP Gần Đây</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="table-iap-orders">
+                <thead>
+                  <tr>
+                    <th>Mã Đơn Hàng</th>
+                    <th>Gói Cước</th>
+                    <th>Cổng Thanh Toán</th>
+                    <th>Số Tiền</th>
+                    <th>Trạng Thái</th>
+                    <th>Thời Gian</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 6: Coin Economy & Gamification Center -->
+        <section class="tab-pane" id="tab-coin">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon gold"><i class="fa-solid fa-coins"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Tổng Coin Đã Phát Hành</span>
+                <h3 class="kpi-value" id="kpi-coin-issued">0 Coin</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> Từ nhiệm vụ & Checkin</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon blue"><i class="fa-solid fa-wallet"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Số Dư Đang Lưu Hành</span>
+                <h3 class="kpi-value" id="kpi-coin-circ">0 Coin</h3>
+                <span class="kpi-trend neutral"><i class="fa-solid fa-users"></i> Trong ví người dùng</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon purple"><i class="fa-solid fa-gift"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Tổng Coin Đã Đổi Thưởng</span>
+                <h3 class="kpi-value" id="kpi-coin-redeemed">0 Coin</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-fire"></i> Đã đốt/quy đổi</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green"><i class="fa-solid fa-bell"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Yêu Cầu Chờ Duyệt Thưởng</span>
+                <h3 class="kpi-value" id="kpi-coin-pending">0</h3>
+                <span class="kpi-trend warning"><i class="fa-solid fa-clock"></i> Cần xử lý</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coin Sub Navigation -->
+          <div class="coin-tabs">
+            <button class="coin-tab-btn active" data-sub="tasks"><i class="fa-solid fa-list-check"></i> Nhiệm Vụ Kiếm Xu</button>
+            <button class="coin-tab-btn" data-sub="rewards"><i class="fa-solid fa-store"></i> Cửa Hàng Đổi Quà (Shop)</button>
+            <button class="coin-tab-btn" data-sub="redemptions"><i class="fa-solid fa-hand-holding-dollar"></i> Duyệt Đổi Thưởng & Rút Thẻ</button>
+            <button class="coin-tab-btn" data-sub="adjust"><i class="fa-solid fa-sliders"></i> Điều Chỉnh Số Dư Thủ Công</button>
+            <button class="coin-tab-btn" data-sub="ledger"><i class="fa-solid fa-book"></i> Sổ Cái Kế Toán Kép</button>
+          </div>
+
+          <!-- Sub 1: Coin Tasks -->
+          <div class="coin-sub-pane active" id="coin-sub-tasks">
+            <div class="split-view">
+              <div class="card-box">
+                <h3><i class="fa-solid fa-plus-circle"></i> Thêm Nhiệm Vụ Kiếm Xu</h3>
+                <form id="form-create-task" class="mt-10">
+                  <div class="form-group">
+                    <label>Tên Nhiệm Vụ</label>
+                    <input type="text" id="task-title" placeholder="VD: Truyền file qua Wi-Fi Direct" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Mô tả Hướng Dẫn</label>
+                    <input type="text" id="task-desc" placeholder="VD: Gửi hoặc nhận 1 tệp tin bất kỳ..." required>
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label>Số Xu Thưởng</label>
+                      <input type="number" id="task-reward" value="50" min="1" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Giới Hạn Lượt/Ngày</label>
+                      <input type="number" id="task-limit" value="5" min="1">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Phân Loại Nhiệm Vụ</label>
+                    <select id="task-category">
+                      <option value="transfer">Truyền Dữ Liệu (Transfer)</option>
+                      <option value="daily">Điểm Danh / Thường Ngày</option>
+                      <option value="ads">Xem Quảng Cáo Rewarded</option>
+                      <option value="system">Dọn Rác / Tiện Ích</option>
+                      <option value="social">Mời Bạn Bè (Referral)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>DeepLink Hành Động</label>
+                    <input type="text" id="task-deeplink" value="shareit://transfer/send" required>
+                  </div>
+                  <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Xuất Bản Nhiệm Vụ</button>
+                </form>
+              </div>
+
+              <div class="card-box">
+                <div class="table-header-flex">
+                  <h3><i class="fa-solid fa-tasks"></i> Danh Sách Nhiệm Vụ Đang Kích Hoạt</h3>
+                </div>
+                <div class="table-responsive">
+                  <table class="data-table" id="table-coin-tasks">
+                    <thead>
+                      <tr>
+                        <th>Nhiệm Vụ</th>
+                        <th>Danh Mục</th>
+                        <th>Thưởng</th>
+                        <th>Giới Hạn</th>
+                        <th>Trạng Thái</th>
+                        <th>Thao Tác</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub 2: Rewards Shop -->
+          <div class="coin-sub-pane" id="coin-sub-rewards" style="display:none;">
+            <div class="split-view">
+              <div class="card-box">
+                <h3><i class="fa-solid fa-plus-circle"></i> Thêm Quà Tặng Vào Cửa Hàng</h3>
+                <form id="form-create-reward" class="mt-10">
+                  <div class="form-group">
+                    <label>Tên Quà Tặng / Vật Phẩm</label>
+                    <input type="text" id="rew-title" placeholder="VD: VIP 1 Ngày Không Quảng Cáo" required>
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label>Phân Loại</label>
+                      <select id="rew-category">
+                        <option value="vip_pass">Gói VIP SHAREit</option>
+                        <option value="telco_card">Thẻ Cào Điện Thoại</option>
+                        <option value="voucher">Voucher Mua Sắm</option>
+                        <option value="game_card">Thẻ Game</option>
+                        <option value="cash">Rút Tiền Mặt</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Giá Đổi (Xu)</label>
+                      <input type="number" id="rew-cost" value="500" min="10" required>
+                    </div>
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label>Giá Trị Quy Đổi</label>
+                      <input type="text" id="rew-val-str" value="1 Ngày VIP" placeholder="VD: 50.000 VNĐ" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Tồn Kho</label>
+                      <input type="number" id="rew-stock" value="999" min="0">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Icon URL</label>
+                    <input type="url" id="rew-icon" value="https://cdn-icons-png.flaticon.com/512/6941/6941697.png" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Mô Tả Quà Tặng</label>
+                    <textarea id="rew-desc" rows="2" placeholder="Mô tả quyền lợi vật phẩm..."></textarea>
+                  </div>
+                  <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-cart-plus"></i> Đăng Lên Cửa Hàng</button>
+                </form>
+              </div>
+
+              <div class="card-box">
+                <div class="table-header-flex">
+                  <h3><i class="fa-solid fa-gifts"></i> Danh Mục Vật Phẩm Đổi Thưởng</h3>
+                </div>
+                <div class="reward-grid" id="coin-rewards-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub 3: Redemptions Approval -->
+          <div class="coin-sub-pane" id="coin-sub-redemptions" style="display:none;">
+            <div class="table-card">
+              <div class="table-header-flex">
+                <h3><i class="fa-solid fa-user-check"></i> Danh Sách Yêu Cầu Đổi Quà & Rút Thưởng</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="table-coin-redemptions">
+                  <thead>
+                    <tr>
+                      <th>Mã Yêu Cầu</th>
+                      <th>Vật Phẩm Đổi</th>
+                      <th>Số Coin Trừ</th>
+                      <th>Thông Tin Nhận (SĐT/Ví/STK)</th>
+                      <th>Trạng Thái</th>
+                      <th>Thời Gian</th>
+                      <th>Thao Tác Duyệt</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub 4: Manual Adjustment -->
+          <div class="coin-sub-pane" id="coin-sub-adjust" style="display:none;">
+            <div class="card-box" style="max-width:600px;margin:0 auto;">
+              <h3><i class="fa-solid fa-sliders"></i> Cộng / Trừ Điểm Thưởng Coin Thủ Công</h3>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Tác vụ này sẽ cập nhật trực tiếp số dư của người dùng và ghi nhật ký kế toán kèm Audit log.</p>
+              <form id="form-adjust-coin">
+                <div class="form-group">
+                  <label>User ID hoặc Tên Người Dùng</label>
+                  <input type="text" id="adj-user" placeholder="VD: usr_01 hoặc Nguyễn Văn A" value="usr_01" required>
+                </div>
+                <div class="form-group">
+                  <label>Số Lượng Coin (+ để cộng thưởng, - để trừ phạt)</label>
+                  <input type="number" id="adj-amount" placeholder="VD: 500 hoặc -200" required>
+                </div>
+                <div class="form-group">
+                  <label>Lý Do Điều Chỉnh (Bắt buộc)</label>
+                  <textarea id="adj-reason" rows="3" placeholder="VD: Thưởng sự kiện cộng đồng chia sẻ file / Bồi thường lỗi kết nối..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-check-double"></i> Thực Hiện Điều Chỉnh Số Dư</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Sub 5: Ledger -->
+          <div class="coin-sub-pane" id="coin-sub-ledger" style="display:none;">
+            <div class="table-card">
+              <h3><i class="fa-solid fa-book-open"></i> Sổ Cái Kế Toán Kép (Double-Entry Idempotent Ledger)</h3>
+              <div class="table-responsive mt-10">
+                <table class="data-table" id="table-coin-ledger">
+                  <thead>
+                    <tr>
+                      <th>Transaction ID</th>
+                      <th>User / Device</th>
+                      <th>Loại Sự Kiện</th>
+                      <th>Số Coin</th>
+                      <th>Số Dư Sau Giao Dịch</th>
+                      <th>Thời Gian</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Tab 7: Logs -->
+        <section class="tab-pane" id="tab-logs">
+          <div class="table-card">
+            <div class="table-header-flex">
+              <h3><i class="fa-solid fa-shield-halved"></i> Nhật Ký Hoạt Động & Bảo Mật Hệ Thống</h3>
+              <input type="text" id="log-search" placeholder="🔍 Tìm theo tác vụ, IP, tài nguyên..." class="search-input">
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="table-audit-logs">
+                <thead>
+                  <tr>
+                    <th>Thời Gian</th>
+                    <th>Tác Vụ</th>
+                    <th>Tài Nguyên</th>
+                    <th>Chi Tiết</th>
+                    <th>Địa Chỉ IP</th>
+                    <th>Người Thực Hiện</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 8: API Tester -->
+        <section class="tab-pane" id="tab-tester">
+          <div class="card-box">
+            <div class="table-header-flex">
+              <div>
+                <h3><i class="fa-solid fa-terminal"></i> API Tester Console</h3>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:2px;">Tương tác và kiểm thử trực tiếp các REST API trên Cổng 6030.</p>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <label style="font-size:12px;color:var(--text-dim);">API Mẫu:</label>
+                <select id="tester-presets" class="btn-secondary" style="background:#0b1120;padding:6px 12px;">
+                  <option value="mcds_fetch">MCDS Fetch Banners</option>
+                  <option value="ads_strategy">Ads Strategy Get</option>
+                  <option value="healthz">Server Health Check</option>
+                  <option value="coin_balance">User Coin Balance</option>
+                  <option value="signaling_ping">WebRTC Ping</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="tester-flex mt-10">
+              <div class="form-group" style="flex: 1;">
+                <label>HTTP Method & Endpoint</label>
+                <div class="endpoint-input-group">
+                  <select id="tester-method">
+                    <option value="GET">GET</option>
+                    <option value="POST" selected>POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                  </select>
+                  <input type="text" id="tester-url" value="/api/v1/mcds/fetch">
+                  <button class="btn-primary" id="btn-send-api" style="white-space:nowrap;"><i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-10">
+              <label>Request Body (JSON)</label>
+              <textarea id="tester-body" rows="5" style="font-family:'Fira Code', monospace;font-size:12px;">{
+  "space_ids": ["home_top_banner"],
+  "context": { "country": "VN" }
+}</textarea>
+            </div>
+
+            <div class="form-group mt-10">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <label>Response Output</label>
+                <span id="tester-latency" style="font-size:11px;color:var(--text-dim);font-family:monospace;"></span>
+              </div>
+              <pre id="tester-response" class="response-box">// Kết quả phản hồi sẽ hiển thị tại đây...</pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 9: Admin Management & RBAC -->
+        <section class="tab-pane" id="tab-admins">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue"><i class="fa-solid fa-users-gear"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Tổng Quản Trị Viên</span>
+                <h3 class="kpi-value" id="kpi-admin-total">3</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-shield"></i> Tài khoản nội bộ</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon gold"><i class="fa-solid fa-crown"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Super Administrator</span>
+                <h3 class="kpi-value" id="kpi-admin-super">1</h3>
+                <span class="kpi-trend warning"><i class="fa-solid fa-key"></i> Toàn quyền Root</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Đang Hoạt Động</span>
+                <h3 class="kpi-value" id="kpi-admin-active">3</h3>
+                <span class="kpi-trend positive"><i class="fa-solid fa-bolt"></i> Trạng thái mở</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon purple"><i class="fa-solid fa-user-clock"></i></div>
+              <div class="kpi-data">
+                <span class="kpi-label">Đăng Nhập Gần Nhất</span>
+                <h3 class="kpi-value" id="kpi-admin-lastlogin" style="font-size:16px;">Vừa xong</h3>
+                <span class="kpi-trend neutral"><i class="fa-solid fa-location-dot"></i> 127.0.0.1</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-view mt-20">
+            <!-- Form Tạo Admin Mới -->
+            <div class="card-box">
+              <div class="card-header-flex">
+                <h3><i class="fa-solid fa-user-plus"></i> Thêm Quản Trị Viên Mới</h3>
+              </div>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">Cấp phát tài khoản và thiết lập phân quyền truy cập hệ sinh thái SHAREit.</p>
+
+              <form id="form-create-admin">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Tên Đăng Nhập (Username)</label>
+                    <input type="text" id="new-admin-user" placeholder="VD: dev_lead, tech_ops" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Mật Khẩu Khởi Tạo</label>
+                    <input type="password" id="new-admin-pass" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Tên Hiển Thị (Display Name)</label>
+                    <input type="text" id="new-admin-name" placeholder="VD: Nguyễn Văn A" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Email Liên Hệ</label>
+                    <input type="email" id="new-admin-email" placeholder="VD: admin@shareit.io" required>
+                  </div>
+                </div>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Vai Trò & Phân Quyền</label>
+                    <select id="new-admin-role">
+                      <option value="super_admin">Super Administrator (Toàn quyền Root)</option>
+                      <option value="admin" selected>Administrator (Quản trị nội dung & ads)</option>
+                      <option value="moderator">Moderator (Kiểm duyệt đổi thưởng Coin)</option>
+                      <option value="operator">Operator (Vận hành & Hỗ trợ kỹ thuật)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Avatar URL (Tùy chọn)</label>
+                    <input type="url" id="new-admin-avatar" value="https://cdn-icons-png.flaticon.com/512/3135/3135768.png">
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-block"><i class="fa-solid fa-shield-halved"></i> Tạo Tài Khoản Quản Trị Viên</button>
+              </form>
+            </div>
+
+            <!-- Bảng Danh Sách Admin -->
+            <div class="card-box">
+              <div class="table-header-flex">
+                <h3><i class="fa-solid fa-users"></i> Danh Sách Quản Trị Viên</h3>
+                <span class="badge-active" id="admin-count-badge">3 Tài khoản</span>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="table-admins">
+                  <thead>
+                    <tr>
+                      <th>Quản Trị Viên</th>
+                      <th>Email</th>
+                      <th>Vai Trò</th>
+                      <th>Trạng Thái</th>
+                      <th>Đăng Nhập Cuối</th>
+                      <th style="width:130px;">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Đổi Mật Khẩu Admin -->
+  <div class="modal-backdrop" id="modal-change-password" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-key" style="color:#f59e0b;"></i> Đổi Mật Khẩu Quản Trị</h3>
+        <button class="btn-close-modal" id="btn-close-modal-pass"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-change-password">
+        <input type="hidden" id="pass-target-id">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Tài Khoản Đang Đổi Mật Khẩu</label>
+            <input type="text" id="pass-target-user" readonly style="background:#0f172a;color:#38bdf8;font-weight:600;">
+          </div>
+          <div class="form-group">
+            <label>Mật Khẩu Mới</label>
+            <input type="password" id="pass-new" placeholder="Nhập mật khẩu mới (tối thiểu 6 ký tự)" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label>Xác Nhận Mật Khẩu Mới</label>
+            <input type="password" id="pass-confirm" placeholder="Nhập lại mật khẩu mới" required minlength="6">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-pass">Hủy</button>
+          <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Lưu Mật Khẩu Mới</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Chỉnh Sửa Quản Trị Viên -->
+  <div class="modal-backdrop" id="modal-edit-admin" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-user-pen" style="color:#38bdf8;"></i> Chỉnh Sửa Quản Trị Viên</h3>
+        <button class="btn-close-modal" id="btn-close-modal-edit"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="form-edit-admin">
+        <input type="hidden" id="edit-target-id">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Tên Đăng Nhập</label>
+            <input type="text" id="edit-admin-user" readonly style="background:#0f172a;color:#94a3b8;">
+          </div>
+          <div class="form-group">
+            <label>Tên Hiển Thị (Display Name)</label>
+            <input type="text" id="edit-admin-name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Quản Trị</label>
+            <input type="email" id="edit-admin-email" required>
+          </div>
+          <div class="form-group">
+            <label>Vai Trò & Phân Quyền</label>
+            <select id="edit-admin-role">
+              <option value="super_admin">Super Administrator (Toàn quyền Root)</option>
+              <option value="admin">Administrator (Quản trị nội dung & ads)</option>
+              <option value="moderator">Moderator (Kiểm duyệt đổi thưởng Coin)</option>
+              <option value="operator">Operator (Vận hành & Hỗ trợ kỹ thuật)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Trạng Thái Tài Khoản</label>
+            <select id="edit-admin-status">
+              <option value="true">🟢 Hoạt Động (Active)</option>
+              <option value="false">🔴 Tạm Khóa (Suspended)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-edit">Hủy</button>
+          <button type="submit" class="btn-primary"><i class="fa-solid fa-check"></i> Lưu Cập Nhật</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+

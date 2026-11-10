@@ -1,0 +1,38 @@
+{
+  "project_id": "share-now-c5a02",
+  "project_number": "649913398819",
+  "service_account_file": "share-now-c5a02-ca18d9d86ddc.json",
+  "service_account_email": "ga4-955@share-now-c5a02.iam.gserviceaccount.com",
+  "property_id": "558520028",
+  "package_name": "com.nextai.sharenow",
+  "date_ranges": {
+    "start_date": "30daysAgo",
+    "end_date": "today"
+  },
+  "output_directory": "./output",
+  "currency": "USD",
+  "events_of_interest": [
+    "first_open",
+    "app_open_custom",
+    "screen_view",
+    "click_card_send",
+    "click_card_receive",
+    "transfer_send_click",
+    "transfer_receive_click",
+    "p2p_device_discovered",
+    "p2p_connected",
+    "transfer_session_start",
+    "transfer_file_success",
+    "transfer_session_completed",
+    "clean_junk_executed",
+    "webshare_server_started",
+    "ad_impression",
+    "ad_click_tracked",
+    "ad_revenue_tracked",
+    "paywall_view",
+    "in_app_purchased",
+    "inapp_purchased",
+    "subscription_purchase_success"
+  ]
+}
+

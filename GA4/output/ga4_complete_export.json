@@ -1,0 +1,12 @@
+{
+  "status": "benchmark_data_ready",
+  "timestamp": "2026-10-31T12:22:24.543957",
+  "summary": {
+    "total_users": 12500,
+    "total_ad_revenue_usd": 562.45,
+    "total_iap_revenue_usd": 9235.0,
+    "total_revenue_usd": 9797.45,
+    "google_ads_spend_usd": 2362.0,
+    "overall_roas": 4.15
+  }
+}

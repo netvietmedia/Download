@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Branding & Core -->
+    <string name="app_name">Share Now</string>
+    <string name="app_subtitle">Ultra-Fast P2P File Transfer</string>
+    <string name="hero_send_sub">High speed 45MB/s</string>
+    <string name="hero_receive_sub">Radar auto-connect</string>
+    <string name="btn_upgrade">UPGRADE</string>
+    <string name="btn_clean_now">CLEAN NOW</string>
+    <string name="btn_open_view">OPEN</string>
+    <string name="coin_balance_format">%s Coins</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_files">Files</string>
+    <string name="nav_clean">Clean</string>
+    <string name="nav_me">Me</string>
+
+    <!-- Hero Actions -->
+    <string name="action_send">SEND</string>
+    <string name="action_receive">RECEIVE</string>
+    <string name="action_webshare">WebShare</string>
+    <string name="action_clone">Phone Clone</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_close">CLOSE</string>
+    <string name="btn_understand">UNDERSTOOD</string>
+    <string name="btn_agree">AGREE</string>
+    <string name="btn_next">NEXT</string>
+    <string name="btn_retry">RETRY</string>
+
+    <!-- Home Feature Cards -->
+    <string name="vip_title">VIP Upgrade</string>
+    <string name="vip_subtitle">Unlimited transfers, 100% Ad-Free</string>
+    <string name="cleanit_title">Clean &amp; Boost</string>
+    <string name="cleanit_desc">Free up storage &amp; cool down CPU</string>
+    <string name="received_files_title">Received Files</string>
+    <string name="received_files_desc">View &amp; manage all received files</string>
+    <string name="safebox_title">Safebox Vault</string>
+    <string name="safebox_desc">AES-256 secure encrypted private files</string>
+    <string name="muslim_title">Prayer Times &amp; Qibla</string>
+    <string name="muslim_desc">Today\'s prayer schedule • Qibla compass</string>
+    <string name="coin_title">Reward Center</string>
+    <string name="coin_subtitle">Check in daily to earn coins</string>
+
+    <!-- File Categories -->
+    <string name="section_categories">FILE CATEGORIES</string>
+    <string name="category_apps">Apps</string>
+    <string name="category_photos">Photos</string>
+    <string name="category_music">Music</string>
+    <string name="category_videos">Videos</string>
+    <string name="category_docs">Documents</string>
+    <string name="category_zips">Archives</string>
+
+    <!-- Me Tab Items -->
+    <string name="me_username_default">Share Now User</string>
+    <string name="me_device_status">Ready for P2P connection</string>
+    <string name="me_vip_plan_title">Share Now VIP Membership</string>
+    <string name="me_vip_upgrade_btn">UPGRADE NOW</string>
+    <string name="me_vip_features">• Maximum transfer speed up to 100 MB/s\n• Unlimited transfer file size &amp; quantity\n• 100% Ad-Free smooth experience\n• 24/7 Priority technical support</string>
+    <string name="me_section_legal">TERMS &amp; LEGAL</string>
+    <string name="me_tos">Terms of Service</string>
+    <string name="me_privacy_policy">Privacy Policy</string>
+    <string name="me_section_appearance">APPEARANCE &amp; SYSTEM</string>
+    <string name="me_theme">Theme (Light / Dark)</string>
+    <string name="me_theme_system">System Default ⚙️</string>
+    <string name="me_theme_light">Light ☀️</string>
+    <string name="me_theme_dark">Dark 🌙</string>
+    <string name="me_theme_dialog_title">Choose Theme</string>
+    <string name="me_language">Language</string>
+    <string name="me_language_dialog_title">Select Language</string>
+    <string name="me_section_about">ABOUT</string>
+    <string name="me_about">About Share Now</string>
+    <string name="me_version">v16</string>
+    <string name="me_footer_copyright">Share Now • High Speed Offline File Transfer\n© 2026 NextAI Inc. All rights reserved.</string>
+
+    <!-- Send Activity -->
+    <string name="send_title">Select Files</string>
+    <string name="tab_recent">RECENT</string>
+    <string name="tab_contacts">CONTACTS</string>
+    <string name="tab_files">FILES</string>
+    <string name="tab_videos">VIDEOS</string>
+    <string name="tab_apps">APPS</string>
+    <string name="tab_photos">PHOTOS</string>
+    <string name="tab_music">MUSIC</string>
+    <string name="sub_installed">Installed</string>
+    <string name="sub_not_installed">Packages</string>
+    <string name="sub_safebox">Safebox</string>
+    <string name="sub_recent">Recent</string>
+    <string name="sub_folders">Folders</string>
+    <string name="sub_received">Received</string>
+    <string name="sub_sent">Sent</string>
+    <string name="group_today">Today</string>
+    <string name="group_yesterday">Yesterday</string>
+    <string name="group_older">Older</string>
+    <string name="group_apps">Apps</string>
+    <string name="group_contacts">Contacts</string>
+    <string name="group_files">Files</string>
+    <string name="selected_count_format">%d file(s) selected</string>
+    <string name="selected_total_size">Total: %s</string>
+    <string name="no_files_found">No files found</string>
+    <string name="permission_media_granted">Storage &amp; media permission granted</string>
+    <string name="toast_search_hint">Searching files...</string>
+    <string name="toast_select_at_least_one">Please select at least 1 file to send!</string>
+    <string name="toast_preparing_share">Preparing to share %s...</string>
+    <string name="toast_cannot_share_file">Cannot open file \'%s\' for sharing</string>
+    <string name="toast_share_error">Share error: %s</string>
+    <string name="share_chooser_title">Share via</string>
+    <string name="view_mode_grid">Grid View (2 Columns)</string>
+    <string name="view_mode_list">List View (With Share)</string>
+
+    <!-- Receive Activity -->
+    <string name="receive_screen_title">Waiting to Receive</string>
+    <string name="receive_peer_detected_title">✓ Sender Device Detected!</string>
+    <string name="receive_peer_detected_desc">Establishing P2P handshake &amp; receiving files...</string>
+    <string name="receive_scanning_status">Scanning Wi-Fi Direct &amp; P2P Hotspot...</string>
+    <string name="receive_qr_prompt">Scan QR code to connect instantly</string>
+    <string name="receive_btn_start">RECEIVE FILES (START TRANSFER)</string>
+    <string name="receive_rejected_toast">Declined files from %s</string>
+    <string name="receive_cancelled_toast">Receive cancelled</string>
+
+    <!-- Device Discovery Activity -->
+    <string name="discovery_title">Find Receiver Device</string>
+    <string name="discovery_scanning">Scanning for nearby receiver devices...</string>
+    <string name="discovery_hint">Please make sure the other device tapped \'RECEIVE\' and is on the same Wi-Fi or Hotspot</string>
+    <string name="discovery_discovered_header">DISCOVERED DEVICES:</string>
+    <string name="discovery_rescan_btn">🔍 Scan Again</string>
+    <string name="discovery_waiting_acceptance">Sending request to %s... Waiting for approval</string>
+    <string name="discovery_connecting">Sending transfer request... Waiting for approval</string>
+    <string name="discovery_rescanning_toast">Rescanning network for devices...</string>
+
+    <!-- Transfer Progress Activity -->
+    <string name="progress_title">Transfer Progress</string>
+    <string name="progress_crc_verified">✓ Data integrity verified (CRC32 Checksum)</string>
+    <string name="progress_file_list_header">FILE LIST</string>
+    <string name="progress_transferring_btn">TRANSFERRING FILES...</string>
+    <string name="progress_completed_btn">TRANSFER COMPLETED &amp; CLOSE</string>
+    <string name="progress_toast_transferring">Transferring data at high speed...</string>
+    <string name="progress_toast_success_recv">✓ Files received successfully! Saved in Download/ShareNow</string>
+    <string name="progress_toast_success_send">✓ All files sent to %s successfully!</string>
+    <string name="progress_open_file_prompt">Opening: %s</string>
+    <string name="progress_no_app_to_open">No app found to open this file</string>
+    <string name="progress_file_saved_at">File saved securely at Download/ShareNow/%s</string>
+    <string name="progress_waiting">Waiting...</string>
+    <string name="progress_status_completed">Completed</string>
+    <string name="progress_status_failed">Failed</string>
+
+    <!-- Received Files Activity -->
+    <string name="received_files_header">Received Files</string>
+    <string name="received_files_storage_dir">📁 Storage directory:</string>
+    <string name="received_files_storage_path">Internal Storage &gt; Download &gt; ShareNow</string>
+    <string name="received_empty_title">No files received yet</string>
+    <string name="received_empty_desc">Files you receive from other devices will appear here and can be opened directly.</string>
+    <string name="received_files_count_format">%d file(s)</string>
+    <string name="received_summary_has_files">%d file(s) received • Open &amp; manage</string>
+    <string name="received_summary_empty">No files yet • Ready to receive</string>
+
+    <!-- Cleanit Activity -->
+    <string name="clean_title">Clean &amp; Boost</string>
+    <string name="clean_gauge_sub">Junk to clean</string>
+    <string name="clean_app_cache">App Cache</string>
+    <string name="clean_app_cache_desc">Image cache, temporary app data</string>
+    <string name="clean_temp_files">Temporary Files (Temp)</string>
+    <string name="clean_temp_files_desc">Error logs, obsolete cache files</string>
+    <string name="clean_apk_files">Obsolete APK Installers</string>
+    <string name="clean_apk_files_desc">Installed .apk setup files</string>
+    <string name="clean_empty_folders">Empty Folders</string>
+    <string name="clean_empty_folders_desc">Leftover directories without content</string>
+    <string name="clean_action_btn">CLEAN JUNK NOW</string>
+    <string name="clean_success_toast">Successfully freed %d MB of memory!</string>
+
+    <!-- Safebox Activity -->
+    <string name="safebox_header">Safebox (Encrypted Vault)</string>
+    <string name="safebox_pin_prompt">Enter Safebox PIN</string>
+    <string name="safebox_aes_desc">Secured with AES-GCM 256-bit encryption</string>
+    <string name="safebox_key_del">DEL</string>
+    <string name="safebox_btn_unlock">UNLOCK SAFEBOX</string>
+    <string name="safebox_locked_header">ENCRYPTED LOCKED FILES</string>
+    <string name="safebox_add_files">ADD PROTECTED FILES</string>
+    <string name="safebox_unlock_success">Safebox unlocked successfully!</string>
+    <string name="safebox_locked_toast">Safebox secured &amp; locked</string>
+    <string name="safebox_select_file_prompt">Please select files to encrypt &amp; protect</string>
+
+    <!-- Paywall / VIP Activity -->
+    <string name="paywall_header">Share Now Premium VIP</string>
+    <string name="paywall_hero_title">Experience VIP Class</string>
+    <string name="paywall_hero_subtitle">Unlock all ultra-fast premium features</string>
+    <string name="paywall_section_benefits">EXCLUSIVE BENEFITS</string>
+    <string name="paywall_benefit_1">Unlimited Turbo transfer speed up to 60MB/s</string>
+    <string name="paywall_benefit_2">100% Ad-Free experience</string>
+    <string name="paywall_benefit_3">Unlimited encrypted Safebox storage</string>
+    <string name="paywall_benefit_4">24/7 Priority technical support</string>
+    <string name="paywall_section_plans">SUBSCRIPTION PLANS</string>
+    <string name="paywall_plan_lifetime">Lifetime VIP</string>
+    <string name="paywall_plan_lifetime_price">$99</string>
+    <string name="paywall_plan_lifetime_sub">One-time payment • Lifetime access</string>
+    <string name="paywall_plan_monthly">Monthly Plan</string>
+    <string name="paywall_plan_monthly_price">$49</string>
+    <string name="paywall_plan_monthly_sub">Auto-renews monthly • Cancel anytime</string>
+    <string name="paywall_plan_weekly">Weekly Plan</string>
+    <string name="paywall_plan_weekly_price">$9</string>
+    <string name="paywall_plan_weekly_sub">Auto-renews weekly • Flexible access</string>
+    <string name="paywall_btn_upgrade">UPGRADE TO VIP NOW</string>
+    <string name="paywall_success_toast">Congratulations! Share Now VIP activated successfully.</string>
+    <string name="paywall_badge_best_value">BEST VALUE</string>
+    <string name="paywall_disclaimer">Guaranteed secure checkout • Cancel anytime</string>
+    <string name="paywall_tag_vip">SHARE NOW VIP</string>
+
+    <!-- 3-Dots More Menu items & Dialogs -->
+    <string name="menu_invite">Invite Friends</string>
+    <string name="menu_scan_qr">Scan QR Code</string>
+    <string name="menu_connect_pc">Connect to PC</string>
+    <string name="menu_connect_ios">Connect to iOS</string>
+    <string name="menu_share_kaios">Share with KaiOS</string>
+    <string name="menu_phone_clone">Phone Clone</string>
+    <string name="menu_group_share">Group Share</string>
+    <string name="menu_near_play">Near Play</string>
+    <string name="menu_invite_text">Experience ultra-fast file transfer with Share Now! 45MB/s speed, no Internet or data needed. Download now at: https://play.google.com/store/apps/details?id=com.nextai.sharenow</string>
+    <string name="menu_invite_chooser">Invite friends to use Share Now</string>
+    <string name="dialog_qr_title">Scan QR Code Connection</string>
+    <string name="dialog_qr_desc">Point camera at the QR code on receiver\'s device to automatically pair and transfer at high speed.</string>
+    <string name="dialog_qr_open_radar">OPEN RECEIVE RADAR</string>
+    <string name="dialog_connect_pc_title">Connect to PC (WebShare)</string>
+    <string name="dialog_connect_pc_desc">1. Connect PC and phone to the same Wi-Fi network (or this phone\'s Hotspot).\n\n2. Open Chrome, Edge or browser on PC and visit:\n👉 %s\n\n3. Upload and download files directly both ways!</string>
+    <string name="dialog_connect_pc_copy">COPY LINK</string>
+    <string name="dialog_connect_pc_copied">Copied: %s</string>
+    <string name="dialog_connect_ios_title">Connect to iOS (iPhone / iPad)</string>
+    <string name="dialog_connect_ios_desc">1. Turn on Personal Hotspot or connect both devices to the same Wi-Fi.\n\n2. Open Camera app on iPhone/iPad and scan the QR code on the RECEIVE screen.\n\n3. Or open Safari on iPhone and browse to this device\'s IP to receive files immediately.</string>
+    <string name="dialog_connect_ios_btn">OPEN QR CODE</string>
+    <string name="dialog_share_kaios_title">Share with KaiOS (Feature Phones)</string>
+    <string name="dialog_share_kaios_desc">1. Turn on Wi-Fi Hotspot on this Share Now device.\n\n2. On KaiOS phone, connect to this Wi-Fi.\n\n3. Open KaiOS browser and enter the IP address to receive files for free.</string>
+    <string name="dialog_phone_clone_title">Phone Clone</string>
+    <string name="dialog_phone_clone_desc">Transfer all data (Apps, photos, videos, contacts) from old phone to new phone securely and quickly.</string>
+    <string name="dialog_phone_clone_new">NEW PHONE (RECEIVE)</string>
+    <string name="dialog_phone_clone_old">OLD PHONE (SEND)</string>
+    <string name="dialog_group_share_title">Group Share</string>
+    <string name="dialog_group_share_desc">Transfer files simultaneously to multiple devices in the same room without Internet.</string>
+    <string name="dialog_group_share_create">CREATE ROOM</string>
+    <string name="dialog_group_share_join">JOIN ROOM</string>
+    <string name="dialog_near_play_title">Near Play</string>
+    <string name="dialog_near_play_desc">Multiplayer offline gaming connection with nearby friends over Direct Wi-Fi.</string>
+    <string name="dialog_near_play_scan">SCAN NEARBY FRIENDS</string>
+    <string name="dialog_near_play_toast">Scanning for nearby devices on same network...</string>
+
+    <!-- Me Tab Dialogs -->
+    <string name="dialog_tos_title">Terms of Service</string>
+    <string name="dialog_tos_content">Welcome to Share Now!\n\n1. Acceptance of Terms:\nBy using Share Now, you agree to comply with all applicable laws regarding lawful data transfer.\n\n2. Intellectual Property:\nShare Now is a peer-to-peer (P2P) file transfer technology platform. Users are solely responsible for the content transmitted.\n\n3. Offline Usage:\nFile transfers operate over local Direct Wi-Fi and Hotspots without consuming your cellular mobile data.\n\n4. Data Security:\nAll data streams are verified with CRC32 checksums to ensure file integrity and tamper-free transfer.</string>
+    <string name="dialog_policy_title">Privacy Policy</string>
+    <string name="dialog_policy_content">Share Now Privacy Commitment:\n\n1. Zero Server File Storage:\nData is transmitted directly from sender to receiver via peer-to-peer (P2P) connection. We never store any of your photos, videos, or files on servers.\n\n2. App Permissions:\n• Storage/Media: Only used to read files you choose to send and save received files.\n• Location/Nearby Devices: Required by Android OS to scan and discover nearby Wi-Fi Direct devices.\n\n3. No Third-Party Sharing:\nYour personal information and file data are never shared, tracked, or sold to third parties.\n\n4. Official Online Policy:\nhttps://sites.google.com/view/nextai-share-now/</string>
+    <string name="dialog_about_title">About Share Now</string>
+    <string name="dialog_about_content">Share Now - Ultra-Fast P2P File Transfer\n\n• Version: 0.1.2 (Build 3)\n• Engine: P2P Turbo High-Speed Core\n• Privacy Policy: https://sites.google.com/view/nextai-share-now/\n• Supported Platforms: Android, iOS, Windows PC\n\n© 2026 NextAI Inc. All rights reserved.</string>
+    <string name="btn_view_online">View Online Policy</string>
+    <string name="privacy_policy_url">https://sites.google.com/view/nextai-share-now/</string>
+
+    <!-- Incoming & Retry Dialogs -->
+    <string name="dialog_incoming_title">Incoming File Transfer Request</string>
+    <string name="dialog_incoming_subtitle">A nearby device wants to send you files via P2P Direct:</string>
+    <string name="dialog_incoming_decline">DECLINE</string>
+    <string name="dialog_incoming_accept">ACCEPT</string>
+    <string name="dialog_retry_title">Connection Interrupted</string>
+    <string name="dialog_retry_subtitle">Transfer stopped unexpectedly. Please reconnect Wi-Fi Direct and retry.</string>
+    <string name="retry_guide_title">💡 Troubleshooting Guide:</string>
+    <string name="retry_guide_step1">• Ensure receiving device has Share Now open.</string>
+    <string name="retry_guide_step2">• Ensure both devices are connected to the same Wi-Fi.</string>
+    <string name="retry_guide_step3">• Tap \'RETRY CONNECTION\' or select \'CONTINUE\'.</string>
+
+    <!-- Files Tab / WhatsApp / Doc filters -->
+    <string name="files_whatsapp_title">WhatsApp Transfer</string>
+    <string name="files_whatsapp_status">Status</string>
+    <string name="files_whatsapp_media">Media</string>
+    <string name="files_doc_title">Documents</string>
+    <string name="files_filter_all">ALL</string>
+    <string name="files_filter_pdf">PDF</string>
+    <string name="files_filter_excel">EXCEL</string>
+    <string name="files_filter_ppt">PPT</string>
+    <string name="files_filter_txt">TXT</string>
+    <string name="files_filter_doc">DOC</string>
+    <string name="files_filter_wps">WPS</string>
+    <string name="files_zip_title">Zip Archives</string>
+    <string name="files_large_title">Large Files</string>
+    <string name="files_internal_storage">Internal shared storage</string>
+    <string name="files_count_zero">0 files</string>
+
+    <!-- Coin Store Extra -->
+    <string name="coin_default_balance">1,250 Coins</string>
+    <string name="coin_store_title">Reward Center &amp; Gifts</string>
+    <string name="coin_streak_days">Daily Check-in Streak: 5 Days</string>
+    <string name="coin_claim_daily_btn">CLAIM TODAY (+50 COINS)</string>
+    <string name="coin_daily_tasks_title">DAILY TASKS</string>
+    <string name="coin_task_transfer">Transfer any file via P2P</string>
+    <string name="coin_task_transfer_progress">Progress: 1/1 • Completed</string>
+    <string name="coin_task_30">+30 Coins</string>
+    <string name="coin_task_clean">Clean app cache once</string>
+    <string name="coin_task_clean_progress">Progress: 0/1</string>
+    <string name="coin_task_20">+20 Coins</string>
+
+    <!-- General & Devices -->
+    <string name="file_item_default_name">File item</string>
+    <string name="device_ready_receive">192.168.1.2 • Ready to receive</string>
+    <string name="device_send_to_btn">SEND TO</string>
+    <string name="share_social_desc">Share via social apps</string>
+    <string name="qr_code_desc">Share Now QR Code</string>
+
+    <!-- Muslim Daily Extra -->
+    <string name="muslim_location_hanoi">Current Location: Hanoi, VN</string>
+    <string name="muslim_next_prayer_sample">Next prayer: Asr at 15:20</string>
+    <string name="muslim_prayer_schedule_title">5 DAILY PRAYER SCHEDULE</string>
+    <string name="muslim_fajr_title">Fajr (Dawn)</string>
+    <string name="muslim_dhuhr_title">Dhuhr (Noon)</string>
+    <string name="muslim_asr_title">Asr (Afternoon) • Upcoming</string>
+    <string name="muslim_maghrib_title">Maghrib (Sunset)</string>
+    <string name="muslim_isha_title">Isha (Night)</string>
+    <string name="muslim_qibla_compass">Qibla Direction Compass</string>
+    <string name="muslim_qibla_dir_sample">288.4° North-West (Toward Mecca)</string>
+
+    <!-- Safebox Extra -->
+    <string name="safebox_security_title">SECURITY SPECIFICATIONS</string>
+    <string name="safebox_ready_title">Safebox Vault is Ready</string>
+    <string name="safebox_empty_desc">No private files in vault yet. You can encrypt and securely store sensitive photos, videos, and documents here.</string>
+    <string name="safebox_features_desc">• AES-GCM 256-bit military-grade hardware encryption\n• Isolated sandbox partition, completely hidden from system gallery\n• 4-digit PIN required on every unlock</string>
+
+    <!-- Splash & Intro Onboarding Flow -->
+    <string name="splash_tagline">Fast, Secure &amp; Offline File Sharing</string>
+    <string name="splash_version_tag">Turbo P2P Core • Military CRC32</string>
+    <string name="intro_btn_skip">SKIP</string>
+    <string name="intro_btn_get_started">GET STARTED</string>
+    <string name="intro_send_title">Ultra-Fast File Transfer</string>
+    <string name="intro_send_desc">Send videos, APKs, photos, and music at speeds up to 100 MB/s without cellular data or Wi-Fi router.</string>
+    <string name="intro_send_feat1">🚀 100 MB/s P2P Direct — 200x faster than Bluetooth</string>
+    <string name="intro_send_feat2">📂 Grid &amp; List Views — Effortlessly select multiple items &amp; folders</string>
+    <string name="intro_send_feat3">🌐 Universal Social Share — Share files to any social platform instantly</string>
+    <string name="intro_receive_title">Radar Auto-Connect &amp; Receive</string>
+    <string name="intro_receive_desc">Receive files effortlessly with radar auto-discovery or 1-tap QR scanning. 100% offline.</string>
+    <string name="intro_receive_feat1">📡 Smart Radar Discovery — Auto-detects nearby devices in milliseconds</string>
+    <string name="intro_receive_feat2">📱 QR Code Direct Pairing — Point and connect instantly without manual pairing</string>
+    <string name="intro_receive_feat3">🔒 CRC32 Checksum Security — Bit-level verification guarantees zero corrupted files</string>
+    <string name="intro_lang_title">Choose Your Language</string>
+    <string name="intro_lang_desc">Select your preferred language. You can change this anytime in the Me menu.</string>
+
+    <!-- WebShare (Connect to PC) -->
+    <string name="webshare_title">Connect to PC (WebShare)</string>
+    <string name="webshare_subtitle">High-speed two-way file sharing via Web browser</string>
+    <string name="webshare_wifi_status">Wi-Fi: %s</string>
+    <string name="webshare_status_online">ONLINE</string>
+    <string name="webshare_status_offline">OFFLINE</string>
+    <string name="webshare_step1_desc">1. Connect your PC and phone to the same Wi-Fi network (or connect PC to this phone\'s Hotspot).</string>
+    <string name="webshare_step2_desc">2. Open Chrome, Edge, Safari or Firefox on PC and visit:</string>
+    <string name="btn_copy">COPY</string>
+    <string name="webshare_qr_title">Instant QR Code Pairing</string>
+    <string name="webshare_qr_desc">Point camera on another phone, iPad or tablet at this QR code to access WebShare immediately</string>
+    <string name="webshare_chrome_tip">Tip: If PC Chrome shows \"Insecure download blocked\" (due to local HTTP), click Chrome\'s top-right Downloads icon ➔ select \"Keep\" to finish downloading.</string>
+    <string name="webshare_activity_title">Live Transfer Activity</string>
+    <string name="webshare_stat_received">Received from PC</string>
+    <string name="webshare_stat_downloaded">Downloaded by PC</string>
+    <string name="webshare_btn_view_received">RECEIVED FILE</string>
+    <string name="webshare_btn_stop">STOP SERVER</string>
+    <string name="webshare_btn_start">START SERVER</string>
+    <string name="toast_copied_url">URL copied to clipboard: %s</string>
+    <string name="toast_webshare_received_file">Received file from PC: %s</string>
+
+    <!-- File Search Strings -->
+    <string name="search_files_hint">Search files, apps, music...</string>
+    <string name="search_results">Search Results</string>
+    <string name="search_all_results">All Matching Files</string>
+    <string name="search_no_results_for">No files matching \"%s\"</string>
+
+    <!-- Exit Confirmation Dialog -->
+    <string name="dialog_exit_title">Do You Want Exit</string>
+    <string name="dialog_exit_desc">Are you sure you want to exit the application?</string>
+    <string name="dialog_exit_yes">Yes</string>
+    <string name="dialog_exit_cancel">Cancel</string>
+
+    <!-- Safebox Extra -->
+    <string name="safebox_btn_lock_exit">LOCK VAULT &amp; EXIT</string>
+
+    <!-- Dialogs & Buttons -->
+    <string name="dialog_retry_direct_failed">Cannot Connect Directly</string>
+    <string name="dialog_retry_btn_simulate">CONTINUE SENDING (SIMULATE PROGRESS)</string>
+    <string name="btn_open_file">OPEN</string>
+    <string name="empty_no_files">No files found</string>
+
+    <!-- Transfer & Progress Localized Format Strings -->
+    <string name="status_found_receivers">Found %1$d receiving device(s)!</string>
+    <string name="status_sending_progress">Sending %1$s (%2$d%%)</string>
+    <string name="sender_device_default">Sender Device</string>
+    <string name="receiver_device_default">Receiver Device</string>
+    <string name="progress_receiving_from">Receiving files from: %1$s</string>
+    <string name="progress_sending_to">Sending files to: %1$s</string>
+    <string name="progress_received_files_header">RECEIVED FILES (%1$d FILES • SAVED TO DOWNLOAD/SHARENOW):</string>
+    <string name="progress_sending_files_header">FILES BEING SENT (%1$d FILES):</string>
+    <string name="progress_completed_badge">Completed</string>
+    <string name="selected_summary_format">%1$d files • %2$s</string>
+    <string name="device_ready_receive_format">%1$s • Ready to receive files</string>
+
+    <!-- WebShare Realtime Activity & Network Status -->
+    <string name="webshare_hotspot_lan">Hotspot / Local Network</string>
+    <string name="webshare_lan">Local Network (LAN)</string>
+    <string name="webshare_stat_files">%1$d files</string>
+    <string name="webshare_stat_zero">0 files</string>
+    <string name="webshare_initial_log">[Ready] WebShare server initialized...</string>
+    <string name="webshare_log_started">Starting WebShare server at %1$s</string>
+    <string name="webshare_log_stopped">WebShare server stopped</string>
+    <string name="webshare_log_ready">Server ready! Listening on port %1$d</string>
+    <string name="webshare_log_closed">Server connection closed</string>
+    <string name="webshare_log_connected">Device connected: %1$s</string>
+    <string name="webshare_log_pc_downloaded">PC downloaded: %1$s (%2$s)</string>
+    <string name="webshare_log_pc_received">Received file from PC: %1$s (%2$s)</string>
+    <string name="webshare_log_error">Error: %1$s</string>
+
+    <!-- Me / Settings Language Card -->
+    <string name="me_language_card_title">Language Settings</string>
+    <string name="me_language_card_desc">Change application language (Default: English)</string>
+    <string name="me_language_default_badge">Default</string>
+
+    <!-- P2P Notifications -->
+    <string name="p2p_notif_channel_name">File Transfer Request</string>
+    <string name="p2p_notif_channel_desc">Notifications when another device wants to send files</string>
+    <string name="p2p_notif_incoming_title">File receive request from %1$s</string>
+    <string name="p2p_notif_incoming_content">Sending %1$d files (%2$s) • Tap to receive now</string>
+    <string name="p2p_open_file_with">Open file with</string>
+
+    <!-- WebShare Background Service & Notifications -->
+    <string name="webshare_notification_channel_name">WebShare PC Connection</string>
+    <string name="webshare_notification_channel_desc">Shows WebShare active status and quick actions</string>
+    <string name="webshare_notification_title">WebShare is Active</string>
+    <string name="webshare_notification_desc">PC can access files at: %1$s</string>
+    <string name="webshare_notification_action_stop">STOP</string>
+    <string name="webshare_notification_action_open">OPEN</string>
+    <string name="webshare_background_running_hint">WebShare is running in the background. Keep PC connected.</string>
+    <string name="p2p_notif_transfer_success_title">File received successfully! 🎉</string>
+    <string name="p2p_notif_transfer_success_content">Successfully received %1$d files from %2$s</string>
+    <string name="p2p_handshake_accepted_msg">%1$s accepted connection and is ready to receive files</string>
+    <string name="p2p_handshake_rejected_msg">%1$s declined, find another device</string>
+    <string name="p2p_dialog_incoming_confirm">Device %1$s wants to connect and send %2$d files (%3$s). Do you agree to connect and receive files?</string>
+    <string name="delete_selected_files">Delete (%d)</string>
+    <string name="delete_confirm_title">Delete Files</string>
+    <string name="delete_confirm_msg">Are you sure you want to permanently delete %d selected file(s)?</string>
+    <string name="delete_success_toast">Successfully deleted %d file(s)</string>
+    <string name="select_all">Select All</string>
+    <string name="deselect_all">Deselect All</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_system_photo_picker">Pick from System</string>
+    <string name="btn_system_photo_picker_desc">Open System Photo Picker to select photos and videos</string>
+    <!-- Browser & Universal Video Downloader Tab -->
+    <string name="nav_browser">Browser</string>
+    <string name="browser_url_hint">Search or enter video URL from any website...</string>
+    <string name="browser_go">Go</string>
+    <string name="browser_paste_card_title">Universal Video Sniffer</string>
+    <string name="browser_paste_card_desc">Paste any link or browse any website — auto-detects MP4/HLS streams</string>
+    <string name="browser_paste_btn">📋 Paste Link &amp; Detect Video</string>
+    <string name="browser_downloads_card_title">Downloads &amp; Progress</string>
+    <string name="browser_downloads_card_subtitle">View active downloads &amp; saved videos</string>
+    <string name="browser_open">Open →</string>
+    <string name="browser_quick_sites_title">POPULAR VIDEO PLATFORMS &amp; SEARCH</string>
+    <string name="browser_how_to_title">💡 How to Download Videos from Any Website</string>
+    <string name="browser_how_to_steps">1. Enter any website URL or search on Google above, or tap a platform shortcut.\n2. Play the video on the website — our AI Sniffer automatically detects MP4 &amp; HLS (.m3u8) streams.\n3. Tap the glowing Download button at the bottom-right to choose quality (1080p, 720p, 480p, MP3) and save to your device!</string>
+    <string name="browser_sniffer_detected_title">Video Detected Ready to Download</string>
+    <string name="browser_select_quality">SELECT QUALITY / FORMAT</string>
+    <string name="browser_quality_1080p_desc">1080p Full HD • Best Quality</string>
+    <string name="browser_quality_720p_desc">720p HD • Fast Download</string>
+    <string name="browser_quality_480p_desc">480p SD • Data Saver</string>
+    <string name="browser_quality_mp3_desc">Audio Only (.MP3) • Music / Podcast</string>
+    <string name="browser_btn_play_preview">▶ Preview</string>
+    <string name="browser_btn_download_now">⬇ Download Now</string>
+    <string name="browser_tabs_title">Open Browser Tabs</string>
+    <string name="browser_new_tab">+ New Tab</string>
+    <string name="browser_close_all_tabs">Close All Tabs</string>
+    <string name="browser_active_tab">● Active</string>
+    <string name="browser_dm_title">📥 Video Downloads</string>
+    <string name="browser_dm_open_folder">Folder</string>
+    <string name="browser_dm_active_section">ACTIVE DOWNLOADS</string>
+    <string name="browser_dm_no_active">No active downloads right now</string>
+    <string name="browser_dm_completed_section">COMPLETED VIDEOS (SAVED TO DEVICE)</string>
+    <string name="browser_dm_no_completed">No downloaded videos yet. Browse any site and tap the download button!</string>
+    <string name="browser_btn_play">▶ Play</string>
+    <string name="browser_btn_save_gallery">📲 Save to Gallery</string>
+    <string name="browser_toast_clipboard_empty">Clipboard is empty!</string>
+    <string name="browser_toast_analyzing_url">🔍 Analyzing video link...</string>
+    <string name="browser_toast_video_detected">🎬 Video detected! Tap the Download button.</string>
+    <string name="browser_toast_no_video_yet">Play a video on the page first so the sniffer can capture its stream!</string>
+    <string name="browser_toast_download_started">🚀 Download started: %1$s (%2$s)</string>
+    <string name="browser_toast_saved_gallery">✅ Saved to Gallery (Movies/ShareNow)!</string>
+    <string name="browser_toast_save_gallery_failed">❌ Could not export to Gallery. File is still in Received Files.</string>
+    <string name="browser_status_downloading">Downloading %1$d%% • %2$s</string>
+    <string name="browser_status_stitching">Stitching HLS segments (%1$d%%)...</string>
+    <string name="browser_status_paused">Paused (%1$d%%)</string>
+    <string name="browser_status_failed">Failed: %1$s (Tap ▶ to retry)</string>
+    <string name="browser_status_pending">Queued...</string>
+    <string name="browser_header_title">Browser &amp; Video Saver</string>
+    <string name="browser_search_btn">Go</string>
+    <string name="browser_search_hint">Search or enter URL...</string>
+    <string name="browser_btn_paste_download">PASTE LINK &amp; DETECT VIDEO</string>
+    <string name="browser_downloads_card_desc">View active downloads &amp; saved videos</string>
+    <string name="browser_guide_title">How to Download Videos from Any Website</string>
+    <string name="browser_guide_body">1. Enter any website URL or search on Google above, or tap a platform shortcut.\n2. Play the video on the website — our Smart Sniffer automatically detects MP4 &amp; HLS (.m3u8) streams.\n3. Tap the glowing Download button at the bottom-right to choose quality (1080p, 720p, 480p, MP3) and save to your device!</string>
+    <string name="browser_video_detected">Video Detected</string>
+    <string name="browser_btn_play_now">▶ Preview</string>
+    <string name="browser_btn_download_to_device">⬇ DOWNLOAD NOW</string>
+    <string name="browser_tab_manager_open_tabs">Open Browser Tabs</string>
+    <string name="browser_btn_close_all_tabs">Close All</string>
+    <string name="browser_btn_new_tab">+ New Tab</string>
+    <string name="browser_tab_active_badge">ACTIVE</string>
+    <string name="browser_downloads_manager_title">Video Downloads</string>
+    <string name="browser_empty_downloading">No active downloads right now</string>
+    <string name="browser_empty_downloaded">No downloaded videos yet. Browse any site and tap the download button!</string>
+    <string name="browser_status_connecting">Connecting to video stream...</string>
+    <string name="browser_status_completed_100">Completed 100% • Saved to Device</string>
+    <string name="browser_btn_play_short">▶ Play</string>
+    <string name="browser_paywall_monetized_limit_toast">🔒 You have reached the 3 free video downloads/opens limit. Subscribe to VIP for unlimited downloads!</string>
+</resources>

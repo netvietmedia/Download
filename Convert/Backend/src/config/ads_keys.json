@@ -1,0 +1,51 @@
+{
+  "version": "1.1.0",
+  "updated_at": "2026-09-05T04:51:47.948Z",
+  "description": "Cấu hình Khóa Quảng Cáo Backend Midas / Mediation Waterfall",
+  "credentials": {
+    "admob_app_id": "ca-app-pub-3940256099942544~3347511713",
+    "applovin_sdk_key": "SDK_KEY_TEST_APPLOVIN_2026",
+    "mintegral_app_id": "YOUR_MINTEGRAL_APP_ID_HERE",
+    "mintegral_app_key": "YOUR_MINTEGRAL_APP_KEY_HERE",
+    "unity_game_id": "YOUR_UNITY_GAME_ID_HERE",
+    "pangle_app_id": "YOUR_PANGLE_APP_ID_HERE",
+    "ironsource_app_key": "YOUR_IRONSOURCE_APP_KEY_HERE",
+    "test_mode": true
+  },
+  "placements": {
+    "trans_complete_interstitial": {
+      "format": "INTERSTITIAL",
+      "waterfall": [
+        {
+          "network": "admob",
+          "unit_id": "ca-app-pub-3940256099942544/1033173712",
+          "ecpm_floor": 3.5,
+          "timeout_ms": 3000
+        },
+        {
+          "network": "applovin",
+          "unit_id": "applovin_inter_01",
+          "ecpm_floor": 2.8,
+          "timeout_ms": 2500
+        },
+        {
+          "network": "mintegral",
+          "unit_id": "mintegral_inter_01",
+          "ecpm_floor": 2,
+          "timeout_ms": 2000
+        }
+      ]
+    },
+    "main_bottom_banner": {
+      "format": "BANNER",
+      "waterfall": [
+        {
+          "network": "admob",
+          "unit_id": "ca-app-pub-3940256099942544/6300978111",
+          "ecpm_floor": 0.8,
+          "timeout_ms": 2000
+        }
+      ]
+    }
+  }
+}

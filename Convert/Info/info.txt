@@ -1,0 +1,23 @@
+Packetname: com.nextai.sharenow
+
+Admob ID : ca-app-pub-4108090245719282~9321607115
+Banner : ca-app-pub-4108090245719282/2341265794
+Fullscreen: ca-app-pub-4108090245719282/2268938590
+Native: ca-app-pub-4108090245719282/1091588291
+Open App: ca-app-pub-4108090245719282/3505998647
+
+Subscriptions / Google Play Billing:
+Weekly:
+  Product ID: weekly
+  Plan ID: weekly-plan
+  Price: 9$
+
+Monthly:
+  Product ID: monthlyplan
+  Plan ID: monthly-plan
+  Price: 49$
+
+Lifetime:
+  Product ID: lifetimeplan
+  Plan ID: lifetime-plan
+  Price: 99$

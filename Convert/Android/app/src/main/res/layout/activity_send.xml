@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shareit_white">
+
+    <!-- 1. Header Toolbar (White, Clean, Modern) -->
+    <RelativeLayout
+        android:id="@+id/header_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/shareit_white"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <!-- Normal Toolbar State -->
+        <RelativeLayout
+            android:id="@+id/layout_normal_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/shareit_text_title" />
+
+            <TextView
+                android:id="@+id/tv_header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_toEndOf="@id/btn_back"
+                android:text="@string/send_title"
+                android:textColor="@color/shareit_text_title"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/btn_search"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/shareit_text_title" />
+        </RelativeLayout>
+
+        <!-- Search Bar State (Appears when search button is clicked) -->
+        <RelativeLayout
+            android:id="@+id/layout_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/btn_search_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/shareit_text_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@id/btn_search_back"
+                android:background="@drawable/bg_search_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp">
+
+                <EditText
+                    android:id="@+id/edt_search_query"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search_files_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/shareit_text_title"
+                    android:textColorHint="@color/text_muted"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/btn_search_clear"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone"
+                    app:tint="@color/text_gray" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 2. Main Horizontal Category Tabs Strip -->
+    <HorizontalScrollView
+        android:id="@+id/scroll_category_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_below="@id/header_toolbar"
+        android:background="@color/shareit_white"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <!-- RECENT -->
+            <LinearLayout
+                android:id="@+id/tab_container_recent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_recent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_recent"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_recent"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <!-- CONTACTS -->
+            <LinearLayout
+                android:id="@+id/tab_container_contacts"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_contacts"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_contacts"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <!-- FILES -->
+            <LinearLayout
+                android:id="@+id/tab_container_files"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_files"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_files"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_files"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <!-- VIDEOS -->
+            <LinearLayout
+                android:id="@+id/tab_container_videos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_videos"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_videos"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <!-- APPS -->
+            <LinearLayout
+                android:id="@+id/tab_container_apps"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_apps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_apps"
+                    android:textColor="@color/shareit_blue"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_apps"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <!-- PHOTOS -->
+            <LinearLayout
+                android:id="@+id/tab_container_photos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_photos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_photos"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_photos"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <!-- MUSIC -->
+            <LinearLayout
+                android:id="@+id/tab_container_music"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/tv_tab_music"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_music"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/indicator_tab_music"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_tab_indicator_blue"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <View
+        android:id="@+id/divider_tab_strip"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/scroll_category_tabs"
+        android:background="#E2E4E8" />
+
+    <!-- 3. Subsegment Capsule Bar (Installed/Not Installed, Safebox/Recent/Folders, etc.) -->
+    <LinearLayout
+        android:id="@+id/layout_subsegment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_tab_strip"
+        android:background="@color/shareit_bg_light"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/capsule_pill_box"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:background="@drawable/bg_capsule_container"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="2.5dp">
+
+            <TextView
+                android:id="@+id/btn_sub_1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_capsule_active"
+                android:gravity="center"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:text="@string/sub_installed"
+                android:textColor="@color/shareit_text_title"
+                android:textSize="12.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btn_sub_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:text="@string/sub_not_installed"
+                android:textColor="@color/shareit_text_secondary"
+                android:textSize="12.5sp" />
+
+            <TextView
+                android:id="@+id/btn_sub_3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:text="@string/sub_folders"
+                android:textColor="@color/shareit_text_secondary"
+                android:textSize="12.5sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 4. Group Header Bar (Chevron + Title + Count + Select All Circle) -->
+    <RelativeLayout
+        android:id="@+id/layout_group_header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_below="@id/layout_subsegment_container"
+        android:background="@color/shareit_bg_light"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <LinearLayout
+            android:id="@+id/btn_group_collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_group_chevron"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_chevron_up"
+                app:tint="@color/shareit_text_title" />
+
+            <TextView
+                android:id="@+id/tv_group_title_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Apps (0)"
+                android:textColor="@color/shareit_text_title"
+                android:textSize="13.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- System Photo/Video Picker Button -->
+            <ImageView
+                android:id="@+id/btn_system_picker"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="6dp"
+                android:src="@drawable/ic_search"
+                android:contentDescription="@string/btn_system_photo_picker"
+                app:tint="@color/shareit_blue"
+                android:visibility="gone" />
+
+            <!-- Toggle View Mode: Grid (2-columns) <-> List -->
+            <ImageView
+                android:id="@+id/btn_toggle_view_mode"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="6dp"
+                android:src="@drawable/ic_view_list"
+                app:tint="@color/shareit_text_title"
+                android:contentDescription="@string/view_mode_grid" />
+
+            <!-- Select All Checkbox -->
+            <ImageView
+                android:id="@+id/iv_group_select_all"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/icon_unselected" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 5. Content Container (List, Grid, Files Dashboard, Empty State) -->
+    <FrameLayout
+        android:id="@+id/container_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shareit_bg_light"
+        android:clipChildren="false"
+        android:layout_above="@id/layout_bottom_container_send"
+        android:layout_below="@id/layout_group_header_bar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_files"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="16dp" />
+
+        <!-- Nested FILES dashboard -->
+        <include
+            android:id="@+id/layout_files_dashboard_view"
+            layout="@layout/layout_files_tab"
+            android:visibility="gone" />
+
+        <!-- Empty state -->
+        <include
+            android:id="@+id/layout_empty_view"
+            layout="@layout/layout_empty_state_shareit"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- 6. Bottom Send Floating Bar & Banner Ad underneath -->
+    <LinearLayout
+        android:id="@+id/layout_bottom_container_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:elevation="14dp">
+
+        <RelativeLayout
+            android:id="@+id/bottom_send_bar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_bottom_sheet_light"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_selected_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 file(s) selected"
+                    android:textColor="@color/shareit_text_title"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_selected_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Total: 0 B"
+                    android:textColor="@color/shareit_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_action_send_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_btn_next"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="28dp"
+                android:paddingTop="11dp"
+                android:paddingEnd="28dp"
+                android:paddingBottom="11dp"
+                android:text="@string/btn_next"
+                android:textColor="@color/text_on_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Thanh chỉ màu xanh ngăn cách quảng cáo AdMob -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2.5dp"
+            android:background="@color/primary" />
+
+        <!-- Banner Ad below next button -->
+        <FrameLayout
+            android:id="@+id/layout_banner_ad_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/shareit_bg_light"
+            android:gravity="center">
+
+            <FrameLayout
+                android:id="@+id/banner_container_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center" />
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

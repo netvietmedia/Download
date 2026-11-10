@@ -1,0 +1,37 @@
+# Android & Gradle build outputs
+**/.gradle/
+**/.kotlin/
+**/.cxx/
+**/build/
+**/captures/
+**/local.properties
+*.iml
+.idea/
+
+# Node / Backend dependencies & runtime data
+**/node_modules/
+Convert/Backend/dist/
+Convert/Backend/relay_chunks/
+Convert/Backend/uploads/
+
+# Sensitive credentials, Keystores & Service Accounts
+**/.env
+**/*.jks
+**/*.keystore
+Convert/Info/keystore_info.txt
+GA4/*-ca18d9d86ddc.json
+*service-account*.json
+*firebase-adminsdk*.json
+
+# Temporary logs, dumps & scratch screenshots
+**/hs_err_pid*.log
+Convert/Android/*_dump.xml
+Convert/Android/*.png
+Convert/Android/screenshots/
+
+# Reverse-engineering / External reference folders
+SRC/out_src/
+SRC/tools/
+SRC/*.apk
+AI-downloader/
+Anh Fix/

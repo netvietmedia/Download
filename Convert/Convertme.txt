@@ -1,0 +1,23 @@
+Thực hiện các việc sau
+
+0. Convert file java code sang kotlin ở thư Mục : Android
+1. Các công nghệ core viết bằng C++,cocos,unity,go,php... hoặc ngôn khác thì convert lại đúng ngôn ngữ đó
+2. Các thư viện SDK đang sử dụng vẫn giữ nguyên không thay bằng thư viện khác
+3. List danh sách các đầu danh sách API : chức năng, nhiệm vụ ,Các API này sử dụng sẵn luôn được không? endpoint list, model list chi tiết, báo cáo dưới dạng bảng.
+4. Vẫn sử dụng các API cũ từ decompier để lấy dữ liệu , List các đầu API endpoind đó để sau này dựng API mới và Backend mới.
+4. Gọi những domain ở ngoài, List danh sách địa chỉ IP và cổng
+5. List các SDK, Libery bên ngoài được sử dụng,chức năng nhiệm vụ
+8. Các tài nguyên Asset, ảnh,... hãy sử dụng để đúng như thiết kế trước
+9. Vẽ cấu trúc thu mục Code : chức năng nhiệm vụ từng thư mục
+10. Phân tích các vấn đề bảo mật từ ứng dụng này để tôi có thể tránh/chặn trong tương lai, list danh sách các trường hợp sẽ bị tấn công vào bằng phương pháp nào.
+11. Phân tích đánh giá tái dựng lại app này từ code decompile và tái dựng hiểu biết để làm sản phẩm tương đương 
+12. Tìm File để đào sâu tiếp liệt kê mọi key tìm thấy kèm mức độ nhạy cảm
+13. Làm blueprint server/backend/cms, độ chính xác 100% So với bản  gốc. 
+14. Dựng Backend ở thư mục Backend gồm API,cms,server... nếu có, Chạy trên cổng : 6030 (chưa đấu gọi vào app ngay)
+14. Phân tích payment wall kịch bản các gói sub : map perchase
+15. List cấu trúc Flow màn hình ứng dụng.
+16. List danh sách các menu, tab, chức năng của menu, tab từ cha xuống con
+17. list các màn hình, nội dung, chức năng của màn hình, câu trúc của màn hình
+18. Build lại app lên máy test, test tất cả các function, chức năng... nếu có bug thì phải fix bug
+19. Các tài nguyên cần cung cấp : key firebase, admob, .... Thống kê báo cáo dưới dạng bảng cho tôi chuẩn bị
+20. Các file báo cáo được xuất vào thư mục : Report

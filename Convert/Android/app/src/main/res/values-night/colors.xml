@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds (Dark Theme) -->
+    <color name="bg_dark">#0B0F19</color>
+    <color name="bg_surface">#131B2E</color>
+    <color name="bg_card">#1A243B</color>
+    <color name="bg_card_secondary">#222F4C</color>
+    <color name="bg_card_glass">#331E293B</color>
+    <color name="bottom_nav_bg">#131B2E</color>
+
+    <!-- Brand Gradients & Accents -->
+    <color name="send_blue_start">#0099FF</color>
+    <color name="send_blue_end">#0066FF</color>
+    <color name="receive_green_start">#10B981</color>
+    <color name="receive_green_end">#059669</color>
+    
+    <color name="primary">#0084FF</color>
+    <color name="primary_dark">#0055CC</color>
+    <color name="primary_light">#38BDF8</color>
+    
+    <color name="accent_gold">#F59E0B</color>
+    <color name="accent_gold_dark">#D97706</color>
+    <color name="accent_purple">#8B5CF6</color>
+    <color name="accent_purple_dark">#6D28D9</color>
+    <color name="accent_rose">#F43F5E</color>
+    <color name="accent_cyan">#06B6D4</color>
+
+    <!-- Status & Alerts -->
+    <color name="green_success">#10B981</color>
+    <color name="yellow_warning">#F59E0B</color>
+    <color name="red_danger">#EF4444</color>
+
+    <!-- Typography (Dark Theme - Pure White & Light Slate) -->
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_light">#E2E8F0</color>
+    <color name="text_gray">#94A3B8</color>
+    <color name="text_muted">#64748B</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_danger_sub">#FCA5A5</color>
+
+    <!-- Dividers & Borders -->
+    <color name="border_card">#2A3756</color>
+    <color name="border_dark">#1F293D</color>
+    <color name="border_highlight">#3B82F6</color>
+    <color name="ripple_light">#33FFFFFF</color>
+
+    <!-- Bottom Nav -->
+    <color name="nav_active">#38BDF8</color>
+    <color name="nav_inactive">#64748B</color>
+
+    <!-- VIP Card Gradient (Dark Obsidian in Dark Theme) -->
+    <color name="vip_card_start">#2D2214</color>
+    <color name="vip_card_center">#1E192B</color>
+    <color name="vip_card_end">#151A2C</color>
+    <color name="vip_card_stroke">#B45309</color>
+
+    <!-- SHAREit Theme (File Selector - Night Mode) -->
+    <color name="shareit_bg_light">#0B0F19</color>
+    <color name="shareit_white">#1A243B</color>
+    <color name="shareit_text_title">#F8FAFC</color>
+    <color name="shareit_text_secondary">#94A3B8</color>
+    <color name="shareit_blue">#2167FF</color>
+    <color name="shareit_blue_pressed">#1754D6</color>
+    <color name="shareit_capsule_bg">#222F4C</color>
+    <color name="shareit_divider">#1F293D</color>
+    <color name="shareit_border">#2A3756</color>
+</resources>
