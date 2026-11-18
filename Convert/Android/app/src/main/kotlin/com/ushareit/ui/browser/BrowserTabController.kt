@@ -119,6 +119,8 @@ class BrowserTabController(
     private var pendingAutoOpenModal: Boolean = false
     @Volatile
     private var pendingAutoStartDownload: Boolean = false
+    @Volatile
+    private var isPageReelsBatchMode: Boolean = false
     private var urlExtractJob: Job? = null
     @Volatile
     private var detectedVideoSequenceCounter: Int = 0
@@ -264,6 +266,46 @@ class BrowserTabController(
         fun onAudioStreamHarvested(audioUrl: String) {
             if (audioUrl.isNotEmpty() && audioUrl.startsWith("http")) {
                 SnifferEngine.registerMetaStream(audioUrl)
+            }
+        }
+
+        @JavascriptInterface
+        fun onBatchReelDiscovered(reelId: String, streamUrl: String, title: String?) {
+            activity.runOnUiThread {
+                if (streamUrl.startsWith("http")) {
+                    val sanitized = SnifferEngine.stripByteRangeParams(streamUrl)
+                    val cleanTitle = title?.trim()?.takeIf { it.isNotEmpty() } ?: "Reel_$reelId"
+                    addOrUpdateDetectedVideoItem(
+                        url = sanitized,
+                        title = cleanTitle,
+                        qualityLabel = "720p / 1080p HD MP4",
+                        format = "mp4",
+                        referer = "https://www.facebook.com/reel/$reelId/",
+                        userAgent = SnifferEngine.DESKTOP_USER_AGENT,
+                        promoteToTop = false
+                    )
+                }
+            }
+        }
+
+        @JavascriptInterface
+        fun onPageReelsHarvestComplete(totalCount: Int) {
+            activity.runOnUiThread {
+                val nonAudioCount = detectedVideosList.count { !it.isAudioOnly && !it.isLikelyAd }
+                if (pendingAutoStartDownload && nonAudioCount > 0) {
+                    pendingAutoStartDownload = false
+                    pendingAutoOpenModal = false
+                    enqueueAllDetectedVideos()
+                } else if (pendingAutoOpenModal && nonAudioCount > 0) {
+                    pendingAutoOpenModal = false
+                    showDownloadModal()
+                } else if (nonAudioCount > 1) {
+                    Toast.makeText(
+                        activity,
+                        "Đã thu thập $nonAudioCount Reels của Page — bấm nút Tải để tải toàn bộ!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }
@@ -558,6 +600,15 @@ class BrowserTabController(
 
                 // 1. Tiêm Javascript quét tìm video streams đa tầng (HTML5 player, script blocks, media tags, prototypes)
                 view?.evaluateJavascript(MULTI_LAYER_SNIFFER_JS, null)
+                if (isPageReelsBatchMode && (
+                        url.contains("/reels", ignoreCase = true) ||
+                            url.contains("reels_tab", ignoreCase = true) ||
+                            url.contains("/shorts", ignoreCase = true) ||
+                            url.contains("/videos", ignoreCase = true)
+                        )
+                ) {
+                    view?.evaluateJavascript(FACEBOOK_PAGE_REELS_AUTOSCROLL_JS, null)
+                }
 
                 // 2. Chỉ phân tích HTML khi chưa bắt được luồng trực tiếp trên các trang web thường (bỏ qua feed SPA lớn để tránh khựng UI khi chuyển tab)
                 if (!url.contains("google.com/", ignoreCase = true) &&
@@ -1014,7 +1065,8 @@ class BrowserTabController(
         if (existingIdx >= 0) {
             detectedVideosList[existingIdx] = item
         } else {
-            while (detectedVideosList.size >= 35) {
+            val maxItemsCap = if (isPageReelsBatchMode) 500 else 35
+            while (detectedVideosList.size >= maxItemsCap) {
                 detectedVideosList.removeAt(detectedVideosList.lastIndex)
             }
             detectedVideosList.add(item)
@@ -1588,30 +1640,76 @@ class BrowserTabController(
             }
         }
 
-        val isSearch = targetUrl.contains("google.com/search?q=", ignoreCase = true)
-        val host = MonetizedDomainRegistry.extractHost(targetUrl).ifEmpty { "unknown" }
+        val isFbPage = SnifferEngine.isFacebookPageOrProfileUrl(targetUrl)
+        val isChannelBatch = SnifferEngine.isChannelOrPageBatchUrl(targetUrl)
+        val resolvedTargetUrl = if (isChannelBatch) {
+            SnifferEngine.toChannelBatchTargetUrl(targetUrl)
+        } else {
+            targetUrl
+        }
+
+        val isSearch = resolvedTargetUrl.contains("google.com/search?q=", ignoreCase = true)
+        val host = MonetizedDomainRegistry.extractHost(resolvedTargetUrl).ifEmpty { "unknown" }
         FirebaseAnalyticsManager.logBrowserUrlLoad(
-            url = targetUrl,
+            url = resolvedTargetUrl,
             host = host,
             isSearchQuery = isSearch,
             source = source,
-            isMonetized = MonetizedDomainRegistry.isMonetizedDomain(targetUrl)
+            isMonetized = MonetizedDomainRegistry.isMonetizedDomain(resolvedTargetUrl)
         )
 
         etUrlInput.clearFocus()
         setUrlBarExpanded(false)
         dashboardScroll.visibility = View.GONE
         webView.visibility = View.VISIBLE
-        etUrlInput.setText(targetUrl)
+        etUrlInput.setText(resolvedTargetUrl)
         btnClearUrl.visibility = View.VISIBLE
 
         resetDetectionState()
-        tabManager.updateCurrentTabUrl(targetUrl, targetUrl)
-        webView.loadUrl(targetUrl)
+        isPageReelsBatchMode = isChannelBatch
+        webView.settings.userAgentString = if (isChannelBatch) {
+            SnifferEngine.DESKTOP_USER_AGENT
+        } else {
+            SnifferEngine.MOBILE_USER_AGENT
+        }
 
-        if (autoOpenModalWhenReady || autoStartDownload || shouldDirectExtract(targetUrl)) {
+        tabManager.updateCurrentTabUrl(resolvedTargetUrl, resolvedTargetUrl)
+        webView.loadUrl(resolvedTargetUrl)
+
+        if (isChannelBatch) {
+            pendingAutoOpenModal = pendingAutoOpenModal || autoOpenModalWhenReady
+            pendingAutoStartDownload = pendingAutoStartDownload || autoStartDownload
+            Toast.makeText(
+                activity,
+                "Đang tự động quét toàn bộ Reels/Shorts của Kênh...",
+                Toast.LENGTH_SHORT
+            ).show()
+            if (isFbPage) {
+                activity.lifecycleScope.launch(Dispatchers.IO) {
+                    val batchInfos = snifferEngine.extractFacebookPageReelsBatch(resolvedTargetUrl)
+                    if (batchInfos.isNotEmpty()) {
+                        withContext(Dispatchers.Main) {
+                            for (vInfo in batchInfos) {
+                                val bestQ = vInfo.qualities.firstOrNull { !it.isAudioOnly } ?: continue
+                                addOrUpdateDetectedVideoItem(
+                                    url = bestQ.downloadUrl,
+                                    title = vInfo.title,
+                                    qualityLabel = bestQ.label,
+                                    format = bestQ.format,
+                                    sizeBytes = bestQ.approximateSize,
+                                    durationSeconds = vInfo.durationSeconds,
+                                    referer = vInfo.sourcePageUrl,
+                                    userAgent = SnifferEngine.DESKTOP_USER_AGENT,
+                                    promoteToTop = false
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        } else if (autoOpenModalWhenReady || autoStartDownload || shouldDirectExtract(resolvedTargetUrl)) {
             extractVideoDirectly(
-                url = targetUrl,
+                url = resolvedTargetUrl,
                 showToast = autoOpenModalWhenReady,
                 autoOpenModal = autoOpenModalWhenReady,
                 autoStartDownload = autoStartDownload
@@ -1673,6 +1771,7 @@ class BrowserTabController(
 
         val btnPlayPreview = sheetView.findViewById<TextView>(R.id.btn_play_preview)
         val btnConfirmDownload = sheetView.findViewById<TextView>(R.id.btn_confirm_download)
+        val btnDownloadAllVideos = sheetView.findViewById<TextView>(R.id.btn_download_all_videos)
 
         val info = detectedVideoInfo
         val homeTitle = getPageTitle()
@@ -1728,6 +1827,15 @@ class BrowserTabController(
         fun renderDetectedVideosList() {
             containerDetectedVideos.removeAllViews()
             val items = detectedVideosList.toList()
+            val batchCandidatesCount = items.count { !it.isAudioOnly && !it.isLikelyAd }
+            if (btnDownloadAllVideos != null) {
+                if (batchCandidatesCount >= 2) {
+                    btnDownloadAllVideos.visibility = View.VISIBLE
+                    btnDownloadAllVideos.text = "DOWNLOAD ALL REELS / VIDEOS ($batchCandidatesCount)"
+                } else {
+                    btnDownloadAllVideos.visibility = View.GONE
+                }
+            }
             tvModalHeaderTitle.text = if (items.size > 1) {
                 "${activity.getString(R.string.browser_video_detected)} (${items.size})"
             } else {
@@ -1956,7 +2064,51 @@ class BrowserTabController(
             }
         }
 
+        btnDownloadAllVideos?.setOnClickListener {
+            dialog.dismiss()
+            enqueueAllDetectedVideos()
+        }
+
         dialog.show()
+    }
+
+    fun enqueueAllDetectedVideos() {
+        val activePageUrl = getCurrentUrl() ?: ""
+        val batchItems = detectedVideosList.filter { !it.isAudioOnly && !it.isLikelyAd }
+        if (batchItems.isEmpty()) {
+            Toast.makeText(activity, R.string.browser_toast_no_video_yet, Toast.LENGTH_SHORT).show()
+            return
+        }
+        var enqueuedCount = 0
+        for (item in batchItems) {
+            val referer = item.referer ?: activePageUrl
+            val allowed = MonetizedDomainRegistry.canDownloadMonetizedVideo(
+                refererUrl = referer,
+                downloadUrl = item.url,
+                activePageUrl = activePageUrl
+            )
+            if (!allowed) {
+                MonetizedDomainRegistry.launchPaywallForMonetizedLimit(activity)
+                break
+            }
+            downloadEngine.enqueueDownload(
+                title = item.title.ifBlank { "Reel_${enqueuedCount + 1}" },
+                url = item.url,
+                qualityLabel = item.qualityLabel,
+                format = item.format,
+                referer = referer,
+                activePageUrl = activePageUrl
+            )
+            enqueuedCount++
+        }
+        if (enqueuedCount > 0) {
+            Toast.makeText(
+                activity,
+                "Đã thêm $enqueuedCount video Reels vào hàng đợi tải tự động!",
+                Toast.LENGTH_LONG
+            ).show()
+            showDownloadsManagerBottomSheet()
+        }
     }
 
     @SuppressLint("InflateParams")
@@ -3011,6 +3163,153 @@ class BrowserTabController(
                         }
                     } catch(e) {}
                 }, 1500);
+            })();
+        """.trimIndent()
+
+        private val FACEBOOK_PAGE_REELS_AUTOSCROLL_JS = """
+            (function() {
+                if (window.__shareNowPageReelsHarvesterActive) return;
+                window.__shareNowPageReelsHarvesterActive = true;
+                var reportedReelIds = {};
+                var totalReported = 0;
+
+                function unescapeFb(raw) {
+                    if (!raw) return '';
+                    return raw.replace(/\\\//g, '/')
+                              .replace(/\\u0026/gi, '&')
+                              .replace(/\\u0025/gi, '%')
+                              .replace(/\\u003d/gi, '=')
+                              .replace(/&amp;/g, '&');
+                }
+
+                function harvestPageReelsPayload(txt) {
+                    if (!txt || typeof txt !== 'string' || txt.length < 40) return;
+                    try {
+                        var re = /"(?:video_id|id)"\s*:\s*"(\d{8,25})"[\s\S]{1,4000}?"(?:browser_native_sd_url|playable_url)"\s*:\s*"(https?:[^"]+)"(?:[\s\S]{1,1800}?"(?:browser_native_hd_url|playable_url_quality_hd)"\s*:\s*"(https?:[^"]+)")?/g;
+                        var m;
+                        while ((m = re.exec(txt)) !== null) {
+                            var rid = m[1];
+                            var sd = unescapeFb(m[2] || '');
+                            var hd = unescapeFb(m[3] || '');
+                            var best = hd || sd;
+                            if (rid && best && !reportedReelIds[rid]) {
+                                reportedReelIds[rid] = true;
+                                totalReported++;
+                                if (window.AndroidSniffer && window.AndroidSniffer.onBatchReelDiscovered) {
+                                    window.AndroidSniffer.onBatchReelDiscovered(rid, best, 'Reel_' + rid);
+                                }
+                            }
+                        }
+                        // Instagram video_versions extraction
+                        var igRe = /"(?:shortcode|code)"\s*:\s*"([A-Za-z0-9_-]{8,15})"[\s\S]{1,3500}?"video_versions"\s*:\s*\[\s*\{[^}]*?"url"\s*:\s*"(https?:[^"]+)"/g;
+                        var igm;
+                        while ((igm = igRe.exec(txt)) !== null) {
+                            var igCode = igm[1];
+                            var igUrl = unescapeFb(igm[2] || '');
+                            if (igCode && igUrl && !reportedReelIds[igCode]) {
+                                reportedReelIds[igCode] = true;
+                                totalReported++;
+                                if (window.AndroidSniffer && window.AndroidSniffer.onBatchReelDiscovered) {
+                                    window.AndroidSniffer.onBatchReelDiscovered(igCode, igUrl, 'IG_Reel_' + igCode);
+                                }
+                            }
+                        }
+                    } catch(e) {}
+                }
+
+                function harvestDomChannelLinks() {
+                    try {
+                        var host = (window.location.hostname || '').toLowerCase();
+                        var anchors = document.querySelectorAll('a[href]');
+                        for (var i = 0; i < anchors.length; i++) {
+                            var href = anchors[i].getAttribute('href') || '';
+                            if (host.indexOf('instagram.com') !== -1) {
+                                var mIg = href.match(/\/(?:reel|reels|p)\/([A-Za-z0-9_-]{8,15})/);
+                                if (mIg && mIg[1] && !reportedReelIds[mIg[1]]) {
+                                    reportedReelIds[mIg[1]] = true;
+                                    totalReported++;
+                                    if (window.AndroidSniffer && window.AndroidSniffer.onPlatformVideoFound) {
+                                        window.AndroidSniffer.onPlatformVideoFound('https://www.instagram.com/reel/' + mIg[1] + '/', 'Instagram Reel #' + mIg[1]);
+                                    }
+                                }
+                            } else if (host.indexOf('youtube.com') !== -1) {
+                                var mYt = href.match(/\/shorts\/([A-Za-z0-9_-]{11})/) || href.match(/[?&]v=([A-Za-z0-9_-]{11})/);
+                                if (mYt && mYt[1] && !reportedReelIds[mYt[1]]) {
+                                    reportedReelIds[mYt[1]] = true;
+                                    totalReported++;
+                                    var ytTitle = (anchors[i].getAttribute('title') || anchors[i].textContent || '').trim() || ('YouTube Short #' + mYt[1]);
+                                    if (window.AndroidSniffer && window.AndroidSniffer.onPlatformVideoFound) {
+                                        window.AndroidSniffer.onPlatformVideoFound('https://www.youtube.com/shorts/' + mYt[1], ytTitle);
+                                    }
+                                }
+                            }
+                        }
+                    } catch(e) {}
+                }
+
+                // Hook fetch & XHR for GraphQL pagination
+                try {
+                    var origFetch = window.fetch;
+                    if (origFetch) {
+                        window.fetch = function() {
+                            return origFetch.apply(this, arguments).then(function(resp) {
+                                try {
+                                    var clone = resp.clone();
+                                    clone.text().then(function(t) { harvestPageReelsPayload(t); }).catch(function(){});
+                                } catch(e) {}
+                                return resp;
+                            });
+                        };
+                    }
+                    var origXhrSend = XMLHttpRequest.prototype.send;
+                    XMLHttpRequest.prototype.send = function() {
+                        this.addEventListener('load', function() {
+                            try {
+                                if (this.responseType === '' || this.responseType === 'text') {
+                                    harvestPageReelsPayload(this.responseText);
+                                }
+                            } catch(e) {}
+                        });
+                        return origXhrSend.apply(this, arguments);
+                    };
+                } catch(e) {}
+
+                // Parse initial SSR scripts & DOM links
+                var scripts = document.getElementsByTagName('script');
+                for (var i = 0; i < scripts.length; i++) {
+                    harvestPageReelsPayload(scripts[i].textContent || '');
+                }
+                harvestDomChannelLinks();
+
+                // Dismiss public overlay close button once if present
+                try {
+                    var closeBtn = document.querySelector('[role="dialog"] [aria-label="Close"], [role="dialog"] [aria-label="Đóng"]');
+                    if (closeBtn) closeBtn.click();
+                } catch(e) {}
+
+                var idleTicks = 0;
+                var lastCount = totalReported;
+                var scrollTimer = setInterval(function() {
+                    try {
+                        var closeDialog = document.querySelector('[role="dialog"] [aria-label="Close"], [role="dialog"] [aria-label="Đóng"]');
+                        if (closeDialog) closeDialog.click();
+                    } catch(e) {}
+                    harvestDomChannelLinks();
+                    window.scrollBy(0, Math.max(1200, window.innerHeight * 1.6));
+                    if (totalReported > lastCount) {
+                        lastCount = totalReported;
+                        idleTicks = 0;
+                    } else {
+                        idleTicks++;
+                    }
+                    if (idleTicks >= 5) {
+                        clearInterval(scrollTimer);
+                        window.__shareNowPageReelsHarvesterActive = false;
+                        if (window.AndroidSniffer && window.AndroidSniffer.onPageReelsHarvestComplete) {
+                            window.AndroidSniffer.onPageReelsHarvestComplete(totalReported);
+                        }
+                    }
+                }, 1700);
             })();
         """.trimIndent()
     }

@@ -165,6 +165,22 @@
             android:layout_height="wrap_content" />
     </RadioGroup>
 
+    <!-- Batch Download All Reels / Videos Action (auto-shown when >= 2 videos detected) -->
+    <TextView
+        android:id="@+id/btn_download_all_videos"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_btn_send"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="DOWNLOAD ALL REELS"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <!-- Dual Action Buttons -->
     <LinearLayout
         android:layout_width="match_parent"

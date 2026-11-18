@@ -187,6 +187,175 @@ class SnifferEngine {
             return if (candidate.isNotEmpty() && candidate.all { it.isDigit() }) candidate else ""
         }
 
+        private val FACEBOOK_RESERVED_PATHS = setOf(
+            "watch", "reel", "reels", "videos", "photo", "photos", "login", "checkpoint",
+            "recover", "groups", "marketplace", "events", "gaming", "messages", "notifications",
+            "settings", "help", "privacy", "policies", "bookmarks", "friends", "stories", "share"
+        )
+
+        private val INSTAGRAM_RESERVED_PATHS = setOf(
+            "reel", "reels", "p", "tv", "stories", "explore", "direct", "accounts", "about", "legal", "developer"
+        )
+
+        private val YOUTUBE_RESERVED_PATHS = setOf(
+            "watch", "shorts", "playlist", "feed", "results", "gaming", "music", "premium", "account", "reporthistory", "embed"
+        )
+
+        fun isInstagramProfileUrl(rawUrl: String): Boolean {
+            val trimmed = rawUrl.trim()
+            if (!trimmed.startsWith("http", ignoreCase = true)) return false
+            val lower = trimmed.lowercase()
+            if (!lower.contains("instagram.com")) return false
+            return try {
+                val u = android.net.Uri.parse(trimmed)
+                val segments = (u.path ?: "").trim('/').split('/').filter { it.isNotBlank() }
+                if (segments.isEmpty()) return false
+                val first = segments[0].lowercase()
+                if (first in INSTAGRAM_RESERVED_PATHS) return false
+                segments.size == 1 || (segments.size == 2 && segments[1].lowercase() in setOf("reels", "tagged", "channel"))
+            } catch (_: Exception) {
+                false
+            }
+        }
+
+        fun toInstagramProfileReelsUrl(rawUrl: String): String {
+            if (!isInstagramProfileUrl(rawUrl)) return rawUrl.trim()
+            return try {
+                val u = android.net.Uri.parse(rawUrl.trim())
+                val segments = (u.path ?: "").trim('/').split('/').filter { it.isNotBlank() }
+                val handle = segments.firstOrNull()?.removePrefix("@") ?: return rawUrl.trim()
+                "https://www.instagram.com/$handle/reels/"
+            } catch (_: Exception) {
+                rawUrl.trim()
+            }
+        }
+
+        fun isYouTubeChannelUrl(rawUrl: String): Boolean {
+            val trimmed = rawUrl.trim()
+            if (!trimmed.startsWith("http", ignoreCase = true)) return false
+            val lower = trimmed.lowercase()
+            if (!lower.contains("youtube.com")) return false
+            return try {
+                val u = android.net.Uri.parse(trimmed)
+                val segments = (u.path ?: "").trim('/').split('/').filter { it.isNotBlank() }
+                if (segments.isEmpty()) return false
+                val first = segments[0].lowercase()
+                if (first in YOUTUBE_RESERVED_PATHS) return false
+                first.startsWith("@") || first in setOf("channel", "c", "user") ||
+                    segments.size == 1 ||
+                    (segments.size == 2 && segments[1].lowercase() in setOf("shorts", "videos", "streams", "featured"))
+            } catch (_: Exception) {
+                false
+            }
+        }
+
+        fun toYouTubeChannelShortsUrl(rawUrl: String): String {
+            if (!isYouTubeChannelUrl(rawUrl)) return rawUrl.trim()
+            return try {
+                val u = android.net.Uri.parse(rawUrl.trim())
+                val segments = (u.path ?: "").trim('/').split('/').filter { it.isNotBlank() }
+                if (segments.isEmpty()) return rawUrl.trim()
+                val first = segments[0]
+                when {
+                    first.startsWith("@") -> "https://www.youtube.com/$first/shorts"
+                    first.lowercase() in setOf("channel", "c", "user") && segments.size >= 2 -> {
+                        "https://www.youtube.com/$first/${segments[1]}/shorts"
+                    }
+                    else -> "https://www.youtube.com/@$first/shorts"
+                }
+            } catch (_: Exception) {
+                rawUrl.trim()
+            }
+        }
+
+        fun isChannelOrPageBatchUrl(rawUrl: String): Boolean {
+            return isFacebookPageOrProfileUrl(rawUrl) || isInstagramProfileUrl(rawUrl) || isYouTubeChannelUrl(rawUrl)
+        }
+
+        fun toChannelBatchTargetUrl(rawUrl: String): String {
+            return when {
+                isFacebookPageOrProfileUrl(rawUrl) -> toFacebookPageReelsUrl(rawUrl)
+                isInstagramProfileUrl(rawUrl) -> toInstagramProfileReelsUrl(rawUrl)
+                isYouTubeChannelUrl(rawUrl) -> toYouTubeChannelShortsUrl(rawUrl)
+                else -> rawUrl.trim()
+            }
+        }
+
+        fun buildDescriptiveVideoFileName(
+            videoId: String,
+            rawTitle: String? = null,
+            rawDescription: String? = null
+        ): String {
+            val safeId = videoId.replace(Regex("[^A-Za-z0-9_-]"), "").ifEmpty { System.currentTimeMillis().toString() }
+            val combined = listOfNotNull(rawDescription?.trim(), rawTitle?.trim())
+                .filter { it.isNotEmpty() && !it.startsWith("Video by ", ignoreCase = true) }
+                .joinToString("\n")
+
+            if (combined.isBlank()) return "$safeId.mp4"
+
+            val hashtagRegex = Regex("#[\\p{L}\\p{N}_]+")
+            val tags = LinkedHashSet<String>()
+            for (match in hashtagRegex.findAll(combined)) {
+                tags.add(match.value)
+            }
+
+            val body = combined
+                .replace(hashtagRegex, " ")
+                .replace(Regex("[<>:\"/\\\\|?*\\x00-\\x1F]"), " ")
+                .replace(Regex("\\s+"), " ")
+                .trim()
+                .take(85)
+                .trim()
+
+            val tagStr = tags.take(6).joinToString(" ").take(55).trim()
+            val prefix = listOf(body, tagStr).filter { it.isNotEmpty() }.joinToString(" - ")
+            return if (prefix.isNotEmpty()) "$prefix [$safeId].mp4" else "$safeId.mp4"
+        }
+
+        fun isFacebookPageOrProfileUrl(rawUrl: String): Boolean {
+            val trimmed = rawUrl.trim()
+            if (!trimmed.startsWith("http", ignoreCase = true)) return false
+            val lower = trimmed.lowercase()
+            if (!lower.contains("facebook.com") && !lower.contains("fb.com")) return false
+            if (extractFacebookVideoId(trimmed).isNotEmpty()) return false
+            return try {
+                val u = android.net.Uri.parse(trimmed)
+                val path = (u.path ?: "").trim('/')
+                if (path.isEmpty()) return false
+                if (path.equals("profile.php", ignoreCase = true)) {
+                    return !u.getQueryParameter("id").isNullOrBlank()
+                }
+                val segments = path.split('/').filter { it.isNotBlank() }
+                if (segments.isEmpty()) return false
+                val first = segments[0].lowercase()
+                if (first == "people" && segments.size >= 3) return true
+                if (first in FACEBOOK_RESERVED_PATHS) return false
+                segments.size == 1 || (segments.size == 2 && segments[1].lowercase() in setOf("reels", "videos", "about", "posts"))
+            } catch (_: Exception) {
+                false
+            }
+        }
+
+        fun toFacebookPageReelsUrl(rawUrl: String): String {
+            if (!isFacebookPageOrProfileUrl(rawUrl)) return normalizeFacebookUrl(rawUrl)
+            return try {
+                val u = android.net.Uri.parse(rawUrl.trim())
+                val path = (u.path ?: "").trim('/')
+                if (path.equals("profile.php", ignoreCase = true)) {
+                    val id = u.getQueryParameter("id") ?: ""
+                    return "https://www.facebook.com/profile.php?id=$id&sk=reels_tab"
+                }
+                val segments = path.split('/').filter { it.isNotBlank() }
+                if (segments[0].equals("people", ignoreCase = true) && segments.size >= 3) {
+                    return "https://www.facebook.com/profile.php?id=${segments[2]}&sk=reels_tab"
+                }
+                val slug = if (segments[0].equals("pg", ignoreCase = true) && segments.size >= 2) segments[1] else segments[0]
+                "https://www.facebook.com/$slug/reels/"
+            } catch (_: Exception) {
+                normalizeFacebookUrl(rawUrl)
+            }
+        }
+
         fun normalizeFacebookUrl(pageUrl: String): String {
             val trimmed = pageUrl.trim()
             val videoId = extractFacebookVideoId(trimmed)
@@ -196,6 +365,9 @@ class SnifferEngine {
                 }
                 videoId.isNotEmpty() -> {
                     "https://www.facebook.com/watch/?v=$videoId"
+                }
+                isFacebookPageOrProfileUrl(trimmed) -> {
+                    toFacebookPageReelsUrl(trimmed)
                 }
                 trimmed.startsWith("http") -> {
                     trimmed.replace("m.facebook.com", "www.facebook.com")
@@ -513,7 +685,7 @@ class SnifferEngine {
             var hdUrl: String? = findFirstStream(scopedHtml, hdPattern) ?: findFirstStream(combinedHtml, hdPattern)
             var sdUrl: String? = findFirstStream(scopedHtml, sdPattern) ?: findFirstStream(combinedHtml, sdPattern)
 
-            val fbcdnRegex = Pattern.compile("""https:(?:\\/\\/|//)[^\s"'<>\\]+\.fbcdn\.net[^\s"'<>\\]+\.mp4[^\s"'<>\\]*""")
+            val fbcdnRegex = Pattern.compile("""https:(?:\\/\\/|//)[^\s"'<>\\]+\.fbcdn\.net(?:/o1/v/t2/[^\s"'<>\\]+|[^\s"'<>\\]+\.mp4[^\s"'<>\\]*)""")
             val allFbcdnMatcher = fbcdnRegex.matcher(combinedHtml)
             while (allFbcdnMatcher.find()) {
                 val candidate = stripByteRangeParams(allFbcdnMatcher.group(0) ?: "")
@@ -595,8 +767,20 @@ class SnifferEngine {
                 )
             )
 
+            var fbCaption = ""
+            val ogDescMatch = Pattern.compile("""<meta\s+property=["']og:(?:description|title)["']\s+content=["']([^"']+)["']""", Pattern.CASE_INSENSITIVE).matcher(combinedHtml)
+            if (ogDescMatch.find()) {
+                fbCaption = android.text.Html.fromHtml(ogDescMatch.group(1) ?: "", android.text.Html.FROM_HTML_MODE_LEGACY).toString()
+            }
+            if (fbCaption.isBlank()) {
+                val msgMatch = Pattern.compile(""""message"\s*:\s*\{\s*"text"\s*:\s*"([^"]+)"""").matcher(combinedHtml)
+                if (msgMatch.find()) {
+                    fbCaption = try { JSONObject("""{"t":"${msgMatch.group(1)}"}""").optString("t", "") } catch (_: Exception) { msgMatch.group(1) ?: "" }
+                }
+            }
+
             VideoInfo(
-                title = "Facebook_Video_$videoId.mp4",
+                title = buildDescriptiveVideoFileName(videoId, fbCaption),
                 sourcePageUrl = currentUrl,
                 thumbnailUrl = "",
                 durationSeconds = 60,
@@ -610,6 +794,66 @@ class SnifferEngine {
             Log.e("ShareNow_Sniffer", "Facebook extract error", e)
             null
         }
+    }
+
+    /**
+     * 2B. Facebook Page Reels Batch Extractor (discovers all Reels on https://www.facebook.com/<page>/reels/)
+     */
+    suspend fun extractFacebookPageReelsBatch(pageUrl: String, htmlContent: String? = null): List<VideoInfo> = withContext(Dispatchers.IO) {
+        val results = mutableListOf<VideoInfo>()
+        try {
+            val reelsTabUrl = toFacebookPageReelsUrl(pageUrl)
+            val fetchedHtml = fetchHtmlWithOkHttp(reelsTabUrl)
+            val combinedHtml = buildString {
+                if (fetchedHtml.isNotBlank()) append(fetchedHtml).append("\n")
+                if (!htmlContent.isNullOrBlank()) append(htmlContent)
+            }
+            if (combinedHtml.isBlank()) return@withContext emptyList()
+
+            val fbcdnRegex = Pattern.compile("""https:(?:\\/\\/|//)[^\s"'<>\\]+\.fbcdn\.net(?:/o1/v/t2/[^\s"'<>\\]+|[^\s"'<>\\]+\.mp4[^\s"'<>\\]*)""")
+            val fbMatcher = fbcdnRegex.matcher(combinedHtml)
+            while (fbMatcher.find()) {
+                registerMetaStream(stripByteRangeParams(fbMatcher.group(0) ?: ""))
+            }
+
+            val seenIds = LinkedHashSet<String>()
+            val reelBlockRegex = Pattern.compile(
+                """"(?:video_id|id)"\s*:\s*"(\d{8,25})"[\s\S]{1,4000}?"(?:browser_native_sd_url|playable_url)"\s*:\s*"(https?:[^"]+)"(?:[\s\S]{1,1800}?"(?:browser_native_hd_url|playable_url_quality_hd)"\s*:\s*"(https?:[^"]+)")?"""
+            )
+            val m = reelBlockRegex.matcher(combinedHtml)
+            while (m.find()) {
+                val vid = m.group(1) ?: continue
+                if (!seenIds.add(vid)) continue
+                val sd = m.group(2)?.let { stripByteRangeParams(it) } ?: ""
+                val hd = m.group(3)?.let { stripByteRangeParams(it) } ?: ""
+                val primary = hd.ifEmpty { sd }
+                if (!primary.startsWith("http")) continue
+
+                val qualities = mutableListOf<VideoQuality>()
+                if (hd.startsWith("http")) {
+                    qualities.add(VideoQuality("720p / 1080p HD MP4", "mp4", 18_000_000L, hd))
+                }
+                if (sd.startsWith("http") && sd != hd) {
+                    qualities.add(VideoQuality("480p SD MP4", "mp4", 9_000_000L, sd))
+                }
+                results.add(
+                    VideoInfo(
+                        title = "Reel_$vid.mp4",
+                        sourcePageUrl = "https://www.facebook.com/reel/$vid/",
+                        thumbnailUrl = "",
+                        durationSeconds = parseMetaEfgInfo(primary).durationSec.takeIf { it > 0 } ?: 30,
+                        qualities = qualities,
+                        extractedHeaders = mapOf(
+                            "User-Agent" to DESKTOP_USER_AGENT,
+                            "Referer" to "https://www.facebook.com/"
+                        )
+                    )
+                )
+            }
+        } catch (e: Exception) {
+            Log.e("ShareNow_Sniffer", "Facebook Page Reels batch extract error", e)
+        }
+        results
     }
 
     /**
@@ -668,7 +912,18 @@ class SnifferEngine {
             streamUrl = streamUrl.replace(Regex("&?byte(start|end)=\\d+"), "")
 
             val reelId = pageUrl.substringAfter("/reel/").substringAfter("/p/").substringBefore("/").substringBefore("?")
-            val finalTitle = if (reelId.isNotBlank()) "Instagram_Reel_$reelId.mp4" else "Instagram_Video_${System.currentTimeMillis()}.mp4"
+            var igCaption = ""
+            val igOgMatch = Pattern.compile("""<meta\s+property=["']og:(?:description|title)["']\s+content=["']([^"']+)["']""", Pattern.CASE_INSENSITIVE).matcher(html)
+            if (igOgMatch.find()) {
+                igCaption = android.text.Html.fromHtml(igOgMatch.group(1) ?: "", android.text.Html.FROM_HTML_MODE_LEGACY).toString()
+            }
+            if (igCaption.isBlank()) {
+                val capMatch = Pattern.compile(""""caption"\s*:\s*\{[^{}]*"text"\s*:\s*"([^"]+)"""").matcher(html)
+                if (capMatch.find()) {
+                    igCaption = try { JSONObject("""{"t":"${capMatch.group(1)}"}""").optString("t", "") } catch (_: Exception) { capMatch.group(1) ?: "" }
+                }
+            }
+            val finalTitle = buildDescriptiveVideoFileName(reelId.ifBlank { "ig_${System.currentTimeMillis()}" }, igCaption)
 
             val qualities = listOf(
                 VideoQuality("1080p Full HD", "mp4", 18_500_000L, streamUrl),
@@ -858,7 +1113,8 @@ class SnifferEngine {
                                 audioStreamUrl.ifEmpty { primaryStream }
                             }
                             itQualities.add(VideoQuality("Audio Only (MP3)", "mp3", audioSize, finalAudioUrl, isAudioOnly = true))
-                            val cleanYtTitle = ytTitle.replace(Regex("[^\\p{L}\\p{N}._ -]"), "_").take(60) + ".mp4"
+                            val ytDesc = videoDetails?.optString("shortDescription", "") ?: ""
+                            val cleanYtTitle = buildDescriptiveVideoFileName(videoId, ytTitle, ytDesc)
                             Log.i("ShareNow_Sniffer", "YouTube Innertube ($clientName) resolved ${itQualities.size} streams for $cleanYtTitle")
                             return@withContext VideoInfo(
                                 title = cleanYtTitle,

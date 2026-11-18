@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
 
 export const config = {
@@ -10,5 +11,10 @@ export const config = {
   cmsAdminPass: process.env.CMS_ADMIN_PASS || 'admin@123456',
   uploadDir: process.env.UPLOAD_DIR || './uploads',
   relayTempDir: process.env.RELAY_TEMP_DIR || './relay_chunks',
+  videoLibraryDir: process.env.VIDEO_LIBRARY_DIR || path.resolve(__dirname, '../../../../../VideoLibrary'),
+  browserProfileDir: process.env.BROWSER_PROFILE_DIR || path.resolve(__dirname, '../../.browser-profile'),
+  reelsJobsFile: path.resolve(__dirname, '../../reels_jobs.json'),
+  reelsFavoritesFile: path.resolve(__dirname, '../../reels_favorites.json'),
+  ytDlpBin: path.resolve(__dirname, '../../bin/yt-dlp.exe'),
 };
 

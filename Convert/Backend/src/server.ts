@@ -14,6 +14,7 @@ import payRoutes from './routes/pay.routes';
 import coinRoutes from './routes/coin.routes';
 import telemetryRoutes from './routes/telemetry.routes';
 import adminRoutes from './routes/admin.routes';
+import reelsRoutes from './routes/reels.routes';
 
 const app = express();
 const server = http.createServer(app);
@@ -53,10 +54,12 @@ app.use('/api/v1/pay', payRoutes);
 app.use('/api/v1/coin', coinRoutes);
 app.use('/api/v1/telemetry', telemetryRoutes);
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/reels', reelsRoutes);
+app.use('/api/reels', reelsRoutes);
 
-// Điều hướng mặc định về CMS Dashboard
+// Điều hướng mặc định về Cổng Tải Toàn Bộ Reels cho AI Agent & Người Dùng (không vướng login modal)
 app.get('/', (req, res) => {
-  res.redirect('/admin');
+  res.redirect('/reels');
 });
 
 // 5. Khởi tạo WebSocket Signaling Server cho P2P WebRTC
@@ -69,6 +72,8 @@ server.listen(config.port, '0.0.0.0', () => {
   console.log(`🚀 SHAREit Enterprise Backend & CMS Server IS RUNNING!`);
   console.log(`🌐 Server Port: ${config.port}`);
   console.log(`🔗 REST API Base: http://localhost:${config.port}/api/v1`);
+  console.log(`🎬 AI Agent Reels Web UI: http://localhost:${config.port}/reels`);
+  console.log(`🤖 AI Agent Reels API: POST http://localhost:${config.port}/api/v1/reels/auto-download`);
   console.log(`📡 WebSocket Signaling: ws://localhost:${config.port}/api/v1/signaling/webrtc`);
   console.log(`🖥️  CMS Admin Dashboard: http://localhost:${config.port}/admin`);
   console.log(`👤 Default CMS Account: ${config.cmsAdminUser} / ${config.cmsAdminPass}`);

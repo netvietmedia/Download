@@ -13,6 +13,10 @@
 Convert/Backend/dist/
 Convert/Backend/relay_chunks/
 Convert/Backend/uploads/
+Convert/Backend/.browser-profile/
+Convert/Backend/reels_jobs.json
+Convert/Backend/reels_favorites.json
+Convert/Backend/bin/
 
 # Sensitive credentials, Keystores & Service Accounts
 **/.env
